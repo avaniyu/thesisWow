@@ -1,0 +1,14 @@
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\bin\Debug\TextTest.exe.config
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.csprojResolveAssemblyReference.cache
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.AboutForm.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.OutputForm.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.MainForm.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.OptionsForm.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.Properties.Resources.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.ResultsForm.resources
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.csproj.GenerateResource.Cache
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\bin\Debug\TextTest.exe
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\bin\Debug\TextTest.pdb
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\bin\Debug\WobbrockLib.pdb
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.exe
+C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Debug\TextTest.pdb

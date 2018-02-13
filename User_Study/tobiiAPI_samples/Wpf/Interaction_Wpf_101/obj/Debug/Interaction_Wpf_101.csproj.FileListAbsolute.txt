@@ -1,0 +1,16 @@
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Interaction_Wpf_101.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.csprojResolveAssemblyReference.cache
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\MainWindow.baml
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\MainWindow.g.cs
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\App.g.cs
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101_MarkupCompile.cache
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.g.resources
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.Properties.Resources.resources
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.csproj.GenerateResource.Cache
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Interaction_Wpf_101.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Interaction_Wpf_101.pdb
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Wpf\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_101.pdb

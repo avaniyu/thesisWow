@@ -1,0 +1,29 @@
+﻿<Page x:Class="Test1.SkypeFeedback"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Test1"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="SkypeFeedback">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="lbFeedback" FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock>Well Done!<LineBreak/>Word Count: 20 words<LineBreak/>Corrected Input: 18 words</TextBlock>
+        </Label>
+        <Button x:Name="btnNext" Click="btnNext_click" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" Margin="10">
+            <Image Source="btnNext.png" Margin="5"/>
+        </Button>
+    </Grid>
+</Page>

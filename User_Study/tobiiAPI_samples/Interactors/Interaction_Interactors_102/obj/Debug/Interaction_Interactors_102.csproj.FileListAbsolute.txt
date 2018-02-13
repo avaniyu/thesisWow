@@ -1,0 +1,8 @@
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Interaction_Interactors_102.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Interaction_Interactors_102.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Interaction_Interactors_102.pdb
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\obj\Debug\Interaction_Interactors_102.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Interactors\Interaction_Interactors_102\obj\Debug\Interaction_Interactors_102.pdb

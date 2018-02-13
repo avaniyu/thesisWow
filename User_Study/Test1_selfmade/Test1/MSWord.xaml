@@ -1,0 +1,38 @@
+﻿<Page x:Class="Test1.MSWord"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Test1"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="500"
+      Title="MSWord">
+
+    <Grid>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="desktops_MSWord.png"/>
+        </Grid.Background>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Style="{StaticResource GivenTextHintRectangle}" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Given Text" Grid.Row="0" Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="lbGivenText" Style="{StaticResource GivenTextsStyle}" Grid.Row="0" Grid.Column="1"/>
+        <Image Source="desktops_MSWord.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10 10 10 0"/>
+        <TextBox x:Name="txtbxUserInput" Style="{StaticResource UserInputStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10 -5 10 10"/>
+        <Button x:Name="btnConfirmInput" Click="btnConfirmInput_click" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Margin="10">
+            <Image Source="btnOk.png"/>
+        </Button>
+
+    </Grid>
+</Page>

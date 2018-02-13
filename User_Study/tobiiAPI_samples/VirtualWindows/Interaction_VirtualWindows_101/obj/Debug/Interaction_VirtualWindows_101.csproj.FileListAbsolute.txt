@@ -1,0 +1,9 @@
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Interaction_VirtualWindows_101.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Interaction_VirtualWindows_101.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Interaction_VirtualWindows_101.pdb
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\obj\Debug\Interaction_VirtualWindows_101.csprojResolveAssemblyReference.cache
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\obj\Debug\Interaction_VirtualWindows_101.exe
+C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\VirtualWindows\Interaction_VirtualWindows_101\obj\Debug\Interaction_VirtualWindows_101.pdb

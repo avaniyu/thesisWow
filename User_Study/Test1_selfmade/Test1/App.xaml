@@ -1,0 +1,48 @@
+﻿<Application x:Class="Test1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Test1"
+             StartupUri="Practice.xaml">
+    <Application.Resources>
+        <XmlDataProvider x:Key="GivenTextsDataSource" XPath="AllGivenTexts">
+            <x:XData>
+                <AllGivenTexts xmlns="">
+                    <PracticeTexts>
+                        <Text TextContent="Hi, I am Jiayao."/>
+                        <!--<Text TextContent="I would type using gaze keyboard."/>-->
+                    </PracticeTexts>
+                    <MSWordTexts xmlns="">
+                        <Text TextContent="What about a passage in Jane Austin's Emma?"/>
+                    </MSWordTexts>
+                    <SkypeTexts>
+                        <Text TextContent="We are chatting on Skype."/>
+                    </SkypeTexts>
+                </AllGivenTexts>
+            </x:XData>
+        </XmlDataProvider>
+
+        <Style x:Key="GivenTextsStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Margin" Value="0 10 10 10"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style x:Key="UserInputStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0 10 10 10"/>
+        </Style>
+
+        <Style x:Key="GivenTextHintRectangle" TargetType="Rectangle">
+            <Setter Property="Stretch" Value="UniformToFill"/>
+            <Setter Property="Fill" Value="#008759"/>
+            <Setter Property="Margin" Value="10 10 0 10"/>
+        </Style>
+        
+        <!--<DataTemplate x:Key="givenTextTemplate">
+            <Label Content="{Binding XPath=@TextContent}"/>
+        </DataTemplate>-->
+         
+    </Application.Resources>
+</Application>
