@@ -10,3 +10,5 @@ C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_Text
 C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Release\TextTest.ResultsForm.resources
 C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Release\TextTest.csproj.GenerateResource.Cache
 C:\Users\jiyu\Jiayao\GoogleDrive\GoogleDrive\User Study\Data_Analysis\Jacob_TextTest\TextTest_sourceCode\obj\Release\TextTest.exe
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TextTest_forRd1\bin\Release\TextTest.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TextTest_forRd1\obj\Release\TextTest.exe

@@ -1,0 +1,117 @@
+﻿TextTest Output Results Help File
+Jacob O. Wobbrock, Ph.D.
+wobbrock@uw.edu
+July 19, 2016
+
+TextTest is capable of parsing XML log files containing the data
+from TextTest sessions and producing various output files. Each 
+of the output files produced is explained below:
+
+--------------------------------------------------------------
+Main measures for each trial (*.csv)
+--------------------------------------------------------------
+This output is a CSV file for opening in a spreadsheet, such
+as Microsoft Excel. It shows aggregate statistics for each
+trial. Example statistics include words per minute and trial-
+level error rates. One row per trial is produced.
+
+Citations: [2, 3, 4]
+
+--------------------------------------------------------------
+Optimal alignments (*.align.txt)
+--------------------------------------------------------------
+This output is a text file for opening in a text editor, such
+as Microsoft Notepad. It shows the optimal alignment strings for 
+all presented (P) and transcribed (T) phrases from the study 
+session.
+
+Citations: [1]
+
+--------------------------------------------------------------
+Character-level error table (*.table.csv)
+--------------------------------------------------------------
+This output is a CSV file for opening in a spreadsheet, such
+as Microsoft Excel. It shows a table of character-level errors
+occurring in all of the alignments of presented (P) and 
+transcribed (T) phrases from the study session.
+
+Citations: [1]
+
+--------------------------------------------------------------
+Character-level confusion matrix (*.matrix.csv)
+--------------------------------------------------------------
+This output is a CSV file for opening in a spreadsheet, such
+as Microsoft Excel. It shows a 2-D table called a "confusion
+matrix" that reflects the counts of presented vs. transcribed
+characters from all phrases in the study session.
+
+Citations: [1]
+
+--------------------------------------------------------------
+Optimal alignments with input streams (*.salign.txt)
+--------------------------------------------------------------
+This output is a text file for opening in a text editor, such
+as Microsoft Notepad. It shows the optimal alignment strings for 
+all presented (P) and transcribed (T) phrases and all input 
+streams (IS) from the study session.
+
+Citations: [5]
+
+--------------------------------------------------------------
+Character-level error table from input streams (*.stable.csv)
+--------------------------------------------------------------
+This output is a CSV file for opening in a spreadsheet, such
+as Microsoft Excel. It shows a table of character-level errors
+occurring in all of the alignments of presented (P) and 
+transcribed (T) phrases and all input streams (IS) from the study 
+session.
+
+Citations: [5]
+
+--------------------------------------------------------------
+Character-level confusion matrix from input streams (*.smatrix.csv)
+--------------------------------------------------------------
+This output is a CSV file for opening in a spreadsheet, such
+as Microsoft Excel. It shows a 2-D table called a "confusion
+matrix" that reflects the counts of intended vs. entered
+characters from all phrases in the study session. It uses 
+input streams, so even corrected characters are considered.
+
+Citations: [5]
+
+--------------------------------------------------------------
+References:
+--------------------------------------------------------------
+[1] MacKenzie, I.S. and Soukoreff, R.W. (2002). A character-level 
+    error analysis technique for evaluating text entry methods. 
+    Proceedings of the Nordic Conference on Human-Computer 
+    Interaction (NordiCHI '02). Aarhus, Denmark (October 19-23, 
+    2002). New York: ACM Press, pp. 243-246.
+    http://dx.doi.org/10.1145/572020.572056
+
+[2] Soukoreff, R.W. and MacKenzie, I.S. (2001). Measuring errors 
+    in text entry tasks: An application of the Levenshtein string 
+    distance statistic. Extended Abstracts of the ACM Conference 
+    on Human Factors in Computing Systems (CHI '01). Seattle, 
+    Washington (March 31-April 5, 2001). New York: ACM Press, pp. 
+    319-320.
+    http://dx.doi.org/10.1145/634067.634256
+
+[3] Soukoreff, R.W. and MacKenzie, I.S. (2003). Metrics for text 
+    entry research: An evaluation of MSD and KSPC, and a new unified 
+    error metric. Proceedings of the ACM Conference on Human Factors 
+    in Computing Systems (CHI '03). Ft. Lauderdale, Florida (April 
+    5-10, 2003). New York: ACM Press, pp. 113-120.
+    http://dx.doi.org/10.1145/642611.642632
+
+[4] Wobbrock, J.O. (2007). Measures of text entry performance. 
+    Chapter 3 in I.S. MacKenzie and K. Tanaka-Ishii (eds.), Text 
+    Entry Systems: Mobility, Accessibility, Universality. San 
+    Francisco, CA: Morgan Kaufmann, pp. 47-74.
+    http://books.google.com/books?id=XWSc3b_gkX8C&pg=PA47&hl=en
+
+[5] Wobbrock, J.O. and Myers, B.A. (2006). Analyzing the input 
+    stream for character-level errors in unconstrained text entry 
+    evaluations. ACM Transactions on Computer-Human Interaction 
+    13 (4), December 2006, pp. 458-489.
+    http://dx.doi.org/10.1145/1188816.1188819
