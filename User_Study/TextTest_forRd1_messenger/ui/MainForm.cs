@@ -9,6 +9,9 @@ using System.Xml;
 using System.Reflection;
 using WobbrockLib.Net;
 using WobbrockLib.Extensions;
+using System.Runtime.InteropServices;
+using Tobii.Interaction;
+using Tobii.Interaction.Framework;
 
 namespace TextTest
 {
@@ -37,8 +40,46 @@ namespace TextTest
         /// <summary>
         /// The constructor for the main TextTest form.
         /// </summary>
+        /// 
+        Host host = new Host();
+        
         public MainForm()
         {
+            //setup eye-tracking
+            //make sure Tobii.EyeX.exe is running
+
+            var currentWindowHandle = Process.GetCurrentProcess().MainWindowHandle;
+            var interactorAgent = host.InitializeVirtualInteractorAgent(currentWindowHandle, "FormWindowAgent");
+            //get bounding box for the "next" button, could be write in a helper method below
+            //var nextBtnBounds = GetWidgetBounds(currentWindowHandle);
+
+            interactorAgent
+                .AddInteractorFor(nextBtnBounds, Literals.RootId, 0, currentWindowHandle.ToString(), "MyFirstActivatable")
+                .WithActivatable()
+                .HasActivationFocus(id => Console.WriteLine("{0} activation...", id))
+                .SetTentativeFocusEnabled(true)
+                .HasTentativeFocus(id => Console.WriteLine("{0} tentation...", id))
+                .WhenActivated(cmdNext_Click());
+                //.WhenActivated(id => Console.WriteLine("{0} activated...", id));
+
+            var currentKey = Console.ReadKey(true).Key;
+            while (currentKey != ConsoleKey.Q)
+            {
+                // instructs TobiiEngine to switch on Activation mode,
+                // while this mode is on, activatable interactors will report
+                // receiving of activation focus instead of tentative focus.
+                host.Commands.Input.SendActivationModeOn();
+
+                // Sends an activation request to all activatable interactors.
+                // The ones which are currently gazed at will be activated.
+                host.Commands.Input.SendActivation();
+
+                // instructs TobiiEngine to switch activation mode off.
+                host.Commands.Input.SendActivationModeOff();
+
+                currentKey = Console.ReadKey(true).Key;
+            }
+
             InitializeComponent();
             SetControlHeights(this.Font);
             SetMinFormHeight();
@@ -92,6 +133,9 @@ namespace TextTest
                 _listener.Stop();
             if (_sd != null)
                 mniStopTest_Click(this, EventArgs.Empty);
+
+            // we will close the coonection to the Tobii Engine before exit.
+            host.DisableConnection();
         }
 
         #endregion
@@ -598,6 +642,11 @@ namespace TextTest
             mniNextPhrase_Click(this, EventArgs.Empty);
         }
 
+        private void cmdNext_Click()
+        {
+            mniNextPhrase_Click(this, EventArgs.Empty);
+        }
+
         /// <summary>
         /// If the focus is shifted to the "Next" button, it is possible that 'Esc'
         /// won't be caught and the test won't be terminated. This handler enables
@@ -1097,8 +1146,12 @@ namespace TextTest
             dlg.ShowDialog(this);
         }
 
+
         #endregion
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
