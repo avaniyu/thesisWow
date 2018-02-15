@@ -1097,8 +1097,12 @@ namespace TextTest
             dlg.ShowDialog(this);
         }
 
+
         #endregion
 
-        
+        private void rtxPresented_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

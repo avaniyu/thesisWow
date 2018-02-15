@@ -20,3 +20,7 @@ E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Relea
 E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Release\TextTest.Properties.Resources.resources
 E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Release\TextTest.ResultsForm.resources
 E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Release\TextTest.csproj.GenerateResource.Cache
+E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\bin\Release\TextTest.exe
+E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\bin\Release\WobbrockLib.pdb
+E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Release\TextTest.csprojResolveAssemblyReference.cache
+E:\HCID\Thesis\GitRepo\thesisWow\User_Study\TextTest_forRd1_transcribe\obj\Release\TextTest.exe
