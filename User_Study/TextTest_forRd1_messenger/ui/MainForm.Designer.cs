@@ -35,7 +35,6 @@
             this.pnlTask = new System.Windows.Forms.StatusBarPanel();
             this.rtxTranscribed = new System.Windows.Forms.RichTextBox();
             this.cmdNext = new System.Windows.Forms.Button();
-            this.prgLogs = new System.Windows.Forms.ProgressBar();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mniOpenPhrases = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,26 +61,34 @@
             this.mniSampleXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mniSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mniAboutApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.prgLogs = new System.Windows.Forms.ProgressBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnlLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTask)).BeginInit();
             this.mnuMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // rtxPresented
             // 
+            this.rtxPresented.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxPresented.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxPresented.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxPresented.DetectUrls = false;
-            this.rtxPresented.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxPresented.Enabled = false;
-            this.rtxPresented.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxPresented.Location = new System.Drawing.Point(1, 33);
-            this.rtxPresented.MinimumSize = new System.Drawing.Size(0, 100);
-            this.rtxPresented.Multiline = false;
+            this.rtxPresented.Font = new System.Drawing.Font("Courier New", 20.25F);
+            this.rtxPresented.Location = new System.Drawing.Point(250, 60);
+            this.rtxPresented.Margin = new System.Windows.Forms.Padding(300);
+            this.rtxPresented.MaximumSize = new System.Drawing.Size(1000, 100);
+            this.rtxPresented.MinimumSize = new System.Drawing.Size(1000, 100);
             this.rtxPresented.Name = "rtxPresented";
             this.rtxPresented.ReadOnly = true;
             this.rtxPresented.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxPresented.Size = new System.Drawing.Size(1894, 100);
+            this.rtxPresented.Size = new System.Drawing.Size(1000, 100);
             this.rtxPresented.TabIndex = 2;
             this.rtxPresented.TabStop = false;
             this.rtxPresented.Text = "";
@@ -129,17 +136,21 @@
             // 
             // rtxTranscribed
             // 
+            this.rtxTranscribed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxTranscribed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.rtxTranscribed.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxTranscribed.DetectUrls = false;
-            this.rtxTranscribed.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxTranscribed.Enabled = false;
-            this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxTranscribed.Location = new System.Drawing.Point(1, 133);
-            this.rtxTranscribed.MinimumSize = new System.Drawing.Size(0, 100);
-            this.rtxTranscribed.Multiline = false;
+            this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 20.25F);
+            this.rtxTranscribed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.rtxTranscribed.Location = new System.Drawing.Point(395, 223);
+            this.rtxTranscribed.Margin = new System.Windows.Forms.Padding(300);
+            this.rtxTranscribed.MaximumSize = new System.Drawing.Size(800, 100);
+            this.rtxTranscribed.MinimumSize = new System.Drawing.Size(800, 100);
             this.rtxTranscribed.Name = "rtxTranscribed";
             this.rtxTranscribed.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxTranscribed.Size = new System.Drawing.Size(1894, 100);
+            this.rtxTranscribed.Size = new System.Drawing.Size(800, 100);
             this.rtxTranscribed.TabIndex = 0;
             this.rtxTranscribed.Text = "";
             this.rtxTranscribed.WordWrap = false;
@@ -150,31 +161,21 @@
             // 
             // cmdNext
             // 
-            this.cmdNext.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmdNext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdNext.Enabled = false;
             this.cmdNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmdNext.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdNext.Location = new System.Drawing.Point(1, 233);
-            this.cmdNext.MinimumSize = new System.Drawing.Size(0, 70);
+            this.cmdNext.Location = new System.Drawing.Point(527, 371);
+            this.cmdNext.MaximumSize = new System.Drawing.Size(500, 70);
+            this.cmdNext.MinimumSize = new System.Drawing.Size(500, 70);
             this.cmdNext.Name = "cmdNext";
-            this.cmdNext.Size = new System.Drawing.Size(1894, 70);
+            this.cmdNext.Size = new System.Drawing.Size(500, 70);
             this.cmdNext.TabIndex = 1;
             this.cmdNext.TabStop = false;
             this.cmdNext.Text = "Send Message";
             this.cmdNext.Click += new System.EventHandler(this.cmdNext_Click);
             this.cmdNext.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmdNext_KeyPress);
-            // 
-            // prgLogs
-            // 
-            this.prgLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.prgLogs.Location = new System.Drawing.Point(1, 303);
-            this.prgLogs.Name = "prgLogs";
-            this.prgLogs.Size = new System.Drawing.Size(1894, 24);
-            this.prgLogs.Step = 1;
-            this.prgLogs.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.prgLogs.TabIndex = 4;
-            this.prgLogs.UseWaitCursor = true;
-            this.prgLogs.Visible = false;
             // 
             // mnuMain
             // 
@@ -395,10 +396,52 @@
             this.mniAboutApp.Text = "&About TextTest";
             this.mniAboutApp.Click += new System.EventHandler(this.mniAboutApp_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(48, 40);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(120, 120);
+            this.pictureBox1.MinimumSize = new System.Drawing.Size(120, 120);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // prgLogs
+            // 
+            this.prgLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.prgLogs.Location = new System.Drawing.Point(1, 600);
+            this.prgLogs.Name = "prgLogs";
+            this.prgLogs.Size = new System.Drawing.Size(1894, 24);
+            this.prgLogs.Step = 1;
+            this.prgLogs.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.prgLogs.TabIndex = 4;
+            this.prgLogs.UseWaitCursor = true;
+            this.prgLogs.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1447, 223);
+            this.pictureBox2.MaximumSize = new System.Drawing.Size(120, 120);
+            this.pictureBox2.MinimumSize = new System.Drawing.Size(120, 120);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(26, 46);
             this.ClientSize = new System.Drawing.Size(1896, 962);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.prgLogs);
             this.Controls.Add(this.cmdNext);
             this.Controls.Add(this.rtxTranscribed);
@@ -419,6 +462,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlTask)).EndInit();
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +477,6 @@
         private System.Windows.Forms.RichTextBox rtxPresented;
         private System.Windows.Forms.RichTextBox rtxTranscribed;
         private System.Windows.Forms.Button cmdNext;
-        private System.Windows.Forms.ProgressBar prgLogs;
         private System.Windows.Forms.MenuStrip mnuMain;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mniOpenPhrases;
@@ -459,5 +503,8 @@
         private System.Windows.Forms.ToolStripMenuItem mniTestOptions;
         private System.Windows.Forms.ToolStripSeparator mniSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mniFontFormat;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ProgressBar prgLogs;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

@@ -527,7 +527,7 @@ namespace TextTest
         {
             mniPracticeFlag.Checked = true;
             mniTestFlag.Checked = false;
-            cmdNext.Text = "Start";
+            cmdNext.Text = "Send Message";
             cmdNext.Enabled = true;
             cmdNext.Focus(); // set the focus on the button so "Enter" starts a new trial
 
