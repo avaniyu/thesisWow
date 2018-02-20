@@ -1,0 +1,36 @@
+Credit: http://dx.doi.org/10.1145/572020.572056
+
+P1.1: everybody loses in custody ba–ttles
+T1.1: everybody loses in custody batttles
+P1.2: everybody loses in custody bat–tles
+T1.2: everybody loses in custody batttles
+P1.3: everybody loses in custody batt–les
+T1.3: everybody loses in custody batttles
+
+P2.1: suburbs are sprawling everywhere
+T2.1: suburbs are sprawling everywhere
+
+P3.1: elections bring out the best
+T3.1: elections bring out the best
+
+P4.1: world population is growing
+T4.1: world population is growing
+
+P5.1: I can still feel your presence
+T5.1: I can still feel your presence
+
+P6.1: there will be some fog tonight
+T6.1: there will be some fog tonight
+
+P7.1: I hate baking pies
+T7.1: I hate baking pies
+
+P8.1: the price of gas is high
+T8.1: the price of gas is high
+
+P9.1: my watch fell in the water
+T9.1: my watch fell in the water
+
+P10.1: interesting observation was made
+T10.1: interesting observation was made
+

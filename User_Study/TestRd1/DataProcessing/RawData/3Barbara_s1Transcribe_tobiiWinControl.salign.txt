@@ -1,0 +1,48 @@
+Credit: http://dx.doi.org/10.1145/1188816.1188819
+
+ P1.1: d··················rugs should be avoided
+ T1.1: d··················rugs shoul–––––––––––d
+IS1.1: drub‹‹‹ouble ‹‹‹‹‹‹rugs shoul···········d
+ P1.2: d··················rugs should be avoided
+ T1.2: d··················rugs shoul–––––––––d––
+IS1.2: drub‹‹‹ouble ‹‹‹‹‹‹rugs shoul·········d··
+ P1.3: d··················rugs should be avoided
+ T1.3: d··················rugs should–––––––––––
+IS1.3: drub‹‹‹ouble ‹‹‹‹‹‹rugs should···········
+
+ P2.1: drove my Chevy to ········the levee
+ T2.1: drove my Chevy to ········the levee
+IS2.1: drove my Chevy to get ‹‹‹‹the levee
+
+ P3.1: breathing is difficult–
+ T3.1: breathing is difficult 
+IS3.1: breathing is difficult 
+
+ P4.1: shall we play a round of cards–
+ T4.1: shall we play a round of cards 
+IS4.1: shall we play a round of cards 
+
+ P5.1: want to join us for lunch–
+ T5.1: want to join us for lunch 
+IS5.1: want to join us for lunch 
+
+ P6.1: prescription drugs ··r········equire a note–
+ T6.1: prescription drugs ··r········equire a note 
+IS6.1: prescription drugs f‹rf‹rfe‹‹‹equire a note 
+
+ P7.1: construction m··akes traveling d··ifficult–
+ T7.1: construction m··akes traveling d··ifficult 
+IS7.1: construction mz‹akes traveling dk‹ifficult 
+
+ P8.1: you will lose your voice–
+ T8.1: you will lose your voice 
+IS8.1: you will lose your voice 
+
+ P9.1: do not s··ay anything–
+ T9.1: do not s··ay anything 
+IS9.1: do not sq‹ay anything 
+
+ P10.1: we pa··rk in ··driveways–
+ T10.1: we pa··rk in ··driveways 
+IS10.1: we paf‹rk in c‹driveways 
+

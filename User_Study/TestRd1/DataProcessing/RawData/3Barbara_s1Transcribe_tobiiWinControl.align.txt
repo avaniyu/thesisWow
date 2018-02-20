@@ -1,0 +1,36 @@
+Credit: http://dx.doi.org/10.1145/572020.572056
+
+P1.1: drugs should be avoided
+T1.1: drugs shoul–––––––––––d
+P1.2: drugs should be avoided
+T1.2: drugs shoul–––––––––d––
+P1.3: drugs should be avoided
+T1.3: drugs should–––––––––––
+
+P2.1: drove my Chevy to the levee
+T2.1: drove my Chevy to the levee
+
+P3.1: breathing is difficult–
+T3.1: breathing is difficult 
+
+P4.1: shall we play a round of cards–
+T4.1: shall we play a round of cards 
+
+P5.1: want to join us for lunch–
+T5.1: want to join us for lunch 
+
+P6.1: prescription drugs require a note–
+T6.1: prescription drugs require a note 
+
+P7.1: construction makes traveling difficult–
+T7.1: construction makes traveling difficult 
+
+P8.1: you will lose your voice–
+T8.1: you will lose your voice 
+
+P9.1: do not say anything–
+T9.1: do not say anything 
+
+P10.1: we park in driveways–
+T10.1: we park in driveways 
+

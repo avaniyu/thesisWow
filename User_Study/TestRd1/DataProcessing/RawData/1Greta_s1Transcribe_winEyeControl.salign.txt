@@ -1,0 +1,111 @@
+Credit: http://dx.doi.org/10.1145/1188816.1188819
+
+ P1.1: questioning the wisdom of the courts
+ T1.1: que–t–––i–––the wisd–––of ––e c––rts
+IS1.1: que·t···i···the wisd···of ··e c··rts
+ P1.2: questioning the wisdom of the courts
+ T1.2: que–ti––––––the wisd–––of ––e c––rts
+IS1.2: que·ti······the wisd···of ··e c··rts
+ P1.3: questioning the wisdom of the courts
+ T1.3: que–t–––i–––the wisdo–––f ––e c––rts
+IS1.3: que·t···i···the wisdo···f ··e c··rts
+ P1.4: questioning the wisdom of the courts
+ T1.4: que–ti––––––the wisdo–––f ––e c––rts
+IS1.4: que·ti······the wisdo···f ··e c··rts
+
+ P2.1: this is a very good idea
+ T2.1: this is a very–oood–i–ea
+IS2.1: this is a very·oood·i·ea
+ P2.2: this is a very good idea
+ T2.2: this is a veryo–ood–i–ea
+IS2.2: this is a veryo·ood·i·ea
+
+ P3.1: sad to hear that news
+ T3.1: –––––––––––––––––––––
+IS3.1: ·····················
+
+ P4.1: ·are you sure y––ou want this
+ T4.1: ·are you sure yooou want this
+IS4.1: ‹are you sure yooou want this
+ P4.2: ·are you sure y–o–u want this
+ T4.2: ·are you sure yooou want this
+IS4.2: ‹are you sure yooou want this
+ P4.3: ·are you sure yo––u want this
+ T4.3: ·are you sure yooou want this
+IS4.3: ‹are you sure yooou want this
+
+ P5.1: one heck of a question
+ T5.1: ––––––––––––––––––––––
+IS5.1: ······················
+
+ P6.1: six daughters and seven sons
+ T6.1: six da–ghters and seven sons
+IS6.1: six da·ghters and seven sons
+
+ P7.1: sent this by registered mail
+ T7.1: sent this by registered–ma–l
+IS7.1: sent this by registered·ma·l
+
+ P8.1: a–partments are too expensive
+ T8.1: appartments are t–o expensive
+IS8.1: appartments are t·o expensive
+ P8.2: ap–artments are too expensive
+ T8.2: appartments are t–o expensive
+IS8.2: appartments are t·o expensive
+ P8.3: a–partments are too expensive
+ T8.3: appartments are to– expensive
+IS8.3: appartments are to· expensive
+ P8.4: ap–artments are too expensive
+ T8.4: appartments are to– expensive
+IS8.4: appartments are to· expensive
+
+ P9.1: information super highway
+ T9.1: information super highway
+IS9.1: information super highway
+
+ P10.1: the first time he tried to swim
+ T10.1: the first time he tried to swim
+IS10.1: the first time he tried to swim
+
+ P11.1: these co··········o··kies are so amazing
+ T11.1: these co··········o··kies are so amazing
+IS11.1: these cooooki‹‹‹‹‹oi‹kies are so amazing
+
+ P12.1: important news always see··ms to be l··ate
+ T12.1: important news always see··ms to be l··ate
+IS12.1: important news always seee‹ms to be lt‹ate
+
+ P13.1: do not say anything
+ T13.1: d–––o––––– ––––––n–
+IS13.1: d···o····· ······n·
+ P13.2: do not say anything
+ T13.2: do–––––––– ––––––n–
+IS13.2: do········ ······n·
+ P13.3: do not say anything
+ T13.3: d–––o– ––––––––––n–
+IS13.3: d···o· ··········n·
+ P13.4: do not say anything
+ T13.4: do–––– ––––––––––n–
+IS13.4: do···· ··········n·
+ P13.5: do not say anything
+ T13.5: do ––––––––––––––n–
+IS13.5: do ··············n·
+ P13.6: do not say anything
+ T13.6: d–––o––––– –n––––––
+IS13.6: d···o····· ·n······
+ P13.7: do not say anything
+ T13.7: do–––––––– –n––––––
+IS13.7: do········ ·n······
+ P13.8: do not say anything
+ T13.8: d–––o– –––––n––––––
+IS13.8: d···o· ·····n······
+ P13.9: do not say anything
+ T13.9: do–––– –––––n––––––
+IS13.9: do···· ·····n······
+ P13.10: do not say anything
+ T13.10: do –––––––––n––––––
+IS13.10: do ·········n······
+ P13.11: do not say anything
+ T13.11: do n–––––––––––––––
+IS13.11: do n···············
+

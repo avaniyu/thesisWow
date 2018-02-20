@@ -1,0 +1,50 @@
+Credit: http://dx.doi.org/10.1145/572020.572056
+
+P1.1: buckle up for– safety–
+T1.1: buckle –– for  safety 
+P1.2: buckle up for –safety–
+T1.2: buckle –– for  safety 
+
+P2.1: the– acceptance– speech– was boring––
+T2.1: the  acceptance  speech  was boring  
+P2.2: the –acceptance– speech– was boring––
+T2.2: the  acceptance  speech  was boring  
+P2.3: the– acceptance –speech– was boring––
+T2.3: the  acceptance  speech  was boring  
+P2.4: the –acceptance –speech– was boring––
+T2.4: the  acceptance  speech  was boring  
+P2.5: the– acceptance– speech –was boring––
+T2.5: the  acceptance  speech  was boring  
+P2.6: the –acceptance– speech –was boring––
+T2.6: the  acceptance  speech  was boring  
+P2.7: the– acceptance –speech –was boring––
+T2.7: the  acceptance  speech  was boring  
+P2.8: the –acceptance –speech –was boring––
+T2.8: the  acceptance  speech  was boring  
+
+P3.1: a little– encouragement is needed–
+T3.1: a little  encouragement is needed 
+P3.2: a little –encouragement is needed–
+T3.2: a little  encouragement is needed 
+
+P4.1: your presentation was inspiring–
+T4.1: your presentation was inspiring 
+
+P5.1: the dog will bite you–
+T5.1: the dog will bite you 
+
+P6.1: the ropes of a new organization–
+T6.1: the ropes of a new organization 
+
+P7.1: he cooled off after she left–
+T7.1: he cooled off after she left 
+
+P8.1: please keep this confidential–
+T8.1: please keep this confidential 
+
+P9.1: this is a non profit organization–
+T9.1: this is a non profit organization 
+
+P10.1: I hate baking pies
+T10.1: i hate baking pies
+

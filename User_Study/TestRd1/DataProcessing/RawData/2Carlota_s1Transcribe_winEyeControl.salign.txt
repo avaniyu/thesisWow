@@ -1,0 +1,45 @@
+Credit: http://dx.doi.org/10.1145/1188816.1188819
+
+ P1.1: ··we drive– on parkways
+ T1.1: ··we driveo on parkways
+IS1.1: d‹we driveo on parkways
+
+ P2.1: –we accept personal check··s
+ T2.1: wwe accept pers––al check··s
+IS2.1: wwe accept pers··al checks‹s
+ P2.2: w–e accept personal check··s
+ T2.2: wwe accept pers––al check··s
+IS2.2: wwe accept pers··al checks‹s
+
+ P3.1: round robin scheduling
+ T3.1: round robin scheduling
+IS3.1: round robin scheduling
+
+ P4.1: players mus··t know all······ the rules
+ T4.1: players mus··t know all······ the rules
+IS4.1: players musr‹t know allall‹‹‹ the rules
+
+ P5.1: an airport is a ··ver····y busy place
+ T5.1: an airport is a ··ver····y busy place
+IS5.1: an airport is a g‹ver y‹‹y busy place
+
+ P6.1: we are subjects and must obey
+ T6.1: we are subje–ts and must obey
+IS6.1: we are subje·ts and must obey
+
+ P7.1: he is shouting loudly
+ T7.1: he is shouting loudly
+IS7.1: he is shouting loudly
+
+ P8.1: the acci··dent·· scene is a shrine for fans
+ T8.1: the acci··dent·· scene is a shrine for fans
+IS8.1: the accie‹dents‹ scene is a shrine for fans
+
+ P9.1: raindrops keep fallin····················g on my ······head
+ T9.1: raindrops keep fallin····················g on my ······head
+IS9.1: raindrops keep fallin on my bed‹‹‹‹‹‹‹‹‹‹g on my bed‹‹‹head
+
+ P10.1: but the levee was dry
+ T10.1: but the levee was dry
+IS10.1: but the levee was dry
+

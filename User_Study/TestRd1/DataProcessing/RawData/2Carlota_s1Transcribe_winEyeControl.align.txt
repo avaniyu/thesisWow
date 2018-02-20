@@ -1,0 +1,34 @@
+Credit: http://dx.doi.org/10.1145/572020.572056
+
+P1.1: we drive– on parkways
+T1.1: we driveo on parkways
+
+P2.1: –we accept personal checks
+T2.1: wwe accept pers––al checks
+P2.2: w–e accept personal checks
+T2.2: wwe accept pers––al checks
+
+P3.1: round robin scheduling
+T3.1: round robin scheduling
+
+P4.1: players must know all the rules
+T4.1: players must know all the rules
+
+P5.1: an airport is a very busy place
+T5.1: an airport is a very busy place
+
+P6.1: we are subjects and must obey
+T6.1: we are subje–ts and must obey
+
+P7.1: he is shouting loudly
+T7.1: he is shouting loudly
+
+P8.1: the accident scene is a shrine for fans
+T8.1: the accident scene is a shrine for fans
+
+P9.1: raindrops keep falling on my head
+T9.1: raindrops keep falling on my head
+
+P10.1: but the levee was dry
+T10.1: but the levee was dry
+

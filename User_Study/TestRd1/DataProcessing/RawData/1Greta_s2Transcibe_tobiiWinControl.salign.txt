@@ -1,0 +1,33 @@
+Credit: http://dx.doi.org/10.1145/1188816.1188819
+
+ P1.1: corre····ct···· your–––– diction·· im··mediately–
+ T1.1: corre····ct···· your own diction·· im··mediately 
+IS1.1: correee‹‹ct  ‹‹ your own dictioni‹ ime‹mediately 
+ P1.2: corre····ct···· your ––––diction·· im··mediately–
+ T1.2: corre····ct···· your own diction·· im··mediately 
+IS1.2: correee‹‹ct  ‹‹ your own dictioni‹ ime‹mediately 
+
+ P2.1: you want to ··eat your cake–
+ T2.1: you want to ··eat your cake 
+IS2.1: you want to y‹eat your cake 
+
+ P3.1: taking the train is usually faster–
+ T3.1: taking the train is usually faster 
+IS3.1: taking the train is usually faster 
+
+ P4.1: dashing through the snow–
+ T4.1: dashing through the snow 
+IS4.1: dashing through the snow 
+
+ P5.1: take it to the recycling depot
+ T5.1: take it to the recycling depot
+IS5.1: take it to the recycling depot
+
+ P6.1: ····I do not fully agree with you–
+ T6.1: ····I do not fully agree with you 
+IS6.1: id‹‹I do not fully agree with you 
+
+ P7.1: faster than a speeding bullet–
+ T7.1: faster than a speeding bullet 
+IS7.1: faster than a speeding bullet 
+
