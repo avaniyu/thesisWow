@@ -2,7 +2,7 @@
 import csv
 from __future__ import print_function
 import ipywidgets as widgets
-from IPython.display import display
+from IPython.display import display, clear_output
 import matplotlib.pyplot as plt 
 plt.style.use('ggplot')
 import numpy as np
@@ -32,9 +32,9 @@ def readSentences(argFilename, argSentences):
 		for row in csvReader:
 			# write on keyboard clasification
 			if 'Transcribe' in argFilename:
-				argSentences.append(Sentence(int(argFilename[0]), 0, int(row[0]), int(row[1])))
+				argSentences.append(Sentence(int(argFilename[0])-1, 0, int(row[0]), int(row[1])))
 			elif 'FreeConv' in argFilename:
-				argSentences.append(Sentence(int(argFilename[0]), 1, int(row[0]), int(row[1])))
+				argSentences.append(Sentence(int(argFilename[0])-1, 1, int(row[0]), int(row[1])))
 			# handle exceptions
 			# if test subject didn't enter anything and skipped this sentence
 			if int(row[2]) != 0:
@@ -54,12 +54,12 @@ def onChange_typePerf(b):
 
 def onChange_task(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		print('task')
+		# print('task')
 		plots()
 
 def onChange_subject(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		print('subject')
+		# print('subject')
 		plots()
 
 def delOutliers(argSentenceSet):
@@ -69,40 +69,103 @@ def delOutliers(argSentenceSet):
 def plots():
 	print('plots')
 	# read subject selection from UI control
+	# clear_output(wait=True)
+	if contrTask.value == 'Transcribe':
+		argTask = 0
+	elif contrTask.value == 'Free Conversation':
+		argTask = 1
 	if contrSubject.value != 'All':
 		argSubject = int(contrSubject.value[1])-1
 		if contrTypePerf.value == 'Speed (wpm)':
-			# print('wpm')
-			if contrTask.value == 'Transcribe':
-				argTask = 0
-			elif contrTask.value == 'Free Conversation':
-				argTask = 1
-			sentenceKeybdA = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 0]
-			sentenceKeybdB = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 1]			
-			delOutliers(sentenceKeybdA)
-			plotSentences(sentenceKeybdA, sentenceKeybdB)	
+			sentenceKeybdA = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 0 and item.testing == 1]
+			sentenceKeybdB = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 1 and item.testing == 1]			
+			# delOutliers(sentenceKeybdA)		
+			plotSentences(sentenceKeybdA, sentenceKeybdB, 1, 1)	
 		elif contrTypePerf.value == 'Accuracy (totErrRate)':
 			print('´totErrRate')
 	else:
 		argSubject = 'All'
+		sentencesKeybdA = [item for item in sentences if item.task == argTask and item.keyboard == 0 and item.testing == 1]
+		sentencesKeybdB = [item for item in sentences if item.task == argTask and item.keyboard == 1 and item.testing == 1]
+		plotSentences(sentencesKeybdA, sentencesKeybdB, 3, 3)
 
 # plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
-def plotSentences(argSentenceSet0, argSentenceSet1):
+def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 	print('plotSentences')
+	sentenceKeybdA= []
+	counter = 0
+	counterTrim = [0]
+	subject = argSentenceSet0[0].subject
+	for item in argSentenceSet0:
+		if argSentenceSet0[counter].subject != subject:
+			counterTrim.append(counter)
+			subject = argSentenceSet0[counter].subject
+		counter += 1
+	counterTrim.append(len(argSentenceSet0))
+	for item in counterTrim:
+		if item != 0:
+			sentenceKeybdA.append(argSentenceSet0[itemTemp:item])
+		itemTemp = item
+
 	# handle exceptions when wpm = 0, replace it with gradient
-	x = [item.sentenceNo for item in argSentenceSet0]
-	y0 = [item.wpm for item in argSentenceSet0]
-	y1 = [item.wpm for item in argSentenceSet1]
+	x_A, y_A, z_A, yMean_A = ([] for i in range(4))
+	for itemI in sentenceKeybdA:
+		xTemp, yTemp, zTemp = ([] for i in range(3))
+		for itemJ in itemI:
+			xTemp.append(itemJ.sentenceNo)
+			yTemp.append(itemJ.wpm)
+			zTemp.append(itemJ.totErrRate)
+			print(itemJ.sentenceNo)
+		x_A.append(xTemp)
+		y_A.append(yTemp)
+		z_A.append(zTemp)
+
 	# plot average horizontal line
-	average0 = np.mean(y0)
-	average1 = np.mean(y1)
+	length = 0
+	for i in range(len(counterTrim)-1):
+		if len(y_A[i]) > length:
+			length = len(y_A[i])
+
+	for i in range(length):
+		yMeanBuffer = []
+		for j in range(len(counterTrim)-1):
+			try:
+				yMeanBuffer.append(y_A[j][i])
+			except IndexError:
+				print('do nothing here')
+		yMeanValue = np.mean(yMeanBuffer)
+		yMean_A.append(yMeanValue)
+
+	# x0 = [item.sentenceNo for item in argSentenceSet0]
+	# y0 = [item.wpm for item in argSentenceSet0]
+	# z0 = [item.totErrRate for item in  argSentenceSet0]
+	# x1 = [item.sentenceNo for item in argSentenceSet1]
+	# y1 = [item.wpm for item in argSentenceSet1]
+	# z1 = [item.totErrRate for item in  argSentenceSet1]	
+	# # plot average horizontal line
+	# average0 = np.mean(y0)
+	# average1 = np.mean(y1)
+
 	fig, ax = plt.subplots()
-	line0 = plt.plot(x, y0, 'go-', label='win10 Eye Control')
-	line1 = plt.plot(x, y1, 'bs-', label='tobii Windows Control')
-	line0_mean, = plt.plot([min(x), max(x)], [average0, average0], 'g--', label='win10 Eye Control mean')
-	line1_mean = plt.plot([min(x), max(x)], [average1, average1], 'b--', label='tobii Windows Control mean')
+
+	for i in range(len(sentenceKeybdA)):
+		plt.scatter(x_A[i], y_A[i], c=z_A[i])
+		plt.plot(x_A[i], y_A[i], 'o-', label='win10 Eye Control Keyboard', alpha=0.2, color='orange')
+	plt.plot(range(len(yMean_A)), yMean_A, '--', label='win10 Eye Control mean', alpha=0.2, color='orange')
+
+
+	# scatter0 = plt.scatter(x0, y0, c=z0)
+	# line0 = plt.plot(x0, y0, 'o-', label='win10 Eye Control', alpha=0.2, color='orange')
+	# scatter1 = plt.scatter(x1, y1, c=z1, marker='x')
+	# line1 = plt.plot(x1, y1, 'bx-', label='tobii Windows Control', alpha=0.2)
+	# line0_mean, = plt.plot([min(x0), max(x0)], [average0, average0], '--', label='win10 Eye Control mean', alpha=0.2, color='orange')
+	# line1_mean = plt.plot([min(x1), max(x1)], [average1, average1], 'b--', label='tobii Windows Control mean', alpha=0.2)
 	plt.legend(loc='upper left')
-	ax.set(xlabel='sentence', ylabel='wpm', xticks=range(min(x), max(x)+1))
+	# ax.set(title='fig 1', xlabel='sentence', ylabel='wpm', xticks=range(min(x0+x1), max(x0+x1)+1))
+	# inverse grayscale
+	plt.set_cmap('gray')
+	# high error rate deepen the scatter color
+	plt.show()
 
 
 if __name__ == "__main__":
@@ -144,4 +207,5 @@ if __name__ == "__main__":
 	contrTask.observe(onChange_task)
 	contrSubject.observe(onChange_subject)
 
+	flagStart = True
 	plots()
