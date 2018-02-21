@@ -5,6 +5,7 @@ import ipywidgets as widgets
 from IPython.display import display
 import matplotlib.pyplot as plt 
 plt.style.use('ggplot')
+import numpy as np
 
 
 # create Sentence class
@@ -47,32 +48,6 @@ def readSentences(argFilename, argSentences):
 			elif 'tobiiWinControl' in argFilename:
 				sentences[-1].keyboard = 1
 
-def UiControls():
-	contrSubject = widgets.Select(
-		options=['All', '#1', '#2', '#3'],
-		value='All',
-		description='Test Subject:',
-		disabled=False
-		)
-	contrTask = widgets.Select(
-		options=['All', 'Transcribe', 'Free Conversation'],
-		value='All',
-		description='Task:',
-		disabled=False
-		)
-	contrTypePerf = widgets.ToggleButtons(
-		options=['Speed (wpm)', 'Accuracy (totErrRate)'],
-		value='Speed (wpm)',
-		description='Type performance',
-		disabled=False,
-		button_style=''
-		)
-	display(widgets.HBox([contrTypePerf, contrTask, contrSubject]))
-
-	contrTypePerf.observe(onChange_typePerf)
-	contrTask.observe(onChange_task)
-	contrSubject.observe(onChange_subject)
-
 def onChange_typePerf(b):
 	if b['type'] == 'change' and b['name'] == 'value':
 		print(contrTypePerf.value)
@@ -80,10 +55,55 @@ def onChange_typePerf(b):
 def onChange_task(change):
 	if change['type'] == 'change' and change['name'] == 'value':
 		print('task')
+		plots()
 
 def onChange_subject(change):
 	if change['type'] == 'change' and change['name'] == 'value':
 		print('subject')
+		plots()
+
+def delOutliers(argSentenceSet):
+	print('did not filter')
+
+# read from UI controls, prepare for plotting
+def plots():
+	print('plots')
+	# read subject selection from UI control
+	if contrSubject.value != 'All':
+		argSubject = int(contrSubject.value[1])-1
+		if contrTypePerf.value == 'Speed (wpm)':
+			# print('wpm')
+			if contrTask.value == 'Transcribe':
+				argTask = 0
+			elif contrTask.value == 'Free Conversation':
+				argTask = 1
+			sentenceKeybdA = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 0]
+			sentenceKeybdB = [item for item in sentences if item.subject == argSubject and item.task == argTask and item.keyboard == 1]			
+			delOutliers(sentenceKeybdA)
+			plotSentences(sentenceKeybdA, sentenceKeybdB)	
+		elif contrTypePerf.value == 'Accuracy (totErrRate)':
+			print('´totErrRate')
+	else:
+		argSubject = 'All'
+
+# plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
+def plotSentences(argSentenceSet0, argSentenceSet1):
+	print('plotSentences')
+	# handle exceptions when wpm = 0, replace it with gradient
+	x = [item.sentenceNo for item in argSentenceSet0]
+	y0 = [item.wpm for item in argSentenceSet0]
+	y1 = [item.wpm for item in argSentenceSet1]
+	# plot average horizontal line
+	average0 = np.mean(y0)
+	average1 = np.mean(y1)
+	fig, ax = plt.subplots()
+	line0 = plt.plot(x, y0, 'go-', label='win10 Eye Control')
+	line1 = plt.plot(x, y1, 'bs-', label='tobii Windows Control')
+	line0_mean, = plt.plot([min(x), max(x)], [average0, average0], 'g--', label='win10 Eye Control mean')
+	line1_mean = plt.plot([min(x), max(x)], [average1, average1], 'b--', label='tobii Windows Control mean')
+	plt.legend(loc='upper left')
+	ax.set(xlabel='sentence', ylabel='wpm', xticks=range(min(x), max(x)+1))
+
 
 if __name__ == "__main__":
 	# read data from .csv
@@ -99,11 +119,29 @@ if __name__ == "__main__":
 	readSentences('3Barbara_s3Transcribe_winEyeControl', sentences)
 	readSentences('3Barbara_s4FreeConv_winEyeControl', sentences)
 
-	UiControls()
+	# UI controls
+	contrSubject = widgets.Select(
+		options=['All', '#1', '#2', '#3'],
+		value='#3',
+		description='Test Subject:',
+		disabled=False
+		)
+	contrTask = widgets.Select(
+		options=['Transcribe', 'Free Conversation'],
+		value='Transcribe',
+		description='Task:',
+		disabled=False
+		)
+	contrTypePerf = widgets.ToggleButtons(
+		options=['Speed (wpm)', 'Accuracy (totErrRate)'],
+		value='Speed (wpm)',
+		description='Type performance',
+		disabled=False,
+		button_style=''
+		)
+	display(widgets.HBox([contrTypePerf, contrTask, contrSubject]))
+	contrTypePerf.observe(onChange_typePerf)
+	contrTask.observe(onChange_task)
+	contrSubject.observe(onChange_subject)
 
-	# calculate wpm, total error-rate on sentence, task, subject, keyboard respectively
-	# X: keyboard | Y: typing performance | other variables: subject, task
-
-
-	# plots
-	# using ipywidgets to make interactive plots
+	plots()
