@@ -54,12 +54,10 @@ def onChange_typePerf(b):
 
 def onChange_task(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		# print('task')
 		plots()
 
 def onChange_subject(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		# print('subject')
 		plots()
 
 def delOutliers(argSentenceSet):
@@ -69,7 +67,6 @@ def delOutliers(argSentenceSet):
 def plots():
 	print('plots')
 	# read subject selection from UI control
-	# clear_output(wait=True)
 	if contrTask.value == 'Transcribe':
 		argTask = 0
 	elif contrTask.value == 'Free Conversation':
@@ -91,80 +88,102 @@ def plots():
 
 # plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
 def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
-	print('plotSentences')
-	sentenceKeybdA= []
+	# print('plotSentences')
+	sentenceKeybdA, sentenceKeybdB = ([] for i in range(2))
 	counter = 0
-	counterTrim = [0]
+	counterTrim = [[0],[0]]
 	subject = argSentenceSet0[0].subject
+	# read sentences for a keyboard within a task
 	for item in argSentenceSet0:
 		if argSentenceSet0[counter].subject != subject:
-			counterTrim.append(counter)
+			counterTrim[0].append(counter)
 			subject = argSentenceSet0[counter].subject
 		counter += 1
-	counterTrim.append(len(argSentenceSet0))
-	for item in counterTrim:
+	counterTrim[0].append(len(argSentenceSet0))
+	for item in counterTrim[0]:
 		if item != 0:
 			sentenceKeybdA.append(argSentenceSet0[itemTemp:item])
 		itemTemp = item
+	counter = 0
+	for item in argSentenceSet1:
+		if argSentenceSet1[counter].subject != subject:
+			counterTrim[1].append(counter)
+			subject = argSentenceSet1[counter].subject
+		counter += 1
+	counterTrim[1].append(len(argSentenceSet1))
+	for item in counterTrim[1]:
+		if item != 0:
+			sentenceKeybdB.append(argSentenceSet1[itemTemp:item])
+		itemTemp = item
 
 	# handle exceptions when wpm = 0, replace it with gradient
-	x_A, y_A, z_A, yMean_A = ([] for i in range(4))
+	x_A, y_A, z_A, yMean_A, x_B, y_B, z_B, yMean_B = ([] for i in range(8))
 	for itemI in sentenceKeybdA:
 		xTemp, yTemp, zTemp = ([] for i in range(3))
 		for itemJ in itemI:
 			xTemp.append(itemJ.sentenceNo)
 			yTemp.append(itemJ.wpm)
 			zTemp.append(itemJ.totErrRate)
-			print(itemJ.sentenceNo)
 		x_A.append(xTemp)
 		y_A.append(yTemp)
 		z_A.append(zTemp)
+	for itemI in sentenceKeybdB:
+		xTemp, yTemp, zTemp = ([] for i in range(3))
+		for itemJ in itemI:
+			xTemp.append(itemJ.sentenceNo)
+			yTemp.append(itemJ.wpm)
+			zTemp.append(itemJ.totErrRate)
+		x_B.append(xTemp)
+		y_B.append(yTemp)
+		z_B.append(zTemp)
 
 	# plot average horizontal line
-	length = 0
-	for i in range(len(counterTrim)-1):
-		if len(y_A[i]) > length:
-			length = len(y_A[i])
+	length = [0, 0]
+	for j in range(2):
+		for i in range(len(counterTrim[j])-1):
+			if len(y_A[i]) > length[j]:
+				length[j] = len(y_A[i])
 
-	for i in range(length):
+	for i in range(length[0]):
 		yMeanBuffer = []
-		for j in range(len(counterTrim)-1):
+		for j in range(len(counterTrim[0])-1):
 			try:
 				yMeanBuffer.append(y_A[j][i])
 			except IndexError:
 				print('do nothing here')
 		yMeanValue = np.mean(yMeanBuffer)
 		yMean_A.append(yMeanValue)
-
-	# x0 = [item.sentenceNo for item in argSentenceSet0]
-	# y0 = [item.wpm for item in argSentenceSet0]
-	# z0 = [item.totErrRate for item in  argSentenceSet0]
-	# x1 = [item.sentenceNo for item in argSentenceSet1]
-	# y1 = [item.wpm for item in argSentenceSet1]
-	# z1 = [item.totErrRate for item in  argSentenceSet1]	
-	# # plot average horizontal line
-	# average0 = np.mean(y0)
-	# average1 = np.mean(y1)
+	for i in range(length[1]):
+		yMeanBuffer = []
+		for j in range(len(counterTrim[1])-1):
+			try:
+				yMeanBuffer.append(y_B[j][i])
+			except IndexError:
+				print('do nothing here')
+		yMeanValue = np.mean(yMeanBuffer)
+		yMean_B.append(yMeanValue)
 
 	fig, ax = plt.subplots()
-
 	for i in range(len(sentenceKeybdA)):
-		plt.scatter(x_A[i], y_A[i], c=z_A[i])
-		plt.plot(x_A[i], y_A[i], 'o-', label='win10 Eye Control Keyboard', alpha=0.2, color='orange')
-	plt.plot(range(len(yMean_A)), yMean_A, '--', label='win10 Eye Control mean', alpha=0.2, color='orange')
-
-
-	# scatter0 = plt.scatter(x0, y0, c=z0)
-	# line0 = plt.plot(x0, y0, 'o-', label='win10 Eye Control', alpha=0.2, color='orange')
-	# scatter1 = plt.scatter(x1, y1, c=z1, marker='x')
-	# line1 = plt.plot(x1, y1, 'bx-', label='tobii Windows Control', alpha=0.2)
-	# line0_mean, = plt.plot([min(x0), max(x0)], [average0, average0], '--', label='win10 Eye Control mean', alpha=0.2, color='orange')
-	# line1_mean = plt.plot([min(x1), max(x1)], [average1, average1], 'b--', label='tobii Windows Control mean', alpha=0.2)
+		plt.scatter(x_A[i], y_A[i], c=y_A[i])
+		plt.scatter(x_A[i], y_A[i], color='orange', alpha=0.3)
+		plt.scatter(x_B[i], y_B[i], c=y_B[i])
+		plt.scatter(x_B[i], y_B[i], color='blue', alpha=0.3)		
+		if argCount0 == 1: 
+			plt.plot(x_A[i], y_A[i], 'o-', label='win10 Eye Control Keyboard', alpha=0.2, color='orange')
+			yMeanValue_A = np.mean(y_A[i])
+			plt.plot([min(x_A[i]), max(x_A[i])], [yMeanValue_A, yMeanValue_A], '--', label='win10 Eye Control mean', color='orange')
+		else:
+			plt.plot(range(4, len(yMean_A)+4), yMean_A, '--', label='win10 Eye Control mean', color='orange')
+		if argCount1 == 1:
+			plt.plot(x_B[i], y_B[i], 'o-', label='tobii Windows Control Keyboard', alpha=0.2, color='blue')
+			yMeanValue_B = np.mean(y_B[i])
+			plt.plot([min(x_B[i]), max(x_B[i])], [yMeanValue_B, yMeanValue_B], '--', label='tobii Windows Control mean', color='blue')	
+		else:
+			plt.plot(range(4, len(yMean_B)+4), yMean_B, '--', label='tobii Windows Control mean', color='blue')
 	plt.legend(loc='upper left')
-	# ax.set(title='fig 1', xlabel='sentence', ylabel='wpm', xticks=range(min(x0+x1), max(x0+x1)+1))
-	# inverse grayscale
-	plt.set_cmap('gray')
-	# high error rate deepen the scatter color
+	ax.set(title='fig 1', xlabel='sentence', ylabel='wpm')
+	plt.set_cmap('gray')	# high error rate deepen the scatter color
 	plt.show()
 
 
@@ -207,5 +226,4 @@ if __name__ == "__main__":
 	contrTask.observe(onChange_task)
 	contrSubject.observe(onChange_subject)
 
-	flagStart = True
 	plots()
