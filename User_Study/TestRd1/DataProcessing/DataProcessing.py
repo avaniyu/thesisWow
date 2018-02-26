@@ -50,24 +50,17 @@ def readSentences(argFilename, argSentences):
 
 def onChange_plotType(b):
 	if b['type'] == 'change' and b['name'] == 'value':
-		plots()
-		print(contrTypePerf.value)
+		structSentences()
 
-def onChange_task(change):
+def onChange_taskOrSubject(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		plots()
-
-def onChange_subject(change):
-	if change['type'] == 'change' and change['name'] == 'value':
-		plots()
+		structSentences()
 
 # def delOutliers(argSentenceSet):
 # 	print('did not filter')
 
 # read task and subject selection from UI controls, prepare for plotting
-def plots():
-	print('plots')
-	# read subject selection from UI control
+def structSentences():
 	if contrTask.value == 'Transcribe':
 		argTask = 0
 	elif contrTask.value == 'Free Conversation':
@@ -83,13 +76,19 @@ def plots():
 
 	if contrPlotType.value == 'Speed over sentences':
 		if argSubject != '#All':
-			plotSentences(sentenceKeybdA, sentenceKeybdB, 1, 1)	
+			plotSOS(sentenceKeybdA, sentenceKeybdB, 1, 1)	
 		else:
-			plotSentences(sentencesKeybdA, sentencesKeybdB, 3, 3)		
+			plotSOS(sentencesKeybdA, sentencesKeybdB, 3, 3)
+	elif contrPlotType.value == 'Speed between tasks':
+		print('speed between tasks')
+	elif contrPlotType.value == 'Speed vs. accuracy':
+		print('speed vs. accuracy')	
+	elif contrPlotType.value == 'Irrelavant variable influence':
+		print('irrelavant variable influence')	
 
 
 # plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
-def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
+def plotSOS(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 	# print('plotSentences')
 	sentenceKeybdA, sentenceKeybdB = ([] for i in range(2))
 	counter = 0
@@ -166,6 +165,7 @@ def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 		yMean_B.append(yMeanValue)
 
 	fig, ax = plt.subplots()
+	plt.set_cmap('gray')	# high error rate deepen the scatter color
 	for i in range(len(sentenceKeybdA)):
 		plt.scatter(x_A[i], y_A[i], c=z_A[i])
 		plt.scatter(x_B[i], y_B[i], c=z_B[i])
@@ -192,9 +192,13 @@ def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 
 	ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=4)
 	ax.set(title='Subject '+contrSubject.value, xlabel='sentence', ylabel='wpm')
-	plt.set_cmap('gray')	# high error rate deepen the scatter color
 	plt.show()
 
+# def plotSBT()
+
+# def plotSVA()
+
+# def plotIVI()
 
 if __name__ == "__main__":
 	# read data from .csv
@@ -231,8 +235,8 @@ if __name__ == "__main__":
 		button_style=''
 		)
 	display(contrPlotType, widgets.HBox([contrTask, contrSubject]))
-	contrTypePerf.observe(onChange_plotType)
-	contrTask.observe(onChange_task)
-	contrSubject.observe(onChange_subject)
+	contrPlotType.observe(onChange_plotType)
+	contrTask.observe(onChange_taskOrSubject)
+	contrSubject.observe(onChange_taskOrSubject)
 
-	plots()
+	structSentences()
