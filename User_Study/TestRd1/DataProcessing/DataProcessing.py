@@ -190,15 +190,85 @@ def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 	if argCount1 != 1:
 		plt.plot(range(4, len(yMean_B)+4), yMean_B, '--', label='tobii WinControl mean', color='blue')
 
-	ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=4)
+	# ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=4)
+	ax.legend(loc='upper left')
 	ax.set(title='Subject '+contrSubject.value, xlabel='sentence', ylabel='wpm')
 	plt.set_cmap('gray')	# high error rate deepen the scatter color
 	plt.show()
+
+def plotWpmBetweenTasks():
+	# sentenceTask1=[[sentences for task0],[sentences for task1]]
+	sentenceTask0, sentenceTask1 = ([] for i in range(2))
+	# 3 subjects, so tempSentenceTask0 = [[]*3]
+	tempSentenceTask0Keybd0, tempSentenceTask0Keybd1, tempSentenceTask1Keybd0, tempSentenceTask1Keybd1 = ([[], [], []] for i in range(4))
+	for item in sentences:
+		if item.task == 0:
+			if item.keyboard == 0:
+				tempSentenceTask0Keybd0[item.subject].append(item)
+			elif item.keyboard == 1:
+				tempSentenceTask0Keybd1[item.subject].append(item)
+		elif item.task == 1:
+			if item.keyboard == 0:
+				tempSentenceTask1Keybd0[item.subject].append(item)
+			elif item.keyboard == 1:
+				tempSentenceTask1Keybd1[item.subject].append(item)
+	# indexSubjectTask: row: within task; column: within subject
+	indexSubjectTask = [[len(tempSentenceTask0Keybd0[0]), len(tempSentenceTask0Keybd0[1]), len(tempSentenceTask0Keybd0[2])],
+						[len(tempSentenceTask0Keybd1[0]), len(tempSentenceTask0Keybd1[1]), len(tempSentenceTask0Keybd1[2])],
+						[len(tempSentenceTask1Keybd0[0]), len(tempSentenceTask1Keybd0[1]), len(tempSentenceTask1Keybd0[2])],
+						[len(tempSentenceTask1Keybd1[0]), len(tempSentenceTask1Keybd1[1]), len(tempSentenceTask1Keybd1[2])]]
+	sentenceTask0Keybd0 = tempSentenceTask0Keybd0[0] + tempSentenceTask0Keybd0[1] + tempSentenceTask0Keybd0[2]
+	sentenceTask0Keybd1 = tempSentenceTask0Keybd1[0] + tempSentenceTask0Keybd1[1] + tempSentenceTask0Keybd1[2]
+	sentenceTask1Keybd0 = tempSentenceTask1Keybd0[0] + tempSentenceTask1Keybd0[1] + tempSentenceTask1Keybd0[2]
+	sentenceTask1Keybd1 = tempSentenceTask1Keybd1[0] + tempSentenceTask1Keybd1[1] + tempSentenceTask1Keybd1[2]
+
+	# wpmMeanTaskN = [[0]*m*n], m=amount of keyboards , n = amount of testing subjects
+	wpmMeanTask0, wpmMeanTask1 = ([[0]*(amountSubject+1)]*2 for i in range(2))
+	for item in sentenceTask0Keybd0:
+		wpmMeanTask0[0][item.subject] += item.wpm
+		wpmMeanTask0[0][amountSubject] += item.wpm
+	# for index in range(len(indexSubjectTask[0])):
+	# 	wpmMeanTask0[0][index] /= indexSubjectTask[0][index]
+	# wpmMeanTask0[0][amountSubject] /= sum(indexSubjectTask[0])
+	for item in sentenceTask0Keybd1:
+		wpmMeanTask0[1][item.subject] += item.wpm
+		wpmMeanTask0[1][amountSubject] += item.wpm
+	for i in range(2):
+		for index in range(len(indexSubjectTask[i])):
+			wpmMeanTask0[i][index] /= indexSubjectTask[i][index]
+		wpmMeanTask0[i][amountSubject] /= sum(indexSubjectTask[i])	
+
+	for item in sentenceTask1Keybd0:
+		wpmMeanTask1[0][item.subject] += item.wpm
+		wpmMeanTask1[0][amountSubject] += item.wpm
+	for item in sentenceTask1Keybd1:
+		wpmMeanTask0[1][item.subject] += item.wpm
+		wpmMeanTask0[1][amountSubject] += item.wpm
+	# for i in range(2):
+	# 	for index in range(len(indexSubjectTask[2+i])):
+	# 		wpmMeanTask1[i][index] /= indexSubjectTask[i][index]
+	# 	wpmMeanTask1[i][amountSubject] /= sum(indexSubjectTask[i])	
+
+	# for index in range(len(indexSubjectTask[1])):
+	# 	try:
+	# 		wpmMeanTask1[index] /= indexSubjectTask[1][index]		
+	# 	except ZeroDivisionError:
+	# 		pass
+	# wpmMeanTask1[amountSubject] /= sum(indexSubjectTask[1])
+
+	xTemp1=range(16)
+	# xForPlot = [range(16), range(10,18)]
+	fig, ax = plt.subplots()
+	plt.bar(xTemp1, wpmMeanTask0[0]+wpmMeanTask0[1]+wpmMeanTask1[0]+wpmMeanTask1[1], color="gray")
+	plt.show()
+
+	# bug: calculate mean, and two keyboards shouldnt have the same value
 
 
 if __name__ == "__main__":
 	# read data from .csv
 	sentences = []
+	amountSubject = 3
 	readSentences('1Greta_s1Transcribe_winEyeControl', sentences)
 	readSentences('1Greta_s2Transcibe_tobiiWinControl', sentences)
 	readSentences('2Carlota_s1Transcribe_winEyeControl', sentences)
@@ -231,8 +301,9 @@ if __name__ == "__main__":
 		button_style=''
 		)
 	display(contrPlotType, widgets.HBox([contrTask, contrSubject]))
-	contrTypePerf.observe(onChange_plotType)
+	contrPlotType.observe(onChange_plotType)
 	contrTask.observe(onChange_task)
 	contrSubject.observe(onChange_subject)
 
-	plots()
+	# plots()
+	plotWpmBetweenTasks()
