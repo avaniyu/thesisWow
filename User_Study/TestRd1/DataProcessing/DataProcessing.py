@@ -201,78 +201,39 @@ def plotWpmBetweenTasks():
 	sentenceTask0, sentenceTask1 = ([] for i in range(2))
 	# 3 subjects, so tempSentenceTask0 = [[]*3]
 	tempSentenceTask0Keybd0, tempSentenceTask0Keybd1, tempSentenceTask1Keybd0, tempSentenceTask1Keybd1 = ([[], [], []] for i in range(4))
+	tempWpmTask0Keybd0, tempWpmTask0Keybd1, tempWpmTask1Keybd0, tempWpmTask1Keybd1 = ([[], [], []] for i in range(4))
 	for item in sentences:
 		if item.task == 0:
 			if item.keyboard == 0:
-				tempSentenceTask0Keybd0[item.subject].append(item)
+				tempWpmTask0Keybd0[item.subject].append(item.wpm)
 			elif item.keyboard == 1:
-				tempSentenceTask0Keybd1[item.subject].append(item)
+				tempWpmTask0Keybd1[item.subject].append(item.wpm)
 		elif item.task == 1:
 			if item.keyboard == 0:
-				tempSentenceTask1Keybd0[item.subject].append(item)
+				tempWpmTask1Keybd0[item.subject].append(item.wpm)
 			elif item.keyboard == 1:
-				tempSentenceTask1Keybd1[item.subject].append(item)
-	# indexSubjectTask: row: within task; column: within subject
-	indexSubjectTask = [[len(tempSentenceTask0Keybd0[0]), len(tempSentenceTask0Keybd0[1]), len(tempSentenceTask0Keybd0[2])],
-						[len(tempSentenceTask0Keybd1[0]), len(tempSentenceTask0Keybd1[1]), len(tempSentenceTask0Keybd1[2])],
-						[len(tempSentenceTask1Keybd0[0]), len(tempSentenceTask1Keybd0[1]), len(tempSentenceTask1Keybd0[2])],
-						[len(tempSentenceTask1Keybd1[0]), len(tempSentenceTask1Keybd1[1]), len(tempSentenceTask1Keybd1[2])]]
-	sentenceTask0Keybd0 = tempSentenceTask0Keybd0[0] + tempSentenceTask0Keybd0[1] + tempSentenceTask0Keybd0[2]
-	sentenceTask0Keybd1 = tempSentenceTask0Keybd1[0] + tempSentenceTask0Keybd1[1] + tempSentenceTask0Keybd1[2]
-	sentenceTask1Keybd0 = tempSentenceTask1Keybd0[0] + tempSentenceTask1Keybd0[1] + tempSentenceTask1Keybd0[2]
-	sentenceTask1Keybd1 = tempSentenceTask1Keybd1[0] + tempSentenceTask1Keybd1[1] + tempSentenceTask1Keybd1[2]
+				tempWpmTask1Keybd1[item.subject].append(item.wpm)
+	# calculate mean values
+	# wpmMeanTaskN = [[0]*m]*n, m = subject # + 1, n = keyboard #
+	wpmMeanTask0, wpmMeanTask1 = ([[], []] for i in range(2))
+	wpmMeanTask0[0] = [np.mean(tempWpmTask0Keybd0[0]), np.mean(tempWpmTask0Keybd0[1]), np.mean(tempWpmTask0Keybd0[2]), 
+					np.mean(tempWpmTask0Keybd0[0]+tempWpmTask0Keybd0[1]+tempWpmTask0Keybd0[2])]
+	wpmMeanTask0[1] = [np.mean(tempWpmTask0Keybd1[1]), np.mean(tempWpmTask0Keybd1[1]), np.mean(tempWpmTask0Keybd1[2]), 
+					np.mean(tempWpmTask0Keybd1[1]+tempWpmTask0Keybd1[1]+tempWpmTask0Keybd1[2])]
+	wpmMeanTask1[0] = [np.mean(tempWpmTask1Keybd0[1]), np.mean(tempWpmTask1Keybd0[1]), np.mean(tempWpmTask1Keybd0[2]), 
+					np.mean(tempWpmTask1Keybd0[1]+tempWpmTask1Keybd0[1]+tempWpmTask1Keybd0[2])]
+	wpmMeanTask1[1] = [np.mean(tempWpmTask1Keybd1[1]), np.mean(tempWpmTask1Keybd1[1]), np.mean(tempWpmTask1Keybd1[2]), 
+					np.mean(tempWpmTask1Keybd1[1]+tempWpmTask1Keybd1[1]+tempWpmTask1Keybd1[2])]		
 
-	# wpmMeanTaskN = [[0]*m*n], m=amount of keyboards , n = amount of testing subjects
-	wpmMeanTask0, wpmMeanTask1 = ([[0]*(amountSubject+1)]*2 for i in range(2))
-	for item in sentenceTask0Keybd0:
-		wpmMeanTask0[0][item.subject] += item.wpm
-		wpmMeanTask0[0][amountSubject] += item.wpm
-	for index in range(len(indexSubjectTask[0])):
-		wpmMeanTask0[0][index] /= indexSubjectTask[0][index]
-	wpmMeanTask0[0][amountSubject] /= sum(indexSubjectTask[0])
-	for item in sentenceTask0Keybd1:
-		wpmMeanTask0[1][item.subject] += item.wpm
-		wpmMeanTask0[1][amountSubject] += item.wpm
-	for i in range(2):
-		for index in range(len(indexSubjectTask[i])):
-			wpmMeanTask0[i][index] /= indexSubjectTask[i][index]
-		wpmMeanTask0[i][amountSubject] /= sum(indexSubjectTask[i])	
-
-	for item in sentenceTask1Keybd0:
-		wpmMeanTask1[0][item.subject] += item.wpm
-		wpmMeanTask1[0][amountSubject] += item.wpm
-	for item in sentenceTask1Keybd1:
-		wpmMeanTask0[1][item.subject] += item.wpm
-		wpmMeanTask0[1][amountSubject] += item.wpm
-	# for i in range(2):
-	# 	for index in range(len(indexSubjectTask[2+i])):
-	# 		wpmMeanTask1[i][index] /= indexSubjectTask[i][index]
-	# 	wpmMeanTask1[i][amountSubject] /= sum(indexSubjectTask[i])	
-
-	# for index in range(len(indexSubjectTask[1])):
-	# 	try:
-	# 		wpmMeanTask1[index] /= indexSubjectTask[1][index]		
-	# 	except ZeroDivisionError:
-	# 		pass
-	# wpmMeanTask1[amountSubject] /= sum(indexSubjectTask[1])
-
-	print(wpmMeanTask1)
-
-	xTemp1=range(16)
-	# xForPlot = [range(16), range(10,18)]
+	xKeybd0 = [i for i in range(0,7,2)] + [i for i in range(10,17,2)]
+	xKeybd1 = [i for i in range(1,8,2)] + [i for i in range(11,18,2)]
 	fig, ax = plt.subplots()
-	plt.bar(xTemp1, wpmMeanTask0[0]+wpmMeanTask0[1]+wpmMeanTask1[0]+wpmMeanTask1[1], color="gray")
-
-	# ax.legend(loc='upper left')
-	# ax.set(title='Subject '+contrSubject.value, xlabel='sentence', ylabel='wpm')
-	# plt.set_cmap('gray')	# high error rate deepen the scatter color
-	plt.show()
-
-	print(wpmMeanTask0[0]+wpmMeanTask0[1]+wpmMeanTask1[0]+wpmMeanTask1[1])
-	print(sum(indexSubjectTask[0]))
-	print(wpmMeanTask0[0])
-
-
+	plt.bar([6,7,16,17], [wpmMeanTask0[0][-1],wpmMeanTask0[1][-1],wpmMeanTask1[0][-1],wpmMeanTask1[1][-1]], alpha=0, hatch='/', label='task mean value')
+	plt.bar(xKeybd0, wpmMeanTask0[0]+wpmMeanTask1[0], color='grey', alpha=0.5, label='win10 Eye Control')
+	plt.bar(xKeybd1, wpmMeanTask0[1]+wpmMeanTask1[1], color="blue", alpha=0.5, label='tobii Windows Control')
+	ax.legend(loc='upper left')
+	ax.set(title='Speed comparison between tasks', xlabel='task', ylabel='wpm')
+	
 
 if __name__ == "__main__":
 	# read data from .csv

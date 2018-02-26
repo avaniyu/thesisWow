@@ -1,2 +1,8 @@
 delete old plot when updating
 subject #All warning
+========================================
+speed comparison between tasks
+------------------------------
+xticks: subject 1-3, all subjects
+standard variance: ÏäĞÍÍ¼³öÀ´
+============================================
