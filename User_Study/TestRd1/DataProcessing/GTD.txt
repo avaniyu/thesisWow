@@ -2,14 +2,10 @@ all plots:
 -------------
 title, axes, 
 check if all plotted data are correct
-accent color = green
-auxiliary color = gray
-1greta read sentence incorrect
 ===================================
 speed over sentences within task
 -----------------------------------
 title
-1greta read sentence BUG
 check if data are correct
 contrKeybd gray out
 subject #All warning, tobii line plot shuold be extended
