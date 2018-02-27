@@ -1,16 +1,26 @@
+all plots:
+-------------
+title, axes, 
+check if all plotted data are correct
+accent color = green
+auxiliary color = gray
 1greta read sentence incorrect
 ===================================
 speed over sentences within task
 -----------------------------------
-delete old plot when updating
-subject #All warning
+title
+1greta read sentence BUG
+check if data are correct
+contrKeybd gray out
+subject #All warning, tobii line plot shuold be extended
 ========================================
 speed comparison between tasks [1#]
 ------------------------------
 standard variance: box plot
+check if data are correct
+contrSubject, keybd gray out
 ============================================
 
-all plots:
-title, axes, 
-check if all plotted data are correct
-accent color = green
+any plot missing?
+self-comb
+learn from Paivi paper on visualization

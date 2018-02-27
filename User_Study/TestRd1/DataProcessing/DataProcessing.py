@@ -36,43 +36,46 @@ def readSentences(argFilename, argSentences):
 				argSentences.append(Sentence(int(argFilename[0])-1, 0, int(row[0]), int(row[1])))
 			elif 'FreeConv' in argFilename:
 				argSentences.append(Sentence(int(argFilename[0])-1, 1, int(row[0]), int(row[1])))
-			# handle exceptions
-			# if test subject didn't enter anything and skipped this sentence
-			if int(row[2]) != 0:
-				sentences[-1].wpm = int(row[4])+int(row[5])*0.1**(len(row[5]))
-				sentences[-1].totErrRate = int(row[-14])*0.1**(len(row[-14]))
 			else:
-				sentences[-1].wpm = 0
-				sentences[-1].totErrRate = 1
-			if 'winEyeControl' in argFilename:
-				sentences[-1].keyboard = 0
-			elif 'tobiiWinControl' in argFilename:
-				sentences[-1].keyboard = 1
+				print('error in csv file naming!')
+			# # exclude exceptions that the test subject didn't enter anything and skipped this sentence
+			# if int(row[2]) != 0:
+			# 	sentences[-1].wpm = int(row[4])+int(row[5])*0.1**(len(row[5]))
+			# 	# print(sentences[-1].wpm)
+			# 	sentences[-1].totErrRate = int(row[-14])*0.1**(len(row[-14]))
+			# else:
+			# 	sentences[-1].wpm = 0
+			# 	sentences[-1].totErrRate = 1
+			# if 'winEyeControl' in argFilename:
+			# 	sentences[-1].keyboard = 0
+			# elif 'tobiiWinControl' in argFilename:
+			# 	sentences[-1].keyboard = 1
+			# print(argSentences[-1].sentenceNo)
+			print(len(row))
 
 def onChange_plotType(b):
 	if b['type'] == 'change' and b['name'] == 'value':
+		clear_output(wait=True)
+		display(contrPlotType, widgets.HBox([contrTask, contrSubject, contrKeybd]))
 		if contrPlotType.value == 'Speed over sentences':
 			plots()
+			contrTask.disabled = False
+			contrSubject.disabled = False
 			contrKeybd.disabled = True
 		elif contrPlotType.value == 'Speed between tasks':
 			plotWpmBetweenTasks()
 			contrTask.disabled = True
+			contrSubject.disabled = True
+			contrKeybd.disabled = True
 		elif contrPlotType.value == 'Irrelavant variables influence':
 			plotInfTaskSubject()
 			contrTask.disabled = True
 			contrSubject.disabled = True
+			contrKeybd.disabled = False
 
-def onChange_task(change):
+def onChange_params(change):
 	if change['type'] == 'change' and change['name'] == 'value':
-		plots()
-
-def onChange_subject(change):
-	if change['type'] == 'change' and change['name'] == 'value':
-		plots()
-
-def onChange_keybd(change):
-	if change['type'] == 'change' and change['name'] == 'value':
-		plotInfTaskSubject()
+		onChange_plotType(change)	
 
 # def delOutliers(argSentenceSet):
 # 	print('did not filter')
@@ -102,7 +105,6 @@ def plots():
 
 # plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
 def plotSpeedOverSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
-	# print('plotSentences')
 	sentenceKeybdA, sentenceKeybdB = ([] for i in range(2))
 	counter = 0
 	counterTrim = [[0],[0]]
@@ -264,12 +266,12 @@ def plotInfTaskSubject():
 			heatmapZ_wpm[item.task][item.subject] = item.wpm
 
 	fig, ax = plt.subplots()
-	sns.heatmap(heatmapZ_wpm, annot=True, linewidth=.5, cmap='gray_r', cbar_kws={"shrink": .5})
+	sns.heatmap(heatmapZ_wpm, annot=True, linewidth=.5, cmap='gray_r', cbar_kws={"shrink": .5, 'label':'WPM'})
 	ax.set_aspect(0.5)
 	ax.set(title='Irrelavant variables influence', xlabel='Subject', ylabel='Task')
-	plt.xticks(range(amountSubject),('#1', '#2', '#3'))
-	plt.yticks(range(amountTask),('#1','#2'))
-
+	# xForPlot = [i+0.5 for i in range(amountSubject)]
+	plt.xticks([i+0.5 for i in range(amountSubject)],('#1', '#2', '#3'))
+	plt.yticks([i+0.5 for i in range(amountTask)],('Transcription','Conversation'), rotation='horizontal', fontsize=7)
 
 if __name__ == "__main__":
 	# read data from .csv
@@ -277,16 +279,16 @@ if __name__ == "__main__":
 	amountSubject = 3
 	amountTask = 2
 	amountKeybd = 2
-	readSentences('1Greta_s1Transcribe_winEyeControl', sentences)
+	# readSentences('1Greta_s1Transcribe_winEyeControl', sentences)
 	readSentences('1Greta_s2Transcibe_tobiiWinControl', sentences)
-	readSentences('2Carlota_s1Transcribe_winEyeControl', sentences)
-	readSentences('2Carlota_s2FreeConv_winEyeControl', sentences)
-	readSentences('2Carlota_s3Transcribe_tobiiWinControl', sentences)
-	readSentences('2Carlota_s4FreeConv_tobiiWinControl', sentences)
-	readSentences('3Barbara_s1Transcribe_tobiiWinControl', sentences)
-	readSentences('3Barbara_s2FreeConv_tobiiWinControl', sentences)
-	readSentences('3Barbara_s3Transcribe_winEyeControl', sentences)
-	readSentences('3Barbara_s4FreeConv_winEyeControl', sentences)
+	# readSentences('2Carlota_s1Transcribe_winEyeControl', sentences)
+	# readSentences('2Carlota_s2FreeConv_winEyeControl', sentences)
+	# readSentences('2Carlota_s3Transcribe_tobiiWinControl', sentences)
+	# readSentences('2Carlota_s4FreeConv_tobiiWinControl', sentences)
+	# readSentences('3Barbara_s1Transcribe_tobiiWinControl', sentences)
+	# readSentences('3Barbara_s2FreeConv_tobiiWinControl', sentences)
+	# readSentences('3Barbara_s3Transcribe_winEyeControl', sentences)
+	# readSentences('3Barbara_s4FreeConv_winEyeControl', sentences)
 
 	# UI controls
 	contrSubject = widgets.Select(
@@ -317,9 +319,10 @@ if __name__ == "__main__":
 	display(contrPlotType, widgets.HBox([contrTask, contrSubject, contrKeybd]))
 
 	contrPlotType.observe(onChange_plotType)
-	contrTask.observe(onChange_task)
-	contrSubject.observe(onChange_subject)
-	contrKeybd.observe(onChange_keybd)
+	contrTask.observe(onChange_params)
+	contrSubject.observe(onChange_params)
+	contrKeybd.observe(onChange_params)
 
 	# plots()
-	plotWpmBetweenTasks()
+	# plotWpmBetweenTasks()
+	# plotInfTaskSubject()
