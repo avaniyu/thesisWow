@@ -1,8 +1,16 @@
+1greta read sentence incorrect
+===================================
+speed over sentences within task
+-----------------------------------
 delete old plot when updating
 subject #All warning
 ========================================
-speed comparison between tasks
+speed comparison between tasks [1#]
 ------------------------------
-xticks: subject 1-3, all subjects
-standard variance: œ‰–ÕÕº≥ˆ¿¥
+standard variance: box plot
 ============================================
+
+all plots:
+title, axes, 
+check if all plotted data are correct
+accent color = green

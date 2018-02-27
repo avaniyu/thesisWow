@@ -6,6 +6,7 @@ from IPython.display import display, clear_output
 import matplotlib.pyplot as plt 
 plt.style.use('ggplot')
 import numpy as np
+import seaborn as sns
 
 
 # create Sentence class
@@ -50,8 +51,16 @@ def readSentences(argFilename, argSentences):
 
 def onChange_plotType(b):
 	if b['type'] == 'change' and b['name'] == 'value':
-		plots()
-		print(contrTypePerf.value)
+		if contrPlotType.value == 'Speed over sentences':
+			plots()
+			contrKeybd.disabled = True
+		elif contrPlotType.value == 'Speed between tasks':
+			plotWpmBetweenTasks()
+			contrTask.disabled = True
+		elif contrPlotType.value == 'Irrelavant variables influence':
+			plotInfTaskSubject()
+			contrTask.disabled = True
+			contrSubject.disabled = True
 
 def onChange_task(change):
 	if change['type'] == 'change' and change['name'] == 'value':
@@ -60,6 +69,10 @@ def onChange_task(change):
 def onChange_subject(change):
 	if change['type'] == 'change' and change['name'] == 'value':
 		plots()
+
+def onChange_keybd(change):
+	if change['type'] == 'change' and change['name'] == 'value':
+		plotInfTaskSubject()
 
 # def delOutliers(argSentenceSet):
 # 	print('did not filter')
@@ -83,13 +96,12 @@ def plots():
 
 	if contrPlotType.value == 'Speed over sentences':
 		if argSubject != '#All':
-			plotSentences(sentenceKeybdA, sentenceKeybdB, 1, 1)	
+			plotSpeedOverSentences(sentenceKeybdA, sentenceKeybdB, 1, 1)	
 		else:
-			plotSentences(sentencesKeybdA, sentencesKeybdB, 3, 3)		
-
+			plotSpeedOverSentences(sentencesKeybdA, sentencesKeybdB, 3, 3)		
 
 # plot TypePerf of 2 keyboards against sentences, with variable variance visualization,
-def plotSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
+def plotSpeedOverSentences(argSentenceSet0, argSentenceSet1, argCount0, argCount1):
 	# print('plotSentences')
 	sentenceKeybdA, sentenceKeybdB = ([] for i in range(2))
 	counter = 0
@@ -228,17 +240,43 @@ def plotWpmBetweenTasks():
 	xKeybd0 = [i for i in range(0,7,2)] + [i for i in range(10,17,2)]
 	xKeybd1 = [i for i in range(1,8,2)] + [i for i in range(11,18,2)]
 	fig, ax = plt.subplots()
-	plt.bar([6,7,16,17], [wpmMeanTask0[0][-1],wpmMeanTask0[1][-1],wpmMeanTask1[0][-1],wpmMeanTask1[1][-1]], alpha=0, hatch='/', label='task mean value')
+	plt.bar([6,7,16,17], [wpmMeanTask0[0][-1],wpmMeanTask0[1][-1],wpmMeanTask1[0][-1],wpmMeanTask1[1][-1]], alpha=0, hatch='//', label='task mean value')
 	plt.bar(xKeybd0, wpmMeanTask0[0]+wpmMeanTask1[0], color='grey', alpha=0.5, label='win10 Eye Control')
 	plt.bar(xKeybd1, wpmMeanTask0[1]+wpmMeanTask1[1], color="blue", alpha=0.5, label='tobii Windows Control')
-	ax.legend(loc='upper left')
-	ax.set(title='Speed comparison between tasks', xlabel='task', ylabel='wpm')
-	
+	ax.legend(loc='lower center', ncol=3, fontsize=8)
+	ax.set(title='Speed comparison between tasks', xlabel='Task 1                                               Task 2', ylabel='WPM')
+	xForPlotTemp = range((amountSubject+1)*4+2)
+	xForPlot = [x+0.5 for x in xForPlotTemp]
+	plt.xticks(xForPlot,('#1\nsubject', '', '#2\nsubject', '', '#3\nsubject', '', 'all\nsubject', '','','', 
+				'#1\nsubject', '', '#2\nsubject', '', '#3\nsubject', '', 'all\nsubject'), fontsize=7)
+
+def plotInfTaskSubject():
+	# list: task * subject
+	heatmapZ_wpm = [[0 for i in range(amountSubject)] for j in range(amountTask)]
+	for item in sentences:
+		if contrKeybd.value == 'win10 Eye Control':
+			if item.keyboard == 0:
+				heatmapZ_wpm[item.task][item.subject] = item.wpm
+		elif contrKeybd.value == 'tobii Windows Control':
+			if item.keyboard == 1:
+				heatmapZ_wpm[item.task][item.subject] = item.wpm
+		elif contrKeybd.value == 'All':
+			heatmapZ_wpm[item.task][item.subject] = item.wpm
+
+	fig, ax = plt.subplots()
+	sns.heatmap(heatmapZ_wpm, annot=True, linewidth=.5, cmap='gray_r', cbar_kws={"shrink": .5})
+	ax.set_aspect(0.5)
+	ax.set(title='Irrelavant variables influence', xlabel='Subject', ylabel='Task')
+	plt.xticks(range(amountSubject),('#1', '#2', '#3'))
+	plt.yticks(range(amountTask),('#1','#2'))
+
 
 if __name__ == "__main__":
 	# read data from .csv
 	sentences = []
 	amountSubject = 3
+	amountTask = 2
+	amountKeybd = 2
 	readSentences('1Greta_s1Transcribe_winEyeControl', sentences)
 	readSentences('1Greta_s2Transcibe_tobiiWinControl', sentences)
 	readSentences('2Carlota_s1Transcribe_winEyeControl', sentences)
@@ -253,7 +291,7 @@ if __name__ == "__main__":
 	# UI controls
 	contrSubject = widgets.Select(
 		options=['#All', '#1', '#2', '#3'],
-		value='#3',
+		value='#All',
 		description='Test Subject:',
 		disabled=False
 		)
@@ -270,10 +308,18 @@ if __name__ == "__main__":
 		disabled=False,
 		button_style=''
 		)
-	display(contrPlotType, widgets.HBox([contrTask, contrSubject]))
+	contrKeybd = widgets.Select(
+		options=['All', 'win10 Eye Control', 'tobii Windows Control'],
+		value='All',
+		description='Keyboard:',
+		disabled=False
+		)	
+	display(contrPlotType, widgets.HBox([contrTask, contrSubject, contrKeybd]))
+
 	contrPlotType.observe(onChange_plotType)
 	contrTask.observe(onChange_task)
 	contrSubject.observe(onChange_subject)
+	contrKeybd.observe(onChange_keybd)
 
 	# plots()
 	plotWpmBetweenTasks()
