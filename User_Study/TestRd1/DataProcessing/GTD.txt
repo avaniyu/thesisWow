@@ -7,7 +7,6 @@ speed over sentences within task
 -----------------------------------
 title
 check if data are correct
-contrKeybd gray out
 subject #All warning, tobii line plot shuold be extended
 ========================================
 speed comparison between tasks [1#]

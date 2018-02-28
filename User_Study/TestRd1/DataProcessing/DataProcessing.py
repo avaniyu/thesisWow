@@ -83,62 +83,53 @@ def onChange_params(change):
 
 def plotSpeedOverSentences():
 	wpmOfASubject, errRateOfASubject = ([[] for i in range(amountKeybd)] for j in range(2))
-	wpmMeanOfASubject = []
+	wpmMeanOfASubject = [0, 0]
+	wpmOfSubjects, errRateSubjects = ([[[], [], []], [[], [], []]] for i in range(2))
+	wpmMeanSubjects = [[], []]
 	for item in sentences:
 		try:
-			if item.subject == int(contrSubject.value[1]):
+			if item.subject == int(contrSubject.value[1])-1:
 				if (contrTask.value == 'Transcribe' and item.task == 0) or (contrTask.value == 'Free Conversation' and item.task == 1):
 					wpmOfASubject[item.keyboard].append(item.wpm)
 					errRateOfASubject[item.keyboard].append(item.totErrRate)
 		except ValueError:
-			print('selected subject #all')
 			if (contrTask.value == 'Transcribe' and item.task == 0) or (contrTask.value == 'Free Conversation' and item.task == 1):
-				wpmOfASubject[item.keyboard].append(item.wpm)
-				errRateOfASubject[item.keyboard].append(item.totErrRate)
-	# for i in range(amountKeybd):
-	# 	wpmMeanOfASubject[i] = np.mean(wpmOfASubject[i])
-
+				wpmOfSubjects[item.keyboard][item.subject].append(item.wpm)
+				errRateSubjects[item.keyboard][item.subject].append(item.totErrRate)
 	fig, ax = plt.subplots()
+	color = ['gray', dynavoxGreen]
+	label = ['win10 Eye Control', 'tobii Win Control']
+	labelMean = ['win10 Eye Control mean', 'tobii Win Control mean']
 	try:
 		if int(contrSubject.value[1]) in [1,2,3]:
-			pass
-			# plot wpm for a subject over sentences & wpm mean value within a task of a subject
-			# plt.scatter([i for i in range(len(wpmOfASubject[0]))], wpmMeanOfASubject[0], c=errRateOfASubject[0])
+			# plot wpm for a subject over sentences & wpm mean value within a task of a subject			
+			for i in range(amountKeybd):
+				wpmMeanOfASubject[i] = np.mean(wpmOfASubject[i])
+				plt.scatter([j for j in range(len(wpmOfASubject[i]))], wpmOfASubject[i], c=errRateOfASubject[i])
+				plt.plot([j for j in range(len(wpmOfASubject[i]))], wpmOfASubject[i], 'o-', color=color[i], alpha=0.3, label=label[i])
+				plt.plot([0, len(wpmOfASubject[i])], [wpmMeanOfASubject[i],wpmMeanOfASubject[i]], '--', color=color[i], label=labelMean[i])
 	except ValueError:
-	# plot wpm mean value across subject over sentences
-		pass
+		# plot wpm mean value across subject over sentences
+
+		for i in range(amountKeybd):
+			for j in range(amountSubject):
+				plt.scatter([k for k in range(len(wpmOfSubjects[i][j]))], wpmOfSubjects[i][j], c=errRateSubjects[i][j])
+				plt.scatter([k for k in range(len(wpmOfSubjects[i][j]))], wpmOfSubjects[i][j], color=color[i], alpha=0.3, label=label[i])
+
+		wpmMeanBuffer = [[], []]
+		for i in range(amountKeybd):
+			for k in range(13):
+				try:
+					for j in range(amountSubject):			
+						wpmMeanBuffer[i].append(wpmOfSubjects[i][j][k])
+					wpmMeanSubjects[i].append(np.mean(wpmMeanBuffer[i]))
+				except IndexError:
+					pass
+			plt.plot([h for h in range(len(wpmMeanSubjects[i]))], wpmMeanSubjects[i], color=color[i], alpha=0.5, label=labelMean[i])
+
 	plt.set_cmap('gray')	# high error rate deepen the scatter color
-
-	# for i in range(len(sentenceKeybdA)):
-	# 	plt.scatter(x_A[i], y_A[i], c=z_A[i])
-	# 	plt.scatter(x_B[i], y_B[i], c=z_B[i])
-	# 	if argCount0 == 1: 
-	# 		plt.plot(x_A[i], y_A[i], 'o-', label='win10 EyeControl', alpha=0.2, color='gray')
-	# 		yMeanValue_A = np.mean(y_A[i])
-	# 		plt.plot([min(x_A[i]), max(x_A[i])], [yMeanValue_A, yMeanValue_A], '--', label='win10 EyeControl mean', color='gray')
-	# 	elif i == 0:
-	# 		plt.scatter(x_A[i], y_A[i], color='gray', alpha=0.3, label='win10 EyeControl')
-	# 	else:
-	# 		plt.scatter(x_A[i], y_A[i], color='gray', alpha=0.3)
-	# 	if argCount1 == 1:
-	# 		plt.plot(x_B[i], y_B[i], 'o-', label='tobii WinControl', alpha=0.2, color=dynavoxGreen)
-	# 		yMeanValue_B = np.mean(y_B[i])
-	# 		plt.plot([min(x_B[i]), max(x_B[i])], [yMeanValue_B, yMeanValue_B], '--', label='tobii WinControl mean', color=dynavoxGreen)	
-	# 	elif i ==0:
-	# 		plt.scatter(x_B[i], y_B[i], color=dynavoxGreen, alpha=0.3, label='tobii WinControl')
-	# 	else:
-	# 		plt.scatter(x_B[i], y_B[i], color=dynavoxGreen, alpha=0.3)
-	# if argCount0 != 1:
-	# 	plt.plot(range(4, len(yMean_A)+4), yMean_A, '--', label='win10 EyeControl mean', color='gray')
-	# if argCount1 != 1:
-	# 	plt.plot(range(4, len(yMean_B)+4), yMean_B, '--', label='tobii WinControl mean', color=dynavoxGreen)
-
-	# # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=4)
-	# legend = ax.legend(loc='upper left')
-	# legend.get_frame().set_facecolor('white')
-	# ax.set(title='Subject '+contrSubject.value, xlabel='sentence', ylabel='wpm')
-	# plt.set_cmap('gray')	# high error rate deepen the scatter color
-	# plt.show()
+	ax.set(title='Speed over sentences', xlabel='Sentence', ylabel='WPM')
+	ax.legend(loc='lower center', ncol=2)
 
 def plotWpmBetweenTasks():
 	# sentenceTask1=[[sentences for task0],[sentences for task1]]
