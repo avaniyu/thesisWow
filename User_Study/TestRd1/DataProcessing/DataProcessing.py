@@ -87,15 +87,16 @@ def plotSpeedOverSentences():
 	wpmOfSubjects, errRateSubjects = ([[[], [], []], [[], [], []]] for i in range(2))
 	wpmMeanSubjects = [[], []]
 	for item in sentences:
-		try:
-			if item.subject == int(contrSubject.value[1])-1:
+		if item.testing == 1:
+			try:
+				if item.subject == int(contrSubject.value[1])-1:
+					if (contrTask.value == 'Transcribe' and item.task == 0) or (contrTask.value == 'Free Conversation' and item.task == 1):
+						wpmOfASubject[item.keyboard].append(item.wpm)
+						errRateOfASubject[item.keyboard].append(item.totErrRate)
+			except ValueError:
 				if (contrTask.value == 'Transcribe' and item.task == 0) or (contrTask.value == 'Free Conversation' and item.task == 1):
-					wpmOfASubject[item.keyboard].append(item.wpm)
-					errRateOfASubject[item.keyboard].append(item.totErrRate)
-		except ValueError:
-			if (contrTask.value == 'Transcribe' and item.task == 0) or (contrTask.value == 'Free Conversation' and item.task == 1):
-				wpmOfSubjects[item.keyboard][item.subject].append(item.wpm)
-				errRateSubjects[item.keyboard][item.subject].append(item.totErrRate)
+					wpmOfSubjects[item.keyboard][item.subject].append(item.wpm)
+					errRateSubjects[item.keyboard][item.subject].append(item.totErrRate)
 	fig, ax = plt.subplots()
 	color = ['gray', dynavoxGreen]
 	label = ['win10 Eye Control', 'tobii Win Control']
@@ -110,7 +111,6 @@ def plotSpeedOverSentences():
 				plt.plot([0, len(wpmOfASubject[i])], [wpmMeanOfASubject[i],wpmMeanOfASubject[i]], '--', color=color[i], label=labelMean[i])
 	except ValueError:
 		# plot wpm mean value across subject over sentences
-
 		for i in range(amountKeybd):
 			for j in range(amountSubject):
 				plt.scatter([k for k in range(len(wpmOfSubjects[i][j]))], wpmOfSubjects[i][j], c=errRateSubjects[i][j])
@@ -178,14 +178,15 @@ def plotInfTaskSubject():
 	# list: task * subject
 	heatmapZ_wpm = [[0 for i in range(amountSubject)] for j in range(amountTask)]
 	for item in sentences:
-		if contrKeybd.value == 'win10 Eye Control':
-			if item.keyboard == 0:
+		if item.testing == 1:
+			if contrKeybd.value == 'win10 Eye Control':
+				if item.keyboard == 0:
+					heatmapZ_wpm[item.task][item.subject] = item.wpm
+			elif contrKeybd.value == 'tobii Windows Control':
+				if item.keyboard == 1:
+					heatmapZ_wpm[item.task][item.subject] = item.wpm
+			elif contrKeybd.value == 'All':
 				heatmapZ_wpm[item.task][item.subject] = item.wpm
-		elif contrKeybd.value == 'tobii Windows Control':
-			if item.keyboard == 1:
-				heatmapZ_wpm[item.task][item.subject] = item.wpm
-		elif contrKeybd.value == 'All':
-			heatmapZ_wpm[item.task][item.subject] = item.wpm
 
 	fig, ax = plt.subplots()
 	sns.heatmap(heatmapZ_wpm, annot=True, linewidth=.5, cmap='gray_r', cbar_kws={"shrink": .5, 'label':'WPM'})
