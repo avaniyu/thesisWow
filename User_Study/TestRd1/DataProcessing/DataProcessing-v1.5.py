@@ -28,7 +28,7 @@ def readSentences(argFilename, argSentences):
 			if 'Transcribe' in argFilename:
 				argSentences.append(Sentence(int(argFilename[0])-1, 0, int(row[0]), int(row[1])))
 			elif 'FreeConv' in argFilename:
-				argSentences.append(Sentence(int(argFilename[0])-1, 1, int(row[0]), int(row[1])))
+				argSentences.append(Sentence(int(argFilename[0])-1, 1, int(row[0]), 1))
 			# exclude exceptions that the test subject didn't enter anything and skipped this sentence			
 			if int(row[2]) != 0:
 				sentences[-1].wpm = int(row[4])+int(row[5])*0.1**(len(row[5]))
@@ -43,36 +43,56 @@ def readSentences(argFilename, argSentences):
 
 def onChange_metric(b):
 	if b['type']=='change' and b['name']=='value':
+		clearCache()
 		extractSentences()
 
 def onChange_task(change):
 	if change['type']=='change' and change['name']=='value':
+		clearCache()
 		extractSentences()
 
 def onChange_subject(change):
 	if change['type']=='change' and change['name']=='value':
+		clearCache()
 		extractSentences()
 
 def extractSentences():
 	for item in sentences:
 		if item.testing == 1:
-			if ('1' in contrOfSubject.value and item.subject == 0) or ('2' in contrOfSubject.value and item.subject == 1) or ('3' in contrOfSubject.value and item.subject == 2) or ('All' or 'Between') in contrOfSubject.value:
-				if ('Transcription' in contrOfTask.value and item.task == 0) or ('Conversation' in contrOfTask.value and item.task == 1) or ('Both' or 'Between') in contrOfTask.value:
-					perSubjTaskWpm[(int(contrOfSubject.value[1])-1)*amountTask+item.task].append(item.wpm)
-					perSubjTaskTotErrRate[(int(contrOfSubject.value[1])-1)*amountTask+item.task].append(item.totErrRate)
-					perSubjTaskSentenceNo[(int(contrOfSubject.value[1])-1)*amountTask+item.task].append(item.sentenceNo)
+			if ('1' in contrOfSubject.value and item.subject == 0) or ('2' in contrOfSubject.value and item.subject == 1) or ('3' in contrOfSubject.value and item.subject == 2):
+				if ('Transcription' in contrOfTask.value and item.task == 0) or ('Conversation' in contrOfTask.value and item.task == 1):
+					perSubjTaskWpm[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.wpm)
+					perSubjTaskTotErrRate[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.totErrRate)
+					perSubjTaskSentenceNo[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.sentenceNo)
+			elif ('All' in contrOfSubject.value) or ('Between' in contrOfSubject.value):
+				if ('Transcription' in contrOfTask.value and item.task == 0) or ('Conversation' in contrOfTask.value and item.task == 1) or ('Both' in contrOfTask.value) or ('Between' in contrOfTask.value):
+					perSubjTaskWpm[item.subject*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.wpm)
+					perSubjTaskTotErrRate[item.subject*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.totErrRate)
+					perSubjTaskSentenceNo[item.subject*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.sentenceNo)
+
 	if 'Speed' in contrMetric.value:
 		plotSpeed()
 	elif 'Accuracy' in contrMetric.value:
 		plotAccuracy()
 	elif 'Learning' in contrMetric.value:
 		plotLearningCurve()
-	print(len(perSubjTaskSentenceNo[0]))
-	# bug: perSubjTaskWpm and etc need to be cleared
-	# bug: subject #2, #3 incorrect
+
+def clearCache():
+	clear_output(wait=True)
+	display(contrMetric, widgets.HBox([contrOfTask, contrOfSubject]))
+	for i in range(amountSubject * amountTask * amountKeyboard):
+		del perSubjTaskWpm[i][:], perSubjTaskTotErrRate[i][:], perSubjTaskSentenceNo[i][:]
 
 def plotSpeed():
-	pass
+	fig, ax = plt.subplots()
+	spread = np.random.rand(50) * 100
+	center = np.ones(25) * 50
+	flier_high = np.random.rand(10) * 100 + 100
+	flier_low = np.random.rand(10) * -100
+	data = np.concatenate((spread, center, flier_high, flier_low), 0)
+	plt.boxplot(data, 0, '')
+	ax.set(title='Speed', xlabel='Keyboard', ylabel='WPM')
+
 
 def plotAccuracy():
 	plotSpeed()
@@ -88,7 +108,7 @@ if __name__ == "__main__":
 	color = ['gray', '#01ac66']		# dynavox green
 	labelKeybd = ['win10 Eye Control', 'tobii Windows Control']
 
-	perSubjTaskWpm, perSubjTaskTotErrRate, perSubjTaskSentenceNo = ([[] for i in range(amountSubject * amountTask)] for j in range(3))	
+	perSubjTaskWpm, perSubjTaskTotErrRate, perSubjTaskSentenceNo = ([[] for i in range(amountSubject * amountTask * amountKeyboard)] for j in range(3))	
 
 	# readSentences()
 	filenames = ['1Greta_s1Transcribe_winEyeControl', '1Greta_s2Transcribe_tobiiWinControl', '2Carlota_s1Transcribe_winEyeControl', '2Carlota_s2FreeConv_winEyeControl', '2Carlota_s3Transcribe_tobiiWinControl',
@@ -119,4 +139,3 @@ if __name__ == "__main__":
 	contrMetric.observe(onChange_metric)
 	contrOfTask.observe(onChange_task)
 	contrOfSubject.observe(onChange_subject)
-	print(len(sentences)) 
