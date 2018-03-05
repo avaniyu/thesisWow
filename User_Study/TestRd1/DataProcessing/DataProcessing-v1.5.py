@@ -85,14 +85,19 @@ def clearCache():
 
 def plotSpeed():
 	fig, ax = plt.subplots()
-	spread = np.random.rand(50) * 100
-	center = np.ones(25) * 50
-	flier_high = np.random.rand(10) * 100 + 100
-	flier_low = np.random.rand(10) * -100
-	data = np.concatenate((spread, center, flier_high, flier_low), 0)
-	plt.boxplot(data, 0, '')
-	ax.set(title='Speed', xlabel='Keyboard', ylabel='WPM')
 
+	if 'Between' in contrOfSubject.value:
+		pass
+
+	yWpm = [[], []]
+	for i in range(len(perSubjTaskWpm)):
+		for j in range(len(perSubjTaskWpm[i])):
+			yWpm[i%amountKeyboard].append(perSubjTaskWpm[i][j])
+			print(perSubjTaskSentenceNo[i][j])
+	ax.boxplot(yWpm, showfliers=False)
+	ax.set(title='Speed', xlabel='Keyboard', ylabel='WPM')
+	plt.xticks([1,2], ('Windows Eye Control', 'Tobii Windows Control'))
+	# check: if plotted data is correct, blue line == mean?
 
 def plotAccuracy():
 	plotSpeed()
