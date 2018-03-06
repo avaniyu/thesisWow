@@ -84,28 +84,54 @@ def clearCache():
 		del perSubjTaskWpm[i][:], perSubjTaskTotErrRate[i][:], perSubjTaskSentenceNo[i][:]
 
 def plotSpeed():
-	fig, ax = plt.subplots()
+	if 'Between' not in contrOfSubject.value:
+		fig, ax = plt.subplots()
+		yWpm_MS, yWpm_Tobii = ([] for k in range(2))
+		for i in range(len(perSubjTaskWpm)):
+			for j in range(len(perSubjTaskWpm[i])):
+				if i%amountKeyboard:
+					yWpm_MS.append(perSubjTaskWpm[i][j])
+				else:
+					yWpm_Tobii.append(perSubjTaskWpm[i][j])
+		bp_MS = plt.boxplot(yWpm_MS, positions=[1], showfliers=True, showmeans=True, labels=['MS'], patch_artist=True,
+							boxprops=dict(facecolor=color[0]),
+							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
+							medianprops=dict(linewidth=0, linestyle=None))
+		bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[2], showfliers=True, showmeans=True, labels=['Tobii'], patch_artist=True,
+							boxprops=dict(facecolor=color[1]),
+							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
+							medianprops=dict(linewidth=0, linestyle=None))
 
-	if 'Between' in contrOfSubject.value:
-		pass
-
-	yWpm = [[], []]
-	for i in range(len(perSubjTaskWpm)):
-		for j in range(len(perSubjTaskWpm[i])):
-			yWpm[i%amountKeyboard].append(perSubjTaskWpm[i][j])
-	bp = ax.boxplot(yWpm, showfliers=True, showmeans=True, labels=['a', 'b'], patch_artist=True)
-	for box in bp['boxes']:
-	    # change outline color
-	    box.set( color='#7570b3', linewidth=2)
-	    # change fill color
-	    box.set( facecolor = '#1b9e77' )		
-	ax.set(title='Speed', xlabel='Keyboard', ylabel='WPM')
-	ax.set_xticklabels(['Windows Eye Control', 'Tobii Windows Control'])
-	# check: if plotted data is correct, blue line == mean?
-	fig.savefig('fig.png', bbox_inches='tight')
+		ax.set(title=contrOfSubject.value+' speed during '+contrOfTask.value, ylabel='WPM')
+		plt.xlim(0,3)	
+		plt.ylim(-1,18)	
+		plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
+		fig.savefig('plotSpeed_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
 
 def plotAccuracy():
-	plotSpeed()
+	if ('Between' not in contrOfSubject.value) and ('Transcription' in contrOfTask.value):
+		fig, ax = plt.subplots()
+		yTotErrRate_MS, yTotErrRate_Tobii = ([] for k in range(2))
+		for i in range(len(perSubjTaskTotErrRate)):
+			for j in range(len(perSubjTaskTotErrRate[i])):
+				if i%amountKeyboard:
+					yTotErrRate_MS.append(perSubjTaskTotErrRate[i][j])
+				else:
+					yTotErrRate_Tobii.append(perSubjTaskTotErrRate[i][j])
+		bp_MS = plt.boxplot(yTotErrRate_MS, positions=[1], showfliers=True, showmeans=True, labels=['MS'], patch_artist=True,
+							boxprops=dict(facecolor=color[0]),
+							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
+							medianprops=dict(linewidth=0, linestyle=None))
+		bp_Tobii = plt.boxplot(yTotErrRate_Tobii, positions=[2], showfliers=True, showmeans=True, labels=['Tobii'], patch_artist=True,
+							boxprops=dict(facecolor=color[1]),
+							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
+							medianprops=dict(linewidth=0, linestyle=None))
+
+		ax.set(title=contrOfSubject.value+' Accuracy during '+contrOfTask.value, ylabel='WPM')
+		plt.xlim(0,3)	
+		plt.ylim(-0.05,1)	
+		plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
+		fig.savefig('plotAccuracy_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
 	pass
@@ -128,7 +154,7 @@ if __name__ == "__main__":
 
 	# define UI controls
 	contrMetric = widgets.ToggleButtons(
-		options=['Speed', 'Accuracy', 'Learning Curve'],
+		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve'],
 		description = 'Metric: ',
 		value = 'Speed',
 		disabled = False
