@@ -93,11 +93,16 @@ def plotSpeed():
 	for i in range(len(perSubjTaskWpm)):
 		for j in range(len(perSubjTaskWpm[i])):
 			yWpm[i%amountKeyboard].append(perSubjTaskWpm[i][j])
-			print(perSubjTaskSentenceNo[i][j])
-	ax.boxplot(yWpm, showfliers=False)
+	bp = ax.boxplot(yWpm, showfliers=True, showmeans=True, labels=['a', 'b'], patch_artist=True)
+	for box in bp['boxes']:
+	    # change outline color
+	    box.set( color='#7570b3', linewidth=2)
+	    # change fill color
+	    box.set( facecolor = '#1b9e77' )		
 	ax.set(title='Speed', xlabel='Keyboard', ylabel='WPM')
-	plt.xticks([1,2], ('Windows Eye Control', 'Tobii Windows Control'))
+	ax.set_xticklabels(['Windows Eye Control', 'Tobii Windows Control'])
 	# check: if plotted data is correct, blue line == mean?
+	fig.savefig('fig.png', bbox_inches='tight')
 
 def plotAccuracy():
 	plotSpeed()
