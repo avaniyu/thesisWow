@@ -102,7 +102,7 @@ def plotSpeed():
 							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
 							medianprops=dict(linewidth=0, linestyle=None))
 
-		ax.set(title=contrOfSubject.value+' speed during '+contrOfTask.value, ylabel='WPM')
+		ax.set(title=contrOfSubject.value+' speed during '+contrOfTask.value, ylabel='Entry Speed (wpm)')
 		plt.xlim(0,3)	
 		plt.ylim(-1,18)	
 		plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
@@ -127,14 +127,17 @@ def plotAccuracy():
 							meanprops=dict(markerfacecolor='white', markeredgecolor='white'),
 							medianprops=dict(linewidth=0, linestyle=None))
 
-		ax.set(title=contrOfSubject.value+' Accuracy during '+contrOfTask.value, ylabel='WPM')
+		ax.set(title=contrOfSubject.value+' Accuracy during '+contrOfTask.value, ylabel='Accuracy (total error rate)')
 		plt.xlim(0,3)	
 		plt.ylim(-0.05,1)	
 		plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
 		fig.savefig('plotAccuracy_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
-	pass
+	if ('Between' not in contrOfSubject.value) and ('All' not in contrOfSubject.value):
+		for i in range(amountKeyboard*amountTask*amountSubject):
+			if len(perSubjTaskWpm[i]):
+				print('elements here.')
 
 if __name__ == "__main__":
 	sentences = []	
