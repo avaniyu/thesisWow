@@ -70,12 +70,16 @@ def extractSentences():
 					perSubjTaskTotErrRate[item.subject*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.totErrRate)
 					perSubjTaskSentenceNo[item.subject*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.sentenceNo)
 
-	if 'Speed' in contrMetric.value:
+	if 'Speed' == contrMetric.value:
 		plotSpeed()
-	elif 'Accuracy' in contrMetric.value:
+	elif 'Accuracy' == contrMetric.value:
 		plotAccuracy()
+	elif 'Speed & Accuracy' == contrMetric.value:
+		plotSpeedNAccuracy()
 	elif 'Learning' in contrMetric.value:
 		plotLearningCurve()
+	elif 'Speed vs. Accuracy' == contrMetric.value:
+		plotSpeedVsAccuracy()
 
 def clearCache():
 	clear_output(wait=True)
@@ -130,12 +134,13 @@ def plotAccuracy():
 		ax.set(title=contrOfSubject.value+' Accuracy during '+contrOfTask.value, ylabel='Accuracy (total error rate)')
 		plt.xlim(0,3)	
 		plt.ylim(-0.05,1)	
+		ax.legend(loc='upper center', ncol=2, shadow=True)
 		plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
 		fig.savefig('plotAccuracy_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
 	if ('Transcription' in contrOfTask.value):
-		yWpm_MS, yWpm_Tobii, xSentenceNo_MS, xSentenceNo_Tobii, yWpmMean_MS, yWpmMean_Tobii = ([] for i in range(6))
+		yWpm_MS, yWpm_Tobii, xSentenceNo_MS, xSentenceNo_Tobii, yWpmMean_MS, yWpmMean_Tobii, zTotErrRate_MS, zTotErrRate_Tobii= ([] for i in range(8))
 		try:
 			if int(contrOfSubject.value[1]) in [1,2,3]:
 				indexSubj = [(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard]
@@ -145,48 +150,58 @@ def plotLearningCurve():
 				for i in range(amountSubject):
 					indexSubj.append(i*amountTask*amountKeyboard)
 
-		tempVariables = [yWpm_MS, yWpm_Tobii, xSentenceNo_MS, xSentenceNo_Tobii, yWpmMean_MS, yWpmMean_Tobii]
+		plotVariables = [yWpm_MS, yWpm_Tobii, xSentenceNo_MS, xSentenceNo_Tobii, zTotErrRate_MS, zTotErrRate_Tobii]
 		meanBuffer_MS, meanBuffer_Tobii = ([] for i in range(2))
 		for j in range(len(indexSubj)):
-			for k in range(len(tempVariables)):
-				tempVariables[k].append([])
+			for k in range(len(plotVariables)):
+				plotVariables[k].append([])
 			for i in range(len(perSubjTaskSentenceNo[indexSubj[j]])):
 				xSentenceNo_MS[j].append(perSubjTaskSentenceNo[indexSubj[j]][i])
 				yWpm_MS[j].append(perSubjTaskWpm[indexSubj[j]][i])
-				meanBuffer_MS.append(perSubjTaskWpm[indexSubj[j]][i])
+				zTotErrRate_MS[j].append(perSubjTaskTotErrRate[indexSubj[j]][i])
 			for i in range(len(perSubjTaskSentenceNo[indexSubj[j]+1])):
 				xSentenceNo_Tobii[j].append(perSubjTaskSentenceNo[indexSubj[j]+1][i])
 				yWpm_Tobii[j].append(perSubjTaskWpm[indexSubj[j]+1][i])
-				meanBuffer_Tobii.append(perSubjTaskWpm[indexSubj[j]+1][i])
-			# average across subjects
-			yWpmMean_MS[j].append(np.mean(meanBuffer_MS))
-			yWpmMean_Tobii[j].append(np.mean(meanBuffer_Tobii))
-
-		# bug: mean value
+				zTotErrRate_Tobii.append(perSubjTaskTotErrRate[indexSubj[j]][i])	
 
 	fig, ax = plt.subplots()
-	for i in range(len(indexSubj)):
-		plt.scatter(xSentenceNo_MS[i],yWpm_MS[i],color=color[0])
-		plt.scatter(xSentenceNo_Tobii[i],yWpm_Tobii[i],color=color[1])
+	if len(indexSubj) == 1:
+		plt.plot(xSentenceNo_MS[0],yWpm_MS[0],'o-',color=color[0],alpha=0.3,label=labelKeybd[0])		
+		plt.plot(xSentenceNo_Tobii[0],yWpm_Tobii[0],'o-',color=color[1],alpha=0.3,label=labelKeybd[1])
 
-	if len(indexSubj)==1:
-		plt.plot(xSentenceNo_MS[0],yWpm_MS[0],color=color[0],label=labelKeybd[0])
-		plt.plot(xSentenceNo_Tobii[0],yWpm_Tobii[0],color=color[1],label=labelKeybd[1])
-	else:
-		pass
-		plt.plot([i for i in range(len(yWpmMean_MS))], yWpmMean_MS, color=color[0])
-		plt.plot([i for i in range(len(yWpmMean_Tobii))], yWpmMean_Tobii, color=color[1])
-		# plot mean line
+	elif len(indexSubj) > 1:
+		for i in range(10):
+			for j in range(len(indexSubj)):
+				try:
+					meanBuffer_MS.append(yWpm_MS[j][i])
+					meanBuffer_Tobii.append(yWpm_Tobii[j][i])
+				except IndexError:
+					pass		
+			try:
+				yWpmMean_MS.append(np.mean(meanBuffer_MS))
+				yWpmMean_Tobii.append(np.mean(meanBuffer_Tobii))
+				del meanBuffer_MS[:]
+				del meanBuffer_Tobii[:]
+			except IndexError:
+				pass
+		plt.plot([i for i in range(4,len(yWpmMean_MS)+4)], yWpmMean_MS, color=color[0], label=labelKeybd[0])
+		plt.plot([i for i in range(4,len(yWpmMean_Tobii)+4)], yWpmMean_Tobii, color=color[1], label=labelKeybd[1])
+	for i in range(len(indexSubj)):
+		plt.scatter(xSentenceNo_MS[i],yWpm_MS[i],c=zTotErrRate_MS[i])
+
 
 	ax.set(title='Learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
 	plt.set_cmap('gray')	# high error rate deepen the scatter color
-	ax.legend(loc='upper center', ncol=2)
+	ax.legend(loc='upper center', ncol=2, shadow=True)
 	plt.ylim(0, 22)
+	fig.savefig('plotLearningCurve_'+contrOfSubject.value+'.png', bbox_inches='tight')
 
 def plotSpeedNAccuracy():
 	pass
 
-					
+def plotSpeedVsAccuracy():
+	pass
+
 if __name__ == "__main__":
 	sentences = []	
 	amountSubject = 3
@@ -206,7 +221,7 @@ if __name__ == "__main__":
 
 	# define UI controls
 	contrMetric = widgets.ToggleButtons(
-		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve'],
+		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed vs. Accuracy'],
 		description = 'Metric: ',
 		value = 'Speed',
 		disabled = False
