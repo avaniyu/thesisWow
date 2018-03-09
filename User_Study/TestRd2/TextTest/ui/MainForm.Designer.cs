@@ -75,13 +75,14 @@
             this.rtxPresented.DetectUrls = false;
             this.rtxPresented.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxPresented.Enabled = false;
-            this.rtxPresented.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxPresented.Location = new System.Drawing.Point(1, 44);
+            this.rtxPresented.Font = new System.Drawing.Font("Courier New", 27F);
+            this.rtxPresented.Location = new System.Drawing.Point(1, 36);
+            this.rtxPresented.MinimumSize = new System.Drawing.Size(1900, 100);
             this.rtxPresented.Multiline = false;
             this.rtxPresented.Name = "rtxPresented";
             this.rtxPresented.ReadOnly = true;
             this.rtxPresented.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxPresented.Size = new System.Drawing.Size(1900, 60);
+            this.rtxPresented.Size = new System.Drawing.Size(1900, 100);
             this.rtxPresented.TabIndex = 2;
             this.rtxPresented.TabStop = false;
             this.rtxPresented.Text = "";
@@ -131,12 +132,13 @@
             this.rtxTranscribed.DetectUrls = false;
             this.rtxTranscribed.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxTranscribed.Enabled = false;
-            this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxTranscribed.Location = new System.Drawing.Point(1, 104);
+            this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 27F);
+            this.rtxTranscribed.Location = new System.Drawing.Point(1, 136);
+            this.rtxTranscribed.MinimumSize = new System.Drawing.Size(1900, 100);
             this.rtxTranscribed.Multiline = false;
             this.rtxTranscribed.Name = "rtxTranscribed";
             this.rtxTranscribed.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxTranscribed.Size = new System.Drawing.Size(1900, 60);
+            this.rtxTranscribed.Size = new System.Drawing.Size(1900, 100);
             this.rtxTranscribed.TabIndex = 0;
             this.rtxTranscribed.Text = "";
             this.rtxTranscribed.WordWrap = false;
@@ -151,7 +153,7 @@
             this.cmdNext.Enabled = false;
             this.cmdNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmdNext.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdNext.Location = new System.Drawing.Point(1, 164);
+            this.cmdNext.Location = new System.Drawing.Point(1, 236);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(1900, 40);
             this.cmdNext.TabIndex = 1;
@@ -163,7 +165,7 @@
             // prgLogs
             // 
             this.prgLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.prgLogs.Location = new System.Drawing.Point(1, 204);
+            this.prgLogs.Location = new System.Drawing.Point(1, 276);
             this.prgLogs.Name = "prgLogs";
             this.prgLogs.Size = new System.Drawing.Size(1900, 16);
             this.prgLogs.Step = 1;
@@ -395,7 +397,7 @@
             this.prgMemorize.Dock = System.Windows.Forms.DockStyle.Top;
             this.prgMemorize.Location = new System.Drawing.Point(1, 24);
             this.prgMemorize.Name = "prgMemorize";
-            this.prgMemorize.Size = new System.Drawing.Size(1900, 20);
+            this.prgMemorize.Size = new System.Drawing.Size(1900, 12);
             this.prgMemorize.TabIndex = 6;
             // 
             // MainForm

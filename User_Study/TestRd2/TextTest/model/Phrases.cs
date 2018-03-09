@@ -17,7 +17,11 @@ namespace TextTest
 		public Phrases() 
             : this(String.Empty)
 		{
-			// this version loads the embedded resource "phrases.txt"
+            // this version loads the embedded resource "phrases.txt"
+            // change to load from corpus
+            _rand = new Random();
+            _lastIdx = -1;
+            this.Load("corpus.txt");
 		}
 
         /// <summary>

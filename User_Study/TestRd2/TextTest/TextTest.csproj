@@ -116,6 +116,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ui\ParticipantNumbering.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ui\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,7 +167,11 @@
     <EmbeddedResource Include="rsc\help.txt" />
     <EmbeddedResource Include="rsc\bibliography.txt" />
     <EmbeddedResource Include="rsc\example.xml" />
+    <Content Include="rsc\Corpus.txt" />
     <Content Include="TextTest.html" />
+    <EmbeddedResource Include="ui\ParticipantNumbering.resx">
+      <DependentUpon>ParticipantNumbering.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ui\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>

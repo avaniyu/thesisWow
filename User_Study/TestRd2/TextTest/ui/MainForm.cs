@@ -48,6 +48,13 @@ namespace TextTest
 
             _fileNoExt = String.Empty;
             _bkspSelLength = 0;
+
+            // read participant numbering
+            //using (ParticipantNumbering participantNumbering = new ParticipantNumbering())
+            //{
+            //    someControlOnThisForm.Text = participantNumbering.ParticipantNumber;
+            //}
+
         }
 
         /// <summary>
@@ -665,6 +672,8 @@ namespace TextTest
 
                 // set up the next phrase
                 string presented = _phrases.GetRandomPhrase(_o.NoCapitals); //derandomize here
+
+
                 rtxPresented.Text = presented;
                 rtxPresented.Visible = true;
                 rtxTranscribed.Visible = false;

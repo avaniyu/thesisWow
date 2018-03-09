@@ -1,7 +1,6 @@
 transcription task
 --------------------
 transcription corpus - paragraph, short & easy-to-remember sentence
-display sentence --> guide to remember --> hide sentence & transcription
 derandomize sentence display, auto-loading corpus
 ===========================================================================
 others
