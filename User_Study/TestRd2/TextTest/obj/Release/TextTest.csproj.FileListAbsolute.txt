@@ -1,0 +1,12 @@
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\bin\Release\TextTest.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\bin\Release\TextTest.exe
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\bin\Release\WobbrockLib.pdb
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.csprojResolveAssemblyReference.cache
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.AboutForm.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.OutputForm.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.MainForm.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.OptionsForm.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.Properties.Resources.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.ResultsForm.resources
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.csproj.GenerateResource.Cache
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Release\TextTest.exe

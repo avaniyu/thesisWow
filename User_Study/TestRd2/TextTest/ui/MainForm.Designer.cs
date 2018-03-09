@@ -62,6 +62,7 @@
             this.mniSampleXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mniSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mniAboutApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.prgMemorize = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pnlLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTask)).BeginInit();
@@ -75,12 +76,12 @@
             this.rtxPresented.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxPresented.Enabled = false;
             this.rtxPresented.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxPresented.Location = new System.Drawing.Point(1, 24);
+            this.rtxPresented.Location = new System.Drawing.Point(1, 44);
             this.rtxPresented.Multiline = false;
             this.rtxPresented.Name = "rtxPresented";
             this.rtxPresented.ReadOnly = true;
             this.rtxPresented.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxPresented.Size = new System.Drawing.Size(882, 60);
+            this.rtxPresented.Size = new System.Drawing.Size(1900, 60);
             this.rtxPresented.TabIndex = 2;
             this.rtxPresented.TabStop = false;
             this.rtxPresented.Text = "";
@@ -91,14 +92,14 @@
             // staStatus
             // 
             this.staStatus.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.staStatus.Location = new System.Drawing.Point(1, 219);
+            this.staStatus.Location = new System.Drawing.Point(1, 1077);
             this.staStatus.Name = "staStatus";
             this.staStatus.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.pnlLog,
             this.pnlTest,
             this.pnlTask});
             this.staStatus.ShowPanels = true;
-            this.staStatus.Size = new System.Drawing.Size(882, 42);
+            this.staStatus.Size = new System.Drawing.Size(1900, 42);
             this.staStatus.TabIndex = 3;
             // 
             // pnlLog
@@ -107,7 +108,7 @@
             this.pnlLog.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlLog.Icon")));
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Text = "no log";
-            this.pnlLog.Width = 288;
+            this.pnlLog.Width = 627;
             // 
             // pnlTest
             // 
@@ -115,7 +116,7 @@
             this.pnlTest.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlTest.Icon")));
             this.pnlTest.Name = "pnlTest";
             this.pnlTest.Text = "Practice";
-            this.pnlTest.Width = 284;
+            this.pnlTest.Width = 627;
             // 
             // pnlTask
             // 
@@ -123,7 +124,7 @@
             this.pnlTask.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlTask.Icon")));
             this.pnlTask.Name = "pnlTask";
             this.pnlTask.Text = "0";
-            this.pnlTask.Width = 284;
+            this.pnlTask.Width = 627;
             // 
             // rtxTranscribed
             // 
@@ -131,11 +132,11 @@
             this.rtxTranscribed.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxTranscribed.Enabled = false;
             this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxTranscribed.Location = new System.Drawing.Point(1, 84);
+            this.rtxTranscribed.Location = new System.Drawing.Point(1, 104);
             this.rtxTranscribed.Multiline = false;
             this.rtxTranscribed.Name = "rtxTranscribed";
             this.rtxTranscribed.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxTranscribed.Size = new System.Drawing.Size(882, 60);
+            this.rtxTranscribed.Size = new System.Drawing.Size(1900, 60);
             this.rtxTranscribed.TabIndex = 0;
             this.rtxTranscribed.Text = "";
             this.rtxTranscribed.WordWrap = false;
@@ -150,9 +151,9 @@
             this.cmdNext.Enabled = false;
             this.cmdNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmdNext.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdNext.Location = new System.Drawing.Point(1, 144);
+            this.cmdNext.Location = new System.Drawing.Point(1, 164);
             this.cmdNext.Name = "cmdNext";
-            this.cmdNext.Size = new System.Drawing.Size(882, 40);
+            this.cmdNext.Size = new System.Drawing.Size(1900, 40);
             this.cmdNext.TabIndex = 1;
             this.cmdNext.TabStop = false;
             this.cmdNext.Text = "Next";
@@ -162,9 +163,9 @@
             // prgLogs
             // 
             this.prgLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.prgLogs.Location = new System.Drawing.Point(1, 184);
+            this.prgLogs.Location = new System.Drawing.Point(1, 204);
             this.prgLogs.Name = "prgLogs";
-            this.prgLogs.Size = new System.Drawing.Size(882, 16);
+            this.prgLogs.Size = new System.Drawing.Size(1900, 16);
             this.prgLogs.Step = 1;
             this.prgLogs.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.prgLogs.TabIndex = 4;
@@ -181,7 +182,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(1, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(882, 24);
+            this.mnuMain.Size = new System.Drawing.Size(1900, 24);
             this.mnuMain.TabIndex = 5;
             this.mnuMain.Text = "mnuMain";
             // 
@@ -216,12 +217,12 @@
             // mniSeparator1
             // 
             this.mniSeparator1.Name = "mniSeparator1";
-            this.mniSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.mniSeparator1.Size = new System.Drawing.Size(195, 6);
             // 
             // mniExitApp
             // 
             this.mniExitApp.Name = "mniExitApp";
-            this.mniExitApp.Size = new System.Drawing.Size(155, 22);
+            this.mniExitApp.Size = new System.Drawing.Size(198, 22);
             this.mniExitApp.Text = "E&xit";
             this.mniExitApp.Click += new System.EventHandler(this.mniExitApp_Click);
             // 
@@ -311,7 +312,7 @@
             // 
             this.mniFontFormat.Name = "mniFontFormat";
             this.mniFontFormat.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.mniFontFormat.Size = new System.Drawing.Size(152, 22);
+            this.mniFontFormat.Size = new System.Drawing.Size(147, 22);
             this.mniFontFormat.Text = "&Font...";
             this.mniFontFormat.Click += new System.EventHandler(this.mniFontFormat_Click);
             // 
@@ -389,23 +390,33 @@
             this.mniAboutApp.Text = "&About TextTest";
             this.mniAboutApp.Click += new System.EventHandler(this.mniAboutApp_Click);
             // 
+            // prgMemorize
+            // 
+            this.prgMemorize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.prgMemorize.Location = new System.Drawing.Point(1, 24);
+            this.prgMemorize.Name = "prgMemorize";
+            this.prgMemorize.Size = new System.Drawing.Size(1900, 20);
+            this.prgMemorize.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(17, 31);
-            this.ClientSize = new System.Drawing.Size(884, 261);
+            this.ClientSize = new System.Drawing.Size(1902, 1119);
             this.Controls.Add(this.prgLogs);
             this.Controls.Add(this.cmdNext);
             this.Controls.Add(this.rtxTranscribed);
-            this.Controls.Add(this.staStatus);
             this.Controls.Add(this.rtxPresented);
+            this.Controls.Add(this.prgMemorize);
+            this.Controls.Add(this.staStatus);
             this.Controls.Add(this.mnuMain);
             this.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 300);
+            this.MinimumSize = new System.Drawing.Size(1918, 1158);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TextTest";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlLog)).EndInit();
@@ -453,5 +464,6 @@
         private System.Windows.Forms.ToolStripMenuItem mniTestOptions;
         private System.Windows.Forms.ToolStripSeparator mniSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mniFontFormat;
+        private System.Windows.Forms.ProgressBar prgMemorize;
     }
 }
