@@ -623,6 +623,8 @@ namespace TextTest
         /// </summary>
         /// <param name="sender">The sender of this event.</param>
         /// <param name="e">The arguments for this event.</param>
+        Timer timer = new Timer();
+        int timer_interval = 3; // 30x100 = 3000 ms to display presented text
         private void mniNextPhrase_Click(object sender, EventArgs e)
         {
             if (_o.AutoStop && (_td != null && _td.TrialNo == _o.StopAfter))
@@ -660,7 +662,7 @@ namespace TextTest
                 }
 
                 // set up the next phrase
-                string presented = _phrases.GetRandomPhrase(_o.NoCapitals);
+                string presented = _phrases.GetRandomPhrase(_o.NoCapitals); //derandomize here
                 rtxPresented.Text = presented;
                 rtxTranscribed.Clear();
                 rtxTranscribed.Enabled = true;
@@ -680,9 +682,32 @@ namespace TextTest
                 {
                     _listener.Send(presented);
                 }
+
+                timer.Interval = timer_interval;
+                timer.Tick += new EventHandler(timer_Tick);
+                prgMemorize.Maximum = timer_interval * 100;
+                timer.Start();
             }
         }
 
+        /// <summary>
+        /// hide presented text to force participant type from memory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_Tick(object sender, System.EventArgs e)
+        {
+            if (prgMemorize.Value != timer_interval * 100)
+            {
+                prgMemorize.Value++;
+            }else
+            {
+                rtxPresented.Clear();
+                timer.Stop();
+                prgMemorize.Value = 0;
+            }
+        }
+        
         /// <summary>
         /// Shows the options for this application. The OptionsForm defines what
         /// options are available, and exports them in a public structure.
@@ -1097,8 +1122,8 @@ namespace TextTest
             dlg.ShowDialog(this);
         }
 
+
         #endregion
 
-        
     }
 }
