@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+	<!--
+		TextTest.html demonstrates how to use the TextTest C# application
+		for text entry evaluation from a web page. This web page acts as
+		a client, sending information to TextTest, acting as a server,
+		over the WebSockets protocol. The TextTest C# application is
+		responsible for generated presented phrases, receiving inputted
+		characters, and writing time-stamped log files. This web page
+		merely shows the presented phrases and passes through the inputted
+		keystrokes to TextTest. It thereby demonstrates how to use TextTest
+		from the web.
+
+		Procedure: Run TextTest.exe and start it listening over WebSockets.
+		Then click "Connect" on this web page and begin the test from within
+		TextTest.exe. Presented phrases should be shown on this page. The user
+		can type "Enter" at the end of each phrase or click "Next" to advance
+		to the next phrase. This page requires TextTest version 2.3.1 or later.
+
+		Jacob O. Wobbrock, Ph.D.
+		http://faculty.uw.edu/wobbrock
+		wobbrock@uw.edu
+		July 12, 2016
+	-->
+	<head>
+		<style>
+			input.text { width: 520px; font-size: 18pt; font-family: monospace; }
+		</style>
+        <script type="text/javascript">
+            var _ws = null;
+
+			/**
+			 * Function: openSocket
+			 * Argument: ip   - the IP address to which to connect to TextTest
+			 *			 port - the port number to which to connect to TextTest
+			 *
+			 * Opens a new WebSocket when the "Connect" button is clicked. Also defined here
+			 * are four event handlers for the socket. Note that if the WebSocket is already
+			 * defined and connected, then this function is a no-op. That way, multiple
+			 * clicks on the "Connect" button do not cause this client to try to create
+			 * additional connections every time.
+			 */
+            function openSocket(ip, port)
+			{
+				document.getElementById('txtTranscribed').focus(); // put cursor into transcribed textbox
+				if (_ws != null)
+				{
+					if (_ws.readyState == 1) {
+						return; // already open - no-op this fn
+					} else {
+						_ws.close(); // not open so close and create a new one
+						_ws = null;
+					}
+				}
+
+				_ws = new WebSocket("ws://" + ip + ":" + port); // create a new WebSocket with the given IP and port
+				if (_ws != null) // if successful, define events
+				{
+					/**
+					 * Event:    onopen
+					 * See also: http://www.tutorialspoint.com/html5/html5_websocket.htm
+					 *
+					 * Event handler for when the socket is successfully opened and connected to
+					 * a listening server, in this case, the TextTest C# application. A console
+					 * message is written (Chrome: Ctrl+Shift+J). Also updates the on-page text label
+					 * for the connection status.
+			 		 */
+				    _ws.onopen = function()
+				    {
+				        console.log("Connection open.");
+				        document.getElementById('lblStatus').innerHTML = "Status: Connected";
+				    };
+
+				    /**
+				     * Event:    onmessage
+				     * Argument: event
+				     * See also: http://www.tutorialspoint.com/html5/html5_websocket.htm
+				     *
+				     * Event handler for when a message is received on this WebSocket. The data
+				     * is logged to the consonle (Chrome: Ctrl+Shift+J). TextTest is capable of
+				     * echoing single characters back to the sending client, so we ignore those.
+				     * But strings of length 2 or more are presented strings for us to show. If
+				     * a single character of '\0' is received, then this is a signal for the
+				     * end of a test in TextTest, so we clear the presented phrase.
+				     */
+				    _ws.onmessage = function(event)
+				    {
+				        console.log("Received: " + event.data);
+				        if (event.data.length > 1) // not just a char echo from TextTest
+				        {
+				        	document.getElementById('txtPresented').value = event.data; // show the presented phrase
+				        }
+				        else if (event.data == '\0') // if char zero is received, end test
+				        {
+				        	document.getElementById('txtPresented').value = ""; // test is over, so clear the presented phrase
+				        }
+				    };
+
+				    /**
+				     * Event:    onerror
+				     * See also: http://www.tutorialspoint.com/html5/html5_websocket.htm
+				     *
+				     * Event handler for when a connection error occurs. We log the error to the
+				     * console (Chrome: Ctrl+Shift+J) and update the status label to indicate that
+				     * an error occurred. Note that the console will show more error information
+				     * than this event provides.
+				     */
+				    _ws.onerror = function()
+				    {
+				        console.log("Error.");
+				        document.getElementById('lblStatus').innerHTML = "Status: Error";
+				    };
+
+				    /**
+				     * Event:    onclose
+				     * See also: http://www.tutorialspoint.com/html5/html5_websocket.htm
+				     *
+				     * Event handler for when the WebSockets connection becomes closed. We log the
+				     * event to the console (Chrome: Ctrl+Shift+J) and update the status label on
+				     * the page.
+				     */
+				    _ws.onclose = function()
+				    {
+				        console.log("Connection closed.");
+				        document.getElementById('lblStatus').innerHTML = "Status: Disconnected";
+				    };
+				}
+			}
+
+			/**
+			 * Function: closeSocket
+			 *
+			 * Closes the WebSocket to which this client is connected. Currently, this function
+			 * is not used but is included for completeness. For example, if an explicit
+			 * "Disconnect" button were added to the page, this function would be useful.
+			 */
+			function closeSocket()
+			{
+				if (_ws != null)
+				{
+					_ws.close();
+					_ws = null;
+				}
+			}
+
+			/**
+			 * Function: sendKeyDown
+			 * Argument: e - keydown event
+			 * See also: http://www.w3schools.com/jsref/dom_obj_event.asp
+			 * See also: http://en.cppreference.com/w/cpp/language/escape
+			 *
+			 * Handles the sending of Backspace (8) and Escape (27). These are keys that do
+			 * not trigger the keypress event. Escape is for ending a TextTest study.
+			 * Note that '\b' and '\x1B' are bytes sent directly, because e.key has the value
+			 * of "Backspace" and "Escape", and e.which sends strings "8" and "27", neither of
+			 * which TextTest wants.
+			 */
+			function sendKeyDown(e)
+			{
+				if (_ws != null && _ws.readyState == 1)
+				{
+					if (e.which == 8) // ascii backspace (8)
+						_ws.send('\b');
+					else if (e.which == 27) // ascii esc (27)
+						_ws.send('\x1B'); // hex 27
+				}
+			}
+
+			/**
+			 * Function: sendKeyPress
+			 * Argument: e - keypress event
+			 * See also: http://www.w3schools.com/jsref/dom_obj_event.asp
+			 *
+			 * Handles the sending of Enter (13) or other ASCII character values from space (32)
+			 * upward to the end of the ASCII table (255). The character is sent as a key,
+			 * which is received by TextTest as a string.
+			 */
+			function sendKeyPress(e)
+			{
+				if (_ws != null && _ws.readyState == 1)
+				{
+					if (e.which == 13) // Enter
+						nextPhrase();
+					else if (32 <= e.which && e.which <= 255) // ascii space (32) or other char
+						_ws.send(e.key);
+				}
+			}
+
+			/**
+			 * Function: nextPhrase
+			 *
+			 * Advances to the next phrase. Places the transcribed phrase in a "div" section
+			 * at the bottom of the page, clears the transcribed text field, and sends the
+			 * newline (Enter) key to TextTest, which advances to the next phrase. The
+			 * next phrase will come in as a message event. Note that the value of '\n' is sent
+			 * directly, as e.key has the value of "Enter". Also note that clicking the "Next"
+			 * button will have no effect if the transcribed phrase is empty. This is a behavior
+			 * of TextTest to prevent accidental advances to the next phrase.
+			 */
+			function nextPhrase()
+			{
+				document.getElementById('txtTranscribed').focus(); // put cursor into transcribed textbox
+				document.getElementById('divTranscribed').innerHTML += (document.getElementById('txtTranscribed').value + "<br />");
+				document.getElementById('txtTranscribed').value = ""; // clear transcribed text field
+
+				if (_ws != null && _ws.readyState == 1)
+					_ws.send('\n'); // Enter
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>TextTest Web Client</h1>
+
+		<table border="0" width="650">
+			<tr><!-- WebSockets connection information -->
+				<td>Send on Port:</td>
+				<td><input type="text" id="txtPort" value="9080" /></td>
+				<td>IP Address:</td>
+				<td><input type="text" id="txtIP" value="127.0.0.1" /></td>
+				<td><input type="button" id="cmdConnect" value="Connect" onClick="openSocket(document.getElementById('txtIP').value, document.getElementById('txtPort').value);" /></td>
+			</tr>
+			<tr align="right"><td id="lblStatus" colspan="5">Status: Disconnected</td></tr><!-- Connection status label -->
+		</table>
+
+		<p style="margin-top:4em" />
+
+		<table>
+			<tr>
+				<td>Presented Text:</td><!-- Text field for the presented phrase -->
+				<td><input type="text" id="txtPresented" class="text" disabled /></td>
+			</tr>
+			<tr>
+				<td>Transcribed Text:</td><!-- Text field for the transcribed phrase -->
+				<td><input type="text" id="txtTranscribed" class="text" onKeyDown="sendKeyDown(event);" onKeyPress="sendKeyPress(event);" /></td>
+			</tr>
+			<tr align="right"><!-- "Next" button to advance to the next phrase, or the user can hit "Enter" -->
+				<td colspan="2"><input type="button" id="cmdNext" value="Next" onClick="nextPhrase();" /></td>
+			</tr>
+		</table>
+
+		<div id="divTranscribed">
+			<!-- Show entered phrases in a running log here -->
+		</div>
+	</body>
+</html>

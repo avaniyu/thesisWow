@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TextTest trials="2" ticks="636134613419756052">
+  <Trial number="1" testing="false" entries="33">
+    <Presented>sing the gospel and the blues</Presented>
+    <Entry char="s" ticks="636134613546664806" />
+    <Entry char="i" ticks="636134613548584513" />
+    <Entry char="g" ticks="636134613554846887" />
+    <Entry char="n" ticks="636134613555617029" />
+    <Entry char=" " ticks="636134613559668526" />
+    <Entry char="t" ticks="636134613564960841" />
+    <Entry char="h" ticks="636134613566373993" />
+    <Entry char="e" ticks="636134613568184048" />
+    <Entry char=" " ticks="636134613570164050" />
+    <Entry char="g" ticks="636134613582068089" />
+    <Entry char="o" ticks="636134613583008074" />
+    <Entry char="s" ticks="636134613583708090" />
+    <Entry char="p" ticks="636134613584660380" />
+    <Entry char="e" ticks="636134613585672312" />
+    <Entry char="n" ticks="636134613586582358" />
+    <Entry char="&#x8;" ticks="636134613594100768" />
+    <Entry char="l" ticks="636134613595630787" />
+    <Entry char=" " ticks="636134613597288876" />
+    <Entry char="a" ticks="636134613600078938" />
+    <Entry char="n" ticks="636134613601178950" />
+    <Entry char="d" ticks="636134613602049033" />
+    <Entry char=" " ticks="636134613602851297" />
+    <Entry char="t" ticks="636134613603921467" />
+    <Entry char="h" ticks="636134613604621345" />
+    <Entry char="e" ticks="636134613605345637" />
+    <Entry char=" " ticks="636134613605825537" />
+    <Entry char="b" ticks="636134613608925624" />
+    <Entry char="l" ticks="636134613609965654" />
+    <Entry char="u" ticks="636134613610975694" />
+    <Entry char="s" ticks="636134613611826311" />
+    <Entry char="&#x8;" ticks="636134613616775720" />
+    <Entry char="e" ticks="636134613617535812" />
+    <Entry char="s" ticks="636134613618445787" />
+    <Transcribed>sign the gospel and the blues</Transcribed>
+  </Trial>
+  <Trial number="2" testing="true" entries="25">
+    <Presented>I like to play tennis</Presented>
+    <Entry char="I" ticks="636134613646649597" />
+    <Entry char=" " ticks="636134613648689608" />
+    <Entry char="l" ticks="636134613658607379" />
+    <Entry char="i" ticks="636134613660097409" />
+    <Entry char="k" ticks="636134613661998993" />
+    <Entry char="e" ticks="636134613663159113" />
+    <Entry char=" " ticks="636134613668959674" />
+    <Entry char="t" ticks="636134613670669726" />
+    <Entry char="o" ticks="636134613675841206" />
+    <Entry char=" " ticks="636134613684438644" />
+    <Entry char="p" ticks="636134613684498707" />
+    <Entry char="l" ticks="636134613685828630" />
+    <Entry char="a" ticks="636134613686812265" />
+    <Entry char="y" ticks="636134613687775024" />
+    <Entry char=" " ticks="636134613698734873" />
+    <Entry char="t" ticks="636134613699184882" />
+    <Entry char="n" ticks="636134613700665406" />
+    <Entry char="e" ticks="636134613703745170" />
+    <Entry char="&#x8;" ticks="636134613709377240" />
+    <Entry char="&#x8;" ticks="636134613710857546" />
+    <Entry char="e" ticks="636134613711248688" />
+    <Entry char="n" ticks="636134613712350244" />
+    <Entry char="n" ticks="636134613715835668" />
+    <Entry char="i" ticks="636134613717090560" />
+    <Entry char="s" ticks="636134613717800550" />
+    <Transcribed>I like to play tennis</Transcribed>
+  </Trial>
+</TextTest>
