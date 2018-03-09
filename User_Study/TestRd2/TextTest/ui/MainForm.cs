@@ -624,7 +624,7 @@ namespace TextTest
         /// <param name="sender">The sender of this event.</param>
         /// <param name="e">The arguments for this event.</param>
         Timer timer = new Timer();
-        int timer_interval = 3; // 30x100 = 3000 ms to display presented text
+        int timer_interval = 6; // 30x100 = 3000 ms to display presented text
         private void mniNextPhrase_Click(object sender, EventArgs e)
         {
             if (_o.AutoStop && (_td != null && _td.TrialNo == _o.StopAfter))
@@ -644,8 +644,10 @@ namespace TextTest
                 if (_td == null) // Start (not Next) was clicked for first trial
                 {
                     cmdNext.Text = "Next";
+                    rtxPresented.Visible = true;
                     rtxPresented.Enabled = true;
-                    rtxTranscribed.Enabled = true;
+                    rtxTranscribed.Visible = false;
+                    cmdNext.Enabled = false;
                 }
                 else // submit the end of the previous trial
                 {
@@ -664,9 +666,10 @@ namespace TextTest
                 // set up the next phrase
                 string presented = _phrases.GetRandomPhrase(_o.NoCapitals); //derandomize here
                 rtxPresented.Text = presented;
+                rtxPresented.Visible = true;
+                rtxTranscribed.Visible = false;
                 rtxTranscribed.Clear();
-                rtxTranscribed.Enabled = true;
-                rtxTranscribed.Focus();
+                cmdNext.Enabled = false;
 
                 // create the new trial data
                 _td = new TrialData(_td == null ? 1 : _td.TrialNo + 1, presented);
@@ -702,9 +705,13 @@ namespace TextTest
                 prgMemorize.Value++;
             }else
             {
-                rtxPresented.Clear();
-                timer.Stop();
                 prgMemorize.Value = 0;
+                rtxPresented.Visible = false;
+                rtxTranscribed.Visible = true;
+                rtxTranscribed.Enabled = true;
+                rtxTranscribed.Focus();
+                cmdNext.Enabled = true;
+                timer.Stop();
             }
         }
         
