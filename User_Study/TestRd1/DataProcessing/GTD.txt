@@ -1,21 +1,28 @@
-all plots:
+speed
+---------
+between task
+=====================================
+accuracy
 -------------
-title, axes, 
-check if all plotted data are correct
-===================================
-speed over sentences within task
+基本上和speed差不多
+=====================================
+learning curve
 -----------------------------------
-title
+只比较transcription task，其他task最好gray out
+plot出来
+dots alpha <== error rate
 check if data are correct
-subject #All warning, tobii line plot shuold be extended
+legend: all subjects
+win eye control在all subjects时右端长度不对
 ========================================
-speed comparison between tasks [1#]
-------------------------------
-standard variance: box plot
-check if data are correct
-contrSubject, keybd gray out
+speed and accuracy
+---------------------
+average speed & SD - box plot
 ============================================
-
+speed vs. accuracy
+--------------------
+transcription task: scatter plot x: speed, y: accuracy 
+=============================================
 any plot missing?
 self-comb
 learn from Paivi paper on visualization
