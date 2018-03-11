@@ -60,7 +60,7 @@ def extractSentences():
 	for item in sentences:
 		if item.testing == 1:
 			if ('1' in contrOfSubject.value and item.subject == 0) or ('2' in contrOfSubject.value and item.subject == 1) or ('3' in contrOfSubject.value and item.subject == 2):
-				if ('Transcription' in contrOfTask.value and item.task == 0) or ('Conversation' in contrOfTask.value and item.task == 1):
+				if ('Transcription' in contrOfTask.value and item.task == 0) or ('Conversation' in contrOfTask.value and item.task == 1) or ('Both' in contrOfTask.value) or ('Between' in contrOfTask.value):
 					perSubjTaskWpm[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.wpm)
 					perSubjTaskTotErrRate[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.totErrRate)
 					perSubjTaskSentenceNo[(int(contrOfSubject.value[1])-1)*amountTask*amountKeyboard+item.task*amountKeyboard + item.keyboard].append(item.sentenceNo)
@@ -92,62 +92,74 @@ def plotSpeed():
 	ax.set(title=contrOfSubject.value+' speed during '+contrOfTask.value, ylabel='Entry Speed (wpm)')
 	plt.ylim(-1,18)						
 	if 'Between' not in contrOfSubject.value:
-		if (('Conversation' in contrOfTask.value) and ('1' in contrOfSubject.value)) != 1:
-			yWpm_MS, yWpm_Tobii = ([] for k in range(2))
-			for i in range(len(perSubjTaskWpm)):
-				for j in range(len(perSubjTaskWpm[i])):
-					if i%amountKeyboard:
-						yWpm_MS.append(perSubjTaskWpm[i][j])
+		if 'Between' not in contrOfTask.value:
+			if (('Conversation' in contrOfTask.value) and ('1' in contrOfSubject.value)) != 1:
+				yWpm_MS, yWpm_Tobii = ([] for k in range(amountKeyboard))
+				for i in range(len(perSubjTaskWpm)):
+					for j in range(len(perSubjTaskWpm[i])):
+						if i%amountKeyboard:
+							yWpm_MS.append(perSubjTaskWpm[i][j])
+						else:
+							yWpm_Tobii.append(perSubjTaskWpm[i][j])
+				bp_MS = plt.boxplot(yWpm_MS, positions=[1], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+				bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[2], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+				plt.xlim(0,3)	
+				plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
+		# typing speed comparison between tasks
+		else:
+			yWpm_MS, yWpm_Tobii = ([[], []] for i in range(amountKeyboard))
+			for j in range(len(perSubjTaskWpm)):
+				if j%amountKeyboard == 0:
+					if j%(amountKeyboard*amountTask) < amountKeyboard:
+						for k in range(len(perSubjTaskWpm[j])):
+							yWpm_MS[0].append(perSubjTaskWpm[j][k])
 					else:
-						yWpm_Tobii.append(perSubjTaskWpm[i][j])
-			bp_MS = plt.boxplot(yWpm_MS, positions=[1], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[0]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-			bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[2], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[1]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-			plt.xlim(0,3)	
-			plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
+						for k in range(len(perSubjTaskWpm[j])):
+							yWpm_MS[1].append(perSubjTaskWpm[j][k])
+				else:
+					if j%(amountKeyboard*amountTask) <= amountKeyboard:
+						for k in range(len(perSubjTaskWpm[j])):
+							yWpm_Tobii[0].append(perSubjTaskWpm[j][k])
+					else:
+						for k in range(len(perSubjTaskWpm[j])):
+							yWpm_Tobii[1].append(perSubjTaskWpm[j][k])
+			bp_MS = plt.boxplot(yWpm_MS, positions=[1,1.5], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[2.5,3], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			plt.xlim(0.5,3.5)	
+			plt.xticks([1.25,2.75], ('Windows\nEye Control','Tobii\nWindows Control'))
 	# typing speed comparison between subjects
 	else:
-		yWpm_MS, yWpm_Tobii = ([[], [], []] for i in range(2))
-		for j in range(len(perSubjTaskWpm)):	
-			for k in range(len(perSubjTaskWpm[j])):
-				if j%amountKeyboard:
-					yWpm_MS[j//(amountKeyboard*amountTask)].append(perSubjTaskWpm[j][k])
-				else:
-					yWpm_Tobii[j//(amountKeyboard*amountTask)].append(perSubjTaskWpm[j][k])
-		bp_MS = plt.boxplot(yWpm_MS, positions=[1,2,3], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[0]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-		bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[4.5,5.5,6.5], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[1]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-		plt.xlim(0.5,7)
-		plt.xticks([1,2,3,4.5,5.5,6.5], ('','Windows\nEye Control','','','Tobii\nWindows Control',''))
+		if 'Between' not in contrOfTask.value:
+			yWpm_MS, yWpm_Tobii = ([[], [], []] for i in range(2))
+			for j in range(len(perSubjTaskWpm)):	
+				for k in range(len(perSubjTaskWpm[j])):
+					if j%amountKeyboard:
+						yWpm_MS[j//(amountKeyboard*amountTask)].append(perSubjTaskWpm[j][k])
+					else:
+						yWpm_Tobii[j//(amountKeyboard*amountTask)].append(perSubjTaskWpm[j][k])
+			bp_MS = plt.boxplot(yWpm_MS, positions=[1,2,3], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			bp_Tobii = plt.boxplot(yWpm_Tobii, positions=[4.5,5.5,6.5], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			plt.xlim(0.5,7)
+			plt.xticks([1,2,3,4.5,5.5,6.5], ('','Windows\nEye Control','','','Tobii\nWindows Control',''))
 	fig.savefig('plotSpeed_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
 
 def plotAccuracy():
-	if 'Transcription' in contrOfTask.value:		
-		fig, ax = plt.subplots()		
-		ax.set(title=contrOfSubject.value+' Accuracy during '+contrOfTask.value, ylabel='Accuracy (total error rate)')	
-		plt.ylim(-0.05,0.55)		
+	if 'Transcription' in contrOfTask.value:
+		fig, ax = plt.subplots()
+		ax.set(title=contrOfSubject.value+' accuracy during '+contrOfTask.value, ylabel='Accuracy (totErrRate)')
+		plt.ylim(-0.05,0.55)				
 		if 'Between' not in contrOfSubject.value:
-			yTotErrRate_MS, yTotErrRate_Tobii = ([] for k in range(2))
-			for i in range(len(perSubjTaskTotErrRate)):
-				for j in range(len(perSubjTaskTotErrRate[i])):
-					if i%amountKeyboard:
-						yTotErrRate_MS.append(perSubjTaskTotErrRate[i][j])
-					else:
-						yTotErrRate_Tobii.append(perSubjTaskTotErrRate[i][j])
-			bp_MS = plt.boxplot(yTotErrRate_MS, positions=[1], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[0]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-			bp_Tobii = plt.boxplot(yTotErrRate_Tobii, positions=[2], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[1]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-			plt.xlim(0,3)	
-			plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
+				yTotErrRate_MS, yTotErrRate_Tobii = ([] for k in range(amountKeyboard))
+				for i in range(len(perSubjTaskTotErrRate)):
+					for j in range(len(perSubjTaskTotErrRate[i])):
+						if i%amountKeyboard:
+							yTotErrRate_MS.append(perSubjTaskTotErrRate[i][j])
+						else:
+							yTotErrRate_Tobii.append(perSubjTaskTotErrRate[i][j])
+				bp_MS = plt.boxplot(yTotErrRate_MS, positions=[1], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+				bp_Tobii = plt.boxplot(yTotErrRate_Tobii, positions=[2], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+				plt.xlim(0,3)	
+				plt.xticks([1,2], ('Windows\nEye Control','Tobii\nWindows Control'))
 		# typing accuracy comparison between subjects
 		else:
 			yTotErrRate_MS, yTotErrRate_Tobii = ([[], [], []] for i in range(2))
@@ -157,12 +169,8 @@ def plotAccuracy():
 						yTotErrRate_MS[j//(amountKeyboard*amountTask)].append(perSubjTaskTotErrRate[j][k])
 					else:
 						yTotErrRate_Tobii[j//(amountKeyboard*amountTask)].append(perSubjTaskTotErrRate[j][k])
-			bp_MS = plt.boxplot(yTotErrRate_MS, positions=[1,2,3], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[0]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
-			bp_Tobii = plt.boxplot(yTotErrRate_Tobii, positions=[4.5,5.5,6.5], showfliers=True, patch_artist=True,
-								boxprops=dict(facecolor=color[1]),
-								medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			bp_MS = plt.boxplot(yTotErrRate_MS, positions=[1,2,3], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+			bp_Tobii = plt.boxplot(yTotErrRate_Tobii, positions=[4.5,5.5,6.5], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
 			plt.xlim(0.5,7)
 			plt.xticks([1,2,3,4.5,5.5,6.5], ('','Windows\nEye Control','','','Tobii\nWindows Control',''))
 		fig.savefig('plotAccuracy_'+contrOfSubject.value+'_'+contrOfTask.value+'.png', bbox_inches='tight')
@@ -241,7 +249,7 @@ if __name__ == "__main__":
 	labelKeybdMean = ['win10 Eye Control Mean', 'tobii Windows Control Mean']
 
 	perSubjTaskWpm, perSubjTaskTotErrRate, perSubjTaskSentenceNo = ([[] for i in range(amountSubject * amountTask * amountKeyboard)] for j in range(3))	
-	
+
 	# readSentences()
 	filenames = ['1Greta_s1Transcribe_winEyeControl', '1Greta_s2Transcribe_tobiiWinControl', '2Carlota_s1Transcribe_winEyeControl', '2Carlota_s2FreeConv_winEyeControl', '2Carlota_s3Transcribe_tobiiWinControl',
 				'2Carlota_s4FreeConv_tobiiWinControl', '3Barbara_s1Transcribe_tobiiWinControl', '3Barbara_s2FreeConv_tobiiWinControl', '3Barbara_s3Transcribe_winEyeControl', '3Barbara_s4FreeConv_winEyeControl']
@@ -264,7 +272,7 @@ if __name__ == "__main__":
 	contrOfSubject = widgets.Select(
 		options = ['All Subjects', '#1', '#2', '#3', 'Between Subjects'],
 		description = 'Of Subject: ',
-		value = '#2',
+		value = 'All Subjects',
 		disabled = False
 		)
 	display(contrMetric, widgets.HBox([contrOfTask, contrOfSubject]))
