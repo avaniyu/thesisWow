@@ -1,9 +1,4 @@
+latin square ordering keyboards by participant numbering - manual recording
 
-output file auto-naming
-
-
-latin square ordering keyboards by participant numbering
-concatinate call sessions
-
-
+output file auto-naming £¨from input participant number£©
 transcription corpus - paragraph, short & easy-to-remember sentence 

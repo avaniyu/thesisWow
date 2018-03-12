@@ -47,14 +47,14 @@ namespace TextTest
             _o = new OptionsForm.Options(); // default options
             _phrases = new Phrases();
 
-            _fileNoExt = String.Empty;
+            //_fileNoExt = String.Empty;
             _bkspSelLength = 0;
 
             // read participant numbering
-            //using (ParticipantNumbering participantNumbering = new ParticipantNumbering())
-            //{
-            //    someControlOnThisForm.Text = participantNumbering.ParticipantNumber;
-            //}
+            using (ParticipantNumbering participantNumbering = new ParticipantNumbering())
+            {
+                _fileNoExt = (participantNumbering.ParticipantNumber).ToString();
+            }
 
         }
 
