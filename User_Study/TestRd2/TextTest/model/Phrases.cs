@@ -123,6 +123,14 @@ namespace TextTest
 			return phrase;
 		}
 
+        public string GetOrderedPhrase(bool lowercase, int index)
+        {
+            string phrase = GetPhraseAt(index);
+            if (lowercase)
+                return phrase.ToLower();
+            return phrase;
+        }
+
         /// <summary>
         /// 
         /// </summary>

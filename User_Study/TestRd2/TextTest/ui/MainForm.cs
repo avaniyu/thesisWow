@@ -33,6 +33,7 @@ namespace TextTest
         #endregion
 
         #region Start & Stop
+        int indexPhrase = 0;
 
         /// <summary>
         /// The constructor for the main TextTest form.
@@ -671,8 +672,9 @@ namespace TextTest
                 }
 
                 // set up the next phrase
-                string presented = _phrases.GetRandomPhrase(_o.NoCapitals); //derandomize here
-
+                //string presented = _phrases.GetRandomPhrase(_o.NoCapitals); 
+                string presented = _phrases.GetOrderedPhrase(_o.NoCapitals, indexPhrase); //derandomize here
+                indexPhrase += 1;
 
                 rtxPresented.Text = presented;
                 rtxPresented.Visible = true;

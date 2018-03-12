@@ -8,3 +8,14 @@ others
 latin square ordering keyboards by participant numbering
 concatinate call sessions
 output file auto-naming 
+
+
+
+==========================================================================
+derandomize sentence display
+progress bar becomes quicker and quicker
+latin square ordering keyboards by participant numbering
+concatinate call sessions
+3 practice sentence, 17 test sentence
+output file auto-naming
+transcription corpus - paragraph, short & easy-to-remember sentence 
