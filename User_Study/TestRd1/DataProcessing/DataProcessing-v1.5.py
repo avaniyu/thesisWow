@@ -256,7 +256,7 @@ def plotSpeedVsAccuracy():
 					xWpm_Tobii.append(perSubjTaskWpm[i][j])
 					yTotErrRate_Tobii.append(perSubjTaskTotErrRate[i][j])
 	fig, ax = plt.subplots()
-	ax.set(title='Speed vs. Accuracy', ylabel='Entry Speed (wpm)')	
+	ax.set(title='Speed vs. Accuracy', xlabel='Entry Speed (wpm)', ylabel='Accuracy (totErrRate')	
 	plt.scatter(xWpm_MS,yTotErrRate_MS,color=color[0],alpha=0.5,label=labelKeybd[0])
 	z_MS = np.polyfit(np.log(xWpm_MS),yTotErrRate_MS,1)
 	xFit_MS = range(4,18)
