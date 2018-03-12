@@ -637,7 +637,7 @@ namespace TextTest
         {
             if (_o.AutoStop && (_td != null && _td.TrialNo == _o.StopAfter))
             {
-                MessageBox.Show(this, "Test complete!", "Test Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Test complete!", "Test Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mniStopTest_Click(this, EventArgs.Empty); // shows graphs
 
                 if (_o.AutoQuit)

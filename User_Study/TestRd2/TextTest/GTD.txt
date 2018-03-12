@@ -1,20 +1,10 @@
-transcription task
---------------------
-transcription corpus - paragraph, short & easy-to-remember sentence
-derandomize sentence display, auto-loading corpus
-===========================================================================
-others
------------
-latin square ordering keyboards by participant numbering
-concatinate call sessions
-output file auto-naming 
 
-
-
-==========================================================================
 progress bar becomes quicker and quicker
+output file auto-naming
+
+
 latin square ordering keyboards by participant numbering
 concatinate call sessions
-3 practice sentence, 17 test sentence
-output file auto-naming
+
+
 transcription corpus - paragraph, short & easy-to-remember sentence 

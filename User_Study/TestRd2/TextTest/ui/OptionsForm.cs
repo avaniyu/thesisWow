@@ -50,11 +50,11 @@ namespace TextTest
                 NoWordBackspace = false;
                 NoEnter = false;
 
-                AutoStop = false;
-                StopAfter = 10;
+                AutoStop = true;
+                StopAfter = 20;
                 AutoQuit = false;
 
-                AutoSwitch = false;
+                AutoSwitch = true;
                 SwitchAfter = 5;
 
                 ReceiveOnNet = false;

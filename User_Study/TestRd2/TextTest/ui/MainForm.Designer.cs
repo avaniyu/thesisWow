@@ -154,7 +154,7 @@
             this.cmdNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmdNext.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdNext.Location = new System.Drawing.Point(1, 348);
-            this.cmdNext.MinimumSize = new System.Drawing.Size(1900, 80);
+            this.cmdNext.MinimumSize = new System.Drawing.Size(0, 80);
             this.cmdNext.Name = "cmdNext";
             this.cmdNext.Size = new System.Drawing.Size(1900, 80);
             this.cmdNext.TabIndex = 1;
