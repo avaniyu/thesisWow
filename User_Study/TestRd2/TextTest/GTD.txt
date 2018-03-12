@@ -1,5 +1,4 @@
 
-progress bar becomes quicker and quicker
 output file auto-naming
 
 

@@ -631,13 +631,15 @@ namespace TextTest
         /// </summary>
         /// <param name="sender">The sender of this event.</param>
         /// <param name="e">The arguments for this event.</param>
-        Timer timer = new Timer();
+        /// 
+        private Timer timer = new Timer();
         int timer_interval = 6; // 30x100 = 3000 ms to display presented text
+
         private void mniNextPhrase_Click(object sender, EventArgs e)
         {
             if (_o.AutoStop && (_td != null && _td.TrialNo == _o.StopAfter))
             {
-                    MessageBox.Show(this, "Test complete!", "Test Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Test complete!", "Test Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mniStopTest_Click(this, EventArgs.Empty); // shows graphs
 
                 if (_o.AutoQuit)
@@ -675,17 +677,6 @@ namespace TextTest
                 //string presented = _phrases.GetRandomPhrase(_o.NoCapitals); 
                 string presented = _phrases.GetOrderedPhrase(_o.NoCapitals, indexPhrase); //derandomize here
                 indexPhrase += 1;
-                // 3 practice sentences, 17 test sentences
-                if (indexPhrase == 3)
-                {
-                    mniPracticeFlag.Checked = false;
-                    mniTestFlag.Checked = true;
-                }
-                if (indexPhrase == 20)
-                {
-                    mniPracticeFlag.Checked = true;
-                    mniTestFlag.Checked = false;
-                }
 
                 rtxPresented.Text = presented;
                 rtxPresented.Visible = true;
@@ -734,6 +725,7 @@ namespace TextTest
                 rtxTranscribed.Focus();
                 cmdNext.Enabled = true;
                 timer.Stop();
+                timer.Tick -= new EventHandler(timer_Tick);
             }
         }
         

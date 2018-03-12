@@ -55,7 +55,7 @@ namespace TextTest
                 AutoQuit = false;
 
                 AutoSwitch = true;
-                SwitchAfter = 5;
+                SwitchAfter = 3;
 
                 ReceiveOnNet = false;
                 UseWebSockets = false;
