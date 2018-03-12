@@ -86,6 +86,8 @@ def clearCache():
 	display(contrMetric, widgets.HBox([contrOfTask, contrOfSubject]))
 	for i in range(amountSubject * amountTask * amountKeyboard):
 		del perSubjTaskWpm[i][:], perSubjTaskTotErrRate[i][:], perSubjTaskSentenceNo[i][:]
+	contrOfTask.disabled = False
+	contrOfSubject.disabled =False
 
 def plotSpeed():
 	fig, ax = plt.subplots()
@@ -237,7 +239,38 @@ def plotSpeedNAccuracy():
 	pass
 
 def plotSpeedVsAccuracy():
-	pass
+	contrOfTask.value = 'Sentence Transcription'
+	contrOfSubject.value = 'All Subjects'
+	contrOfTask.disabled = True
+	contrOfSubject.disabled = True
+	xWpm_MS, xWpm_Tobii, yTotErrRate_MS, yTotErrRate_Tobii = ([] for i in range(4))
+	for i in range(len(perSubjTaskWpm)):
+		if i%amountKeyboard == 0:
+			for j in range(len(perSubjTaskWpm[i])):
+				if perSubjTaskWpm[i][j] != 0 and perSubjTaskTotErrRate != 1:
+					xWpm_MS.append(perSubjTaskWpm[i][j])
+					yTotErrRate_MS.append(perSubjTaskTotErrRate[i][j])
+		else:
+			for j in range(len(perSubjTaskWpm[i])):
+				if perSubjTaskWpm[i][j] != 0 and perSubjTaskTotErrRate != 1:				
+					xWpm_Tobii.append(perSubjTaskWpm[i][j])
+					yTotErrRate_Tobii.append(perSubjTaskTotErrRate[i][j])
+	fig, ax = plt.subplots()
+	ax.set(title='Speed vs. Accuracy', ylabel='Entry Speed (wpm)')	
+	plt.scatter(xWpm_MS,yTotErrRate_MS,color=color[0],alpha=0.5,label=labelKeybd[0])
+	z_MS = np.polyfit(np.log(xWpm_MS),yTotErrRate_MS,1)
+	xFit_MS = range(4,18)
+	yFit_MS = z_MS[0]*np.log(xFit_MS)+z_MS[1]
+	plt.plot(xFit_MS,yFit_MS,color=color[0],label=labelKeybd[0]+' Data Fitting')
+	plt.scatter(xWpm_Tobii,yTotErrRate_Tobii,color=color[1],alpha=0.5,label=labelKeybd[1])
+	z_Tobii = np.polyfit(np.log(xWpm_Tobii),yTotErrRate_Tobii,1)
+	xFit_Tobii = range(4,18)
+	yFit_Tobii = z_Tobii[0]*np.log(xFit_Tobii)+z_Tobii[1]
+	plt.plot(xFit_Tobii,yFit_Tobii,color=color[1],label=labelKeybd[1]+' Data Fitting')
+	plt.ylim(-0.05,0.35)
+	ax.legend(loc='upper center',ncol=2,fontsize=9)	
+	fig.savefig('plotSpeed_VS_Accuracy.png', bbox_inches='tight')
+	# should have R-squared here
 
 if __name__ == "__main__":
 	sentences = []	

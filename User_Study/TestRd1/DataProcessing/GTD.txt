@@ -11,10 +11,6 @@ speed and accuracy
 ---------------------
 average speed & SD - box plot
 ============================================
-speed vs. accuracy
---------------------
-transcription task: scatter plot x: speed, y: accuracy 
-=============================================
 any plot missing?
 self-comb
 learn from Paivi paper on visualization
