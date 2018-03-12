@@ -675,6 +675,17 @@ namespace TextTest
                 //string presented = _phrases.GetRandomPhrase(_o.NoCapitals); 
                 string presented = _phrases.GetOrderedPhrase(_o.NoCapitals, indexPhrase); //derandomize here
                 indexPhrase += 1;
+                // 3 practice sentences, 17 test sentences
+                if (indexPhrase == 3)
+                {
+                    mniPracticeFlag.Checked = false;
+                    mniTestFlag.Checked = true;
+                }
+                if (indexPhrase == 20)
+                {
+                    mniPracticeFlag.Checked = true;
+                    mniTestFlag.Checked = false;
+                }
 
                 rtxPresented.Text = presented;
                 rtxPresented.Visible = true;

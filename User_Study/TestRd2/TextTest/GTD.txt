@@ -12,7 +12,6 @@ output file auto-naming
 
 
 ==========================================================================
-derandomize sentence display
 progress bar becomes quicker and quicker
 latin square ordering keyboards by participant numbering
 concatinate call sessions
