@@ -51,7 +51,7 @@ namespace TextTest
                 NoEnter = false;
 
                 AutoStop = true;
-                StopAfter = 20;
+                StopAfter = 18;
                 AutoQuit = false;
 
                 AutoSwitch = true;
