@@ -633,8 +633,7 @@ namespace TextTest
         /// <param name="e">The arguments for this event.</param>
         /// 
         private Timer timer = new Timer();
-        int timer_interval = 6; // 30x100 = 3000 ms to display presented text
-
+        int timer_interval = 5; // 6x100 = 3000 ms to display presented text
         private void mniNextPhrase_Click(object sender, EventArgs e)
         {
             if (_o.AutoStop && (_td != null && _td.TrialNo == _o.StopAfter))
@@ -701,7 +700,7 @@ namespace TextTest
 
                 timer.Interval = timer_interval;
                 timer.Tick += new EventHandler(timer_Tick);
-                prgMemorize.Maximum = timer_interval * 100;
+                prgMemorize.Maximum = timer_interval * 90;
                 timer.Start();
             }
         }
@@ -713,7 +712,7 @@ namespace TextTest
         /// <param name="e"></param>
         private void timer_Tick(object sender, System.EventArgs e)
         {
-            if (prgMemorize.Value != timer_interval * 100)
+            if (prgMemorize.Value != timer_interval * 90)
             {
                 prgMemorize.Value++;
             }else

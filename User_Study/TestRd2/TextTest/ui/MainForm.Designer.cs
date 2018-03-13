@@ -76,13 +76,13 @@
             this.rtxPresented.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxPresented.Enabled = false;
             this.rtxPresented.Font = new System.Drawing.Font("Courier New", 27F);
-            this.rtxPresented.Location = new System.Drawing.Point(1, 51);
+            this.rtxPresented.Location = new System.Drawing.Point(1, 36);
             this.rtxPresented.MinimumSize = new System.Drawing.Size(1900, 100);
             this.rtxPresented.Multiline = false;
             this.rtxPresented.Name = "rtxPresented";
             this.rtxPresented.ReadOnly = true;
             this.rtxPresented.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxPresented.Size = new System.Drawing.Size(1900, 148);
+            this.rtxPresented.Size = new System.Drawing.Size(1900, 100);
             this.rtxPresented.TabIndex = 2;
             this.rtxPresented.TabStop = false;
             this.rtxPresented.Text = "";
@@ -93,14 +93,14 @@
             // staStatus
             // 
             this.staStatus.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.staStatus.Location = new System.Drawing.Point(1, 976);
+            this.staStatus.Location = new System.Drawing.Point(1, 550);
             this.staStatus.Name = "staStatus";
             this.staStatus.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.pnlLog,
             this.pnlTest,
             this.pnlTask});
             this.staStatus.ShowPanels = true;
-            this.staStatus.Size = new System.Drawing.Size(1900, 62);
+            this.staStatus.Size = new System.Drawing.Size(1538, 41);
             this.staStatus.TabIndex = 3;
             // 
             // pnlLog
@@ -109,7 +109,7 @@
             this.pnlLog.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlLog.Icon")));
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Text = "no log";
-            this.pnlLog.Width = 625;
+            this.pnlLog.Width = 507;
             // 
             // pnlTest
             // 
@@ -117,7 +117,7 @@
             this.pnlTest.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlTest.Icon")));
             this.pnlTest.Name = "pnlTest";
             this.pnlTest.Text = "Practice";
-            this.pnlTest.Width = 625;
+            this.pnlTest.Width = 507;
             // 
             // pnlTask
             // 
@@ -125,7 +125,7 @@
             this.pnlTask.Icon = ((System.Drawing.Icon)(resources.GetObject("pnlTask.Icon")));
             this.pnlTask.Name = "pnlTask";
             this.pnlTask.Text = "0";
-            this.pnlTask.Width = 625;
+            this.pnlTask.Width = 507;
             // 
             // rtxTranscribed
             // 
@@ -133,12 +133,12 @@
             this.rtxTranscribed.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtxTranscribed.Enabled = false;
             this.rtxTranscribed.Font = new System.Drawing.Font("Courier New", 27F);
-            this.rtxTranscribed.Location = new System.Drawing.Point(1, 199);
+            this.rtxTranscribed.Location = new System.Drawing.Point(1, 136);
             this.rtxTranscribed.MinimumSize = new System.Drawing.Size(1900, 100);
             this.rtxTranscribed.Multiline = false;
             this.rtxTranscribed.Name = "rtxTranscribed";
             this.rtxTranscribed.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtxTranscribed.Size = new System.Drawing.Size(1900, 149);
+            this.rtxTranscribed.Size = new System.Drawing.Size(1900, 100);
             this.rtxTranscribed.TabIndex = 0;
             this.rtxTranscribed.Text = "";
             this.rtxTranscribed.WordWrap = false;
@@ -153,10 +153,10 @@
             this.cmdNext.Enabled = false;
             this.cmdNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmdNext.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdNext.Location = new System.Drawing.Point(1, 348);
+            this.cmdNext.Location = new System.Drawing.Point(1, 236);
             this.cmdNext.MinimumSize = new System.Drawing.Size(0, 80);
             this.cmdNext.Name = "cmdNext";
-            this.cmdNext.Size = new System.Drawing.Size(1900, 80);
+            this.cmdNext.Size = new System.Drawing.Size(1538, 80);
             this.cmdNext.TabIndex = 1;
             this.cmdNext.TabStop = false;
             this.cmdNext.Text = "Next";
@@ -166,9 +166,9 @@
             // prgLogs
             // 
             this.prgLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.prgLogs.Location = new System.Drawing.Point(1, 428);
+            this.prgLogs.Location = new System.Drawing.Point(1, 316);
             this.prgLogs.Name = "prgLogs";
-            this.prgLogs.Size = new System.Drawing.Size(1900, 24);
+            this.prgLogs.Size = new System.Drawing.Size(1538, 17);
             this.prgLogs.Step = 1;
             this.prgLogs.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.prgLogs.TabIndex = 4;
@@ -186,7 +186,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(1, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1900, 33);
+            this.mnuMain.Size = new System.Drawing.Size(1538, 24);
             this.mnuMain.TabIndex = 5;
             this.mnuMain.Text = "mnuMain";
             // 
@@ -198,7 +198,7 @@
             this.mniSeparator1,
             this.mniExitApp});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(50, 29);
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             this.mnuFile.DropDownOpening += new System.EventHandler(this.mnuFile_DropDownOpening);
             // 
@@ -206,7 +206,7 @@
             // 
             this.mniOpenPhrases.Name = "mniOpenPhrases";
             this.mniOpenPhrases.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.mniOpenPhrases.Size = new System.Drawing.Size(282, 30);
+            this.mniOpenPhrases.Size = new System.Drawing.Size(198, 22);
             this.mniOpenPhrases.Text = "Open P&hrases...";
             this.mniOpenPhrases.Click += new System.EventHandler(this.mniOpenPhrases_Click);
             // 
@@ -214,19 +214,19 @@
             // 
             this.mniRenameLog.Name = "mniRenameLog";
             this.mniRenameLog.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.mniRenameLog.Size = new System.Drawing.Size(282, 30);
+            this.mniRenameLog.Size = new System.Drawing.Size(198, 22);
             this.mniRenameLog.Text = "&Rename Log...";
             this.mniRenameLog.Click += new System.EventHandler(this.mniRenameLog_Click);
             // 
             // mniSeparator1
             // 
             this.mniSeparator1.Name = "mniSeparator1";
-            this.mniSeparator1.Size = new System.Drawing.Size(279, 6);
+            this.mniSeparator1.Size = new System.Drawing.Size(195, 6);
             // 
             // mniExitApp
             // 
             this.mniExitApp.Name = "mniExitApp";
-            this.mniExitApp.Size = new System.Drawing.Size(282, 30);
+            this.mniExitApp.Size = new System.Drawing.Size(198, 22);
             this.mniExitApp.Text = "E&xit";
             this.mniExitApp.Click += new System.EventHandler(this.mniExitApp_Click);
             // 
@@ -242,7 +242,7 @@
             this.mniPracticeFlag,
             this.mniTestFlag});
             this.mnuTest.Name = "mnuTest";
-            this.mnuTest.Size = new System.Drawing.Size(54, 29);
+            this.mnuTest.Size = new System.Drawing.Size(40, 20);
             this.mnuTest.Text = "&Test";
             this.mnuTest.DropDownOpening += new System.EventHandler(this.mnuTest_DropDownOpening);
             // 
@@ -250,7 +250,7 @@
             // 
             this.mniStartTest.Name = "mniStartTest";
             this.mniStartTest.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mniStartTest.Size = new System.Drawing.Size(238, 30);
+            this.mniStartTest.Size = new System.Drawing.Size(168, 22);
             this.mniStartTest.Text = "Start &New";
             this.mniStartTest.Click += new System.EventHandler(this.mniStartTest_Click);
             // 
@@ -258,7 +258,7 @@
             // 
             this.mniStopTest.Name = "mniStopTest";
             this.mniStopTest.ShortcutKeyDisplayString = "Esc";
-            this.mniStopTest.Size = new System.Drawing.Size(238, 30);
+            this.mniStopTest.Size = new System.Drawing.Size(168, 22);
             this.mniStopTest.Text = "&Stop";
             this.mniStopTest.Click += new System.EventHandler(this.mniStopTest_Click);
             // 
@@ -266,33 +266,33 @@
             // 
             this.mniNextPhrase.Name = "mniNextPhrase";
             this.mniNextPhrase.ShortcutKeyDisplayString = "Enter";
-            this.mniNextPhrase.Size = new System.Drawing.Size(238, 30);
+            this.mniNextPhrase.Size = new System.Drawing.Size(168, 22);
             this.mniNextPhrase.Text = "Ne&xt";
             this.mniNextPhrase.Click += new System.EventHandler(this.mniNextPhrase_Click);
             // 
             // mniSeparator2
             // 
             this.mniSeparator2.Name = "mniSeparator2";
-            this.mniSeparator2.Size = new System.Drawing.Size(235, 6);
+            this.mniSeparator2.Size = new System.Drawing.Size(165, 6);
             // 
             // mniTestOptions
             // 
             this.mniTestOptions.Name = "mniTestOptions";
             this.mniTestOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mniTestOptions.Size = new System.Drawing.Size(238, 30);
+            this.mniTestOptions.Size = new System.Drawing.Size(168, 22);
             this.mniTestOptions.Text = "&Options...";
             this.mniTestOptions.Click += new System.EventHandler(this.mniTestOptions_Click);
             // 
             // mniSeparator3
             // 
             this.mniSeparator3.Name = "mniSeparator3";
-            this.mniSeparator3.Size = new System.Drawing.Size(235, 6);
+            this.mniSeparator3.Size = new System.Drawing.Size(165, 6);
             // 
             // mniPracticeFlag
             // 
             this.mniPracticeFlag.Name = "mniPracticeFlag";
             this.mniPracticeFlag.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.mniPracticeFlag.Size = new System.Drawing.Size(238, 30);
+            this.mniPracticeFlag.Size = new System.Drawing.Size(168, 22);
             this.mniPracticeFlag.Text = "&Practice";
             this.mniPracticeFlag.Click += new System.EventHandler(this.mniPracticeFlag_Click);
             // 
@@ -300,7 +300,7 @@
             // 
             this.mniTestFlag.Name = "mniTestFlag";
             this.mniTestFlag.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.mniTestFlag.Size = new System.Drawing.Size(238, 30);
+            this.mniTestFlag.Size = new System.Drawing.Size(168, 22);
             this.mniTestFlag.Text = "&Test";
             this.mniTestFlag.Click += new System.EventHandler(this.mniTestFlag_Click);
             // 
@@ -309,14 +309,14 @@
             this.mnuFormat.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mniFontFormat});
             this.mnuFormat.Name = "mnuFormat";
-            this.mnuFormat.Size = new System.Drawing.Size(81, 29);
+            this.mnuFormat.Size = new System.Drawing.Size(57, 20);
             this.mnuFormat.Text = "F&ormat";
             // 
             // mniFontFormat
             // 
             this.mniFontFormat.Name = "mniFontFormat";
             this.mniFontFormat.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.mniFontFormat.Size = new System.Drawing.Size(205, 30);
+            this.mniFontFormat.Size = new System.Drawing.Size(147, 22);
             this.mniFontFormat.Text = "&Font...";
             this.mniFontFormat.Click += new System.EventHandler(this.mniFontFormat_Click);
             // 
@@ -327,7 +327,7 @@
             this.mniAnalyzeGraphs,
             this.mniAnalyzeInputStream});
             this.mnuAnalyze.Name = "mnuAnalyze";
-            this.mnuAnalyze.Size = new System.Drawing.Size(85, 29);
+            this.mnuAnalyze.Size = new System.Drawing.Size(60, 20);
             this.mnuAnalyze.Text = "&Analyze";
             this.mnuAnalyze.DropDownOpening += new System.EventHandler(this.mnuAnalyze_DropDownOpening);
             // 
@@ -335,7 +335,7 @@
             // 
             this.mniAnalyzeLogs.Name = "mniAnalyzeLogs";
             this.mniAnalyzeLogs.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.mniAnalyzeLogs.Size = new System.Drawing.Size(267, 30);
+            this.mniAnalyzeLogs.Size = new System.Drawing.Size(188, 22);
             this.mniAnalyzeLogs.Text = "&Logs...";
             this.mniAnalyzeLogs.Click += new System.EventHandler(this.mniAnalyseLogs_Click);
             // 
@@ -343,7 +343,7 @@
             // 
             this.mniAnalyzeGraphs.Name = "mniAnalyzeGraphs";
             this.mniAnalyzeGraphs.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.mniAnalyzeGraphs.Size = new System.Drawing.Size(267, 30);
+            this.mniAnalyzeGraphs.Size = new System.Drawing.Size(188, 22);
             this.mniAnalyzeGraphs.Text = "&Graphs...";
             this.mniAnalyzeGraphs.Click += new System.EventHandler(this.mniAnalyseGraphs_Click);
             // 
@@ -352,7 +352,7 @@
             this.mniAnalyzeInputStream.Enabled = false;
             this.mniAnalyzeInputStream.Name = "mniAnalyzeInputStream";
             this.mniAnalyzeInputStream.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mniAnalyzeInputStream.Size = new System.Drawing.Size(267, 30);
+            this.mniAnalyzeInputStream.Size = new System.Drawing.Size(188, 22);
             this.mniAnalyzeInputStream.Text = "&Input Stream...";
             this.mniAnalyzeInputStream.Visible = false;
             this.mniAnalyzeInputStream.Click += new System.EventHandler(this.mniAnalyseInputStream_Click);
@@ -365,47 +365,47 @@
             this.mniSeparator4,
             this.mniAboutApp});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(61, 29);
+            this.mnuHelp.Size = new System.Drawing.Size(44, 20);
             this.mnuHelp.Text = "&Help";
             // 
             // mniBibliography
             // 
             this.mniBibliography.Name = "mniBibliography";
-            this.mniBibliography.Size = new System.Drawing.Size(231, 30);
+            this.mniBibliography.Size = new System.Drawing.Size(163, 22);
             this.mniBibliography.Text = "&Bibliography";
             this.mniBibliography.Click += new System.EventHandler(this.mniBibliography_Click);
             // 
             // mniSampleXML
             // 
             this.mniSampleXML.Name = "mniSampleXML";
-            this.mniSampleXML.Size = new System.Drawing.Size(231, 30);
+            this.mniSampleXML.Size = new System.Drawing.Size(163, 22);
             this.mniSampleXML.Text = "Sample &XML Log";
             this.mniSampleXML.Click += new System.EventHandler(this.mniSampleXML_Click);
             // 
             // mniSeparator4
             // 
             this.mniSeparator4.Name = "mniSeparator4";
-            this.mniSeparator4.Size = new System.Drawing.Size(228, 6);
+            this.mniSeparator4.Size = new System.Drawing.Size(160, 6);
             // 
             // mniAboutApp
             // 
             this.mniAboutApp.Name = "mniAboutApp";
-            this.mniAboutApp.Size = new System.Drawing.Size(231, 30);
+            this.mniAboutApp.Size = new System.Drawing.Size(163, 22);
             this.mniAboutApp.Text = "&About TextTest";
             this.mniAboutApp.Click += new System.EventHandler(this.mniAboutApp_Click);
             // 
             // prgMemorize
             // 
             this.prgMemorize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.prgMemorize.Location = new System.Drawing.Point(1, 33);
+            this.prgMemorize.Location = new System.Drawing.Point(1, 24);
             this.prgMemorize.Name = "prgMemorize";
-            this.prgMemorize.Size = new System.Drawing.Size(1900, 18);
+            this.prgMemorize.Size = new System.Drawing.Size(1538, 12);
             this.prgMemorize.TabIndex = 6;
             // 
             // MainForm
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(26, 46);
-            this.ClientSize = new System.Drawing.Size(1902, 1038);
+            this.AutoScaleBaseSize = new System.Drawing.Size(17, 31);
+            this.ClientSize = new System.Drawing.Size(1540, 591);
             this.Controls.Add(this.prgLogs);
             this.Controls.Add(this.cmdNext);
             this.Controls.Add(this.rtxTranscribed);
@@ -415,12 +415,11 @@
             this.Controls.Add(this.mnuMain);
             this.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1918, 1018);
+            this.MinimumSize = new System.Drawing.Size(1534, 630);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TextTest";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlLog)).EndInit();
