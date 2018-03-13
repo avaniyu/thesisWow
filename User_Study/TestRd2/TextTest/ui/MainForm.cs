@@ -701,6 +701,7 @@ namespace TextTest
                 timer.Interval = timer_interval;
                 timer.Tick += new EventHandler(timer_Tick);
                 prgMemorize.Maximum = timer_interval * 90;
+                prgMemorize.ForeColor = Color.Gray;
                 timer.Start();
             }
         }

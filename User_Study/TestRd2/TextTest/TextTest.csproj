@@ -167,7 +167,6 @@
     <EmbeddedResource Include="rsc\help.txt" />
     <EmbeddedResource Include="rsc\bibliography.txt" />
     <EmbeddedResource Include="rsc\example.xml" />
-    <Content Include="rsc\Corpus.txt" />
     <Content Include="TextTest.html" />
     <EmbeddedResource Include="ui\ParticipantNumbering.resx">
       <DependentUpon>ParticipantNumbering.cs</DependentUpon>
