@@ -43,7 +43,7 @@ def readSentences(argFilename, argSentences):
 				sentences[-1].uncErrRate = float(row[9])
 				sentences[-1].corErrRate = float(row[10])				
 				sentences[-1].keyboard = ord(argFilename[4])-65
-		print(len(sentences))
+		# print(len(sentences))
 
 def clearCache():
 	clear_output(wait=True)
@@ -66,7 +66,8 @@ def plotsHub():
 			if contrPtcp.value != 'All':
 				index = (int(contrPtcp.value[1])-1)*amountKeyboard+item.keyboard
 			else:
-				index = item.participant
+				index = item.participant*amountKeyboard+item.keyboard
+			# print(index)
 			perPtcpWpm[index].append(item.wpm)
 			perPtcpAdjWpm[index].append(item.adjWpm)
 			perPtcpTotErrRate[index].append(item.totErrRate)
@@ -85,6 +86,7 @@ def plotsHub():
 		plotSpeedVsAccuracy()	
 
 def filter():
+	print(perPtcpWpm)
 	pass
 	# remove outliers that out of 90%
 
@@ -109,16 +111,16 @@ def plotAccuracy():
 def plotSpeedNAccuracy():
 	fig, ax = plt.subplots()
 	ax.set(title='Participant '+contrPtcp.value+' typing speed with accuracy', ylabel='Entry Speed (wpm)')
-	plt.ylim(-1,50)
+	plt.ylim(-1,20)
 	yWpm, sdTotErrRate = ([[] for i in range(amountKeyboard)] for j in range(2))
 	for index in range(len(perPtcpWpm)):
 		for subIndex in range(len(perPtcpWpm[index])):
 			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
 			sdTotErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
 	for i in range(amountKeyboard):
-		plt.errorbar(i,20,11)
-		# plt.errorbar(i,np.mean(yWpm[i],np.mean(sdTotErrRate[i])))
-		# plt.boxplot(yWpm[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+		print(yWpm[i])
+		print('---------')
+		plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i]),color=color[i],elinewidth=20,capsize=2)
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
 	plt.xticks(plotXPosition, labelKeybd)
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
@@ -136,10 +138,10 @@ if __name__=="__main__":
 	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(5))
 	plotXPosition = [1,2,3]
 	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free']
-	color = ['gray', '#01ac66']
+	color = ['gray', '#01ac66','green']
 
 
-	filenames = ['1_kbB_logs', '2_kbB_logs', '3_kbB_logs']
+	filenames = ['1_kbB_logs', '2_kbB_logs', '3_kbB_logs', '2_kbA_logs_manual', '2_kbC_logs_manual']
 	for item in filenames:
 		readSentences(item, sentences)
 
