@@ -1,0 +1,2 @@
+
+transcribe keybd_A,C again, as the jupyter notebook input

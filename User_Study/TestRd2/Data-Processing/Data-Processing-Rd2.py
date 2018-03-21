@@ -16,30 +16,37 @@ import numpy as np
 
 class Sentence:
 	# class variables here
-	def __init__(self, subject, task, sentenceNo, testing):
+	def __init__(self, participant, sentenceNo, testing):
 		# instance variables here
-		self.subject = subject
+		self.participant = participant
 		self.sentenceNo = sentenceNo
 		self.testing = testing		# 0: practice; 1: test
 		self.keyboard = 0			# 0: win EyeControl; 1: tobii WinControl; 2: tobii Dwell-free
 		self.wpm = 0.0
 		self.adjWpm = 0.0
 		self.totErrRate = 0.0
-
+		self.UncErrRate = 0.0
+		self.CorErrRate = 0.0
 
 def readSentences(argFilename, argSentences):
 	pass
-	# with open('Raw-Data/Logs/'+argFilename+'.csv') as csvDataFile:
-	# 	csvReader = csv.reader(csvDataFile)
-	# 	next(csvReader, None)
-	# 	next(csvReader, None)
-	# 	for row in csvReader:
-			# read sentence statistics
-			# sentences[-1].wpm = int(row[4])+int(row[5])*0.1**(len(row[5]))
-			# sentences[-1].totErrRate = int(row[-14])*0.1**(len(row[-14]))
+	with open('Raw-Data/Logs/'+argFilename+'.csv') as csvDataFile:
+		csvReader = csv.reader(csvDataFile)
+		next(csvReader, None)
+		next(csvReader, None)
+		for row in csvReader:
+			argSentences.append(Sentence(int(argFilename[0])-1, row[0], row[1]))
+			# exclude exceptions that the test participant didn't enter anything and skipped this sentence			
+			if row[3] != 0:			
+				sentences[-1].wpm = row[3]
+				sentences[-1].adjWpm = row[4]
+				sentences[-1].totErrRate = row[11]
+				sentences[-1].UncErrRate = row[9]
+				sentences[-1].CorErrRate = row[10]				
+				sentences[-1].keyboard = ord(argFilename[4])-65
+
 	# read csv file
 	# read to sentence class
-
 
 def UIs():
 	contrMetric = widgets.ToggleButtons(
@@ -59,7 +66,7 @@ def UIs():
 	contrPtcp.observe(onChange_ptcp)
 
 def clearCache():
-	clear_outpuy(wait=True)
+	clear_output(wait=True)
 	display(contrMetric, widgets.HBox([contrPtcp]))
 	# clear data storage
 
@@ -98,7 +105,7 @@ if __name__=="__main__":
 	amountPtcp=6
 	amountKeyboard=3
 
-	filenames = ['1_kbB_logs', '2_kbB_logs']
+	filenames = ['1_kbB_logs', '2_kbB_logs', '3_kbB_logs']
 	for item in filenames:
 		readSentences(item, sentences)
 
