@@ -65,14 +65,18 @@ def plotsHub():
 		if item.testing == 1:
 			if contrPtcp.value != 'All':
 				index = (int(contrPtcp.value[1])-1)*amountKeyboard+item.keyboard
+				selectedPtcp = [int(contrPtcp.value[1])-1]
 			else:
 				index = item.participant*amountKeyboard+item.keyboard
-			# print(index)
-			perPtcpWpm[index].append(item.wpm)
-			perPtcpAdjWpm[index].append(item.adjWpm)
-			perPtcpTotErrRate[index].append(item.totErrRate)
-			perPtcpUncErrRate[index].append(item.uncErrRate)
-			perPtcpCorErrRate[index].append(item.corErrRate)
+				selectedPtcp = [i for i in range(amountPtcp)]
+			if item.participant in selectedPtcp:
+				perPtcpWpm[index].append(item.wpm)
+				perPtcpAdjWpm[index].append(item.adjWpm)
+				perPtcpTotErrRate[index].append(item.totErrRate)
+				perPtcpUncErrRate[index].append(item.uncErrRate)
+				perPtcpCorErrRate[index].append(item.corErrRate)
+				perPtcpSentenceNo[index].append(item.sentenceNo)
+
 	filter()
 	if 'Speed' == contrMetric.value:
 		plotSpeed()
@@ -86,7 +90,7 @@ def plotsHub():
 		plotSpeedVsAccuracy()	
 
 def filter():
-	print(perPtcpWpm)
+	# print(perPtcpWpm)
 	pass
 	# remove outliers that out of 90%
 
@@ -118,43 +122,74 @@ def plotSpeedNAccuracy():
 			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
 			sdTotErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
 	for i in range(amountKeyboard):
-		print(yWpm[i])
-		print('---------')
-		plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i]),color=color[i],elinewidth=20,capsize=2)
+		plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),color=color[i],elinewidth=20,capsize=1)
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
 	plt.xticks(plotXPosition, labelKeybd)
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
-	pass
+	fig, ax = plt.subplots()
+	if contrPtcp.value != 'All':
+		for index in range(len(perPtcpWpm)):
+			if len(perPtcpWpm[index]):
+				sdError = [a*b for a,b in zip(perPtcpWpm[index], perPtcpTotErrRate[index])]
+				plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,color=color[index],elinewidth=20,capsize=1)
+	else:
+		yPerSentenceWpm, yPerSentenceTotErrRate = ([[([0]*15) for i in range(amountPtcp)] for j in range(amountKeyboard)] for k in range(2))
+		tmpPerSentenceNo = [j for j in range(4,19)]
+		for index in range(len(perPtcpWpm)):
+			for indexSub in range(len(perPtcpWpm[index])):
+				i = tmpPerSentenceNo.index(perPtcpSentenceNo[index][indexSub])
+				yPerSentenceWpm[index%amountKeyboard][index//amountKeyboard][i] = perPtcpWpm[index][indexSub]
+				yPerSentenceTotErrRate[index%amountKeyboard][index//amountKeyboard][i] = perPtcpTotErrRate[index][indexSub]
 
-def plotAttention():
+		yWpm, sdTotErrRate = ([[] for m in range(amountKeyboard)] for n in range(2))
+		for i in range(amountKeyboard):
+			for j in range(15):
+				countEnoughData = 0
+				for k in range(amountPtcp):
+					if yPerSentenceWpm[i][k][j] == 0:
+						countEnoughData += 1
+				if countEnoughData <= 0.3*amountPtcp: # threshold = 0.3
+					yWpm[i].append(np.mean(yPerSentenceWpm[i][k]))
+					sdTotErrRate[i].append(yWpm[-1]*(np.mean(yPerSentenceTotErrRate)))
+				else:
+					yWpm[i].append(0)
+					sdTotErrRate[i].append(0)
+			plt.errorbar([q for q in range(15)], yWpm[i], sdTotErrRate[i], color=color[i])
+
+	ax.set(title='Participant '+contrPtcp.value+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
+	plt.ylim(0, 22)
+	fig.savefig('plotLearningCurve_'+contrPtcp.value+'.png', bbox_inches='tight')
+
+def plotAttention(): 
 	pass
 
 if __name__=="__main__":
 	amountPtcp=6
 	amountKeyboard=3
 	sentences=[]
-	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(5))
+	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(6))
 	plotXPosition = [1,2,3]
 	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free']
-	color = ['gray', '#01ac66','green']
+	color = ['gray', '#01ac66','green',
+			'gray', '#01ac66','green',
+			'gray', '#01ac66','green']
 
-
-	filenames = ['1_kbB_logs', '2_kbB_logs', '3_kbB_logs', '2_kbA_logs_manual', '2_kbC_logs_manual']
+	filenames = ['1_kbB_logs', '2_kbB_logs','2_kbA_logs_manual', '2_kbC_logs_manual', '3_kbB_logs']
 	for item in filenames:
 		readSentences(item, sentences)
 
 	contrMetric = widgets.ToggleButtons(
 		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Attention Distribution'],
 		description='Metric: ',
-		value='Speed',
+		value='Learning Curve',
 		disabled=False
 		)
 	contrPtcp = widgets.Select(
 		options=['All', '#1', '#2', '#3', '#4', '#5', '#6'],
 		description='Participant: ',
-		value='All',
+		value='#1',
 		disabled=False
 		)
 	display(contrMetric, widgets.HBox([contrPtcp]))

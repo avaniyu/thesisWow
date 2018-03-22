@@ -1,0 +1,14 @@
+﻿Credit: http://dx.doi.org/10.1145/1188816.1188819
+
+ P1.1: but– they– answered––
+ T1.1: but^ they^ answered*^
+IS1.1: but^ they^ answered*^
+
+ P2.1: it– was– a–– picture– of a sn········ake––
+ T2.1: it* was* a*^ picture^ of a sn········ake*^
+IS2.1: it* was* a*^ picture^ of a snakk^‹‹‹‹ake*^
+
+ P3.1: ······················called true stories– from nature–
+ T3.1: ······················called true stories* from nature^
+IS3.1: called^‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹called true stories* from nature^
+

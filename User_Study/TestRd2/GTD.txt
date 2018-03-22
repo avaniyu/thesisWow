@@ -1,0 +1,14 @@
+#typing/keybd usage (attention distribution, shape-writing, word prediction)
+#performance (speed, accuracy, learning)
+===================================================================
+transcribe keybd_A,C again, as the jupyter notebook input
+=============================================================
+learning curve - all participant; belt plots
+attention distribution
+word predictor, puncutations, ... x3
+================================================================
+later details
+-------------
+filter 
+
+
