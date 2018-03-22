@@ -90,7 +90,6 @@ def plotsHub():
 		plotSpeedVsAccuracy()	
 
 def filter():
-	# print(perPtcpWpm)
 	pass
 	# remove outliers that out of 90%
 
@@ -133,7 +132,7 @@ def plotLearningCurve():
 		for index in range(len(perPtcpWpm)):
 			if len(perPtcpWpm[index]):
 				sdError = [a*b for a,b in zip(perPtcpWpm[index], perPtcpTotErrRate[index])]
-				plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,color=color[index],elinewidth=20,capsize=1)
+				plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,color=color[index],elinewidth=20,capsize=1,label=labelKeybd[index])
 	else:
 		yPerSentenceWpm, yPerSentenceTotErrRate = ([[([0]*15) for i in range(amountPtcp)] for j in range(amountKeyboard)] for k in range(2))
 		tmpPerSentenceNo = [j for j in range(4,19)]
@@ -142,24 +141,24 @@ def plotLearningCurve():
 				i = tmpPerSentenceNo.index(perPtcpSentenceNo[index][indexSub])
 				yPerSentenceWpm[index%amountKeyboard][index//amountKeyboard][i] = perPtcpWpm[index][indexSub]
 				yPerSentenceTotErrRate[index%amountKeyboard][index//amountKeyboard][i] = perPtcpTotErrRate[index][indexSub]
-
-		yWpm, sdTotErrRate = ([[] for m in range(amountKeyboard)] for n in range(2))
+		yWpm, sdTotErrRate = ([([0]*15)for p in range(amountKeyboard)] for q in range(2))
 		for i in range(amountKeyboard):
 			for j in range(15):
-				countEnoughData = 0
+				bufferWpm, bufferErrRate = ([] for q in range(2))
 				for k in range(amountPtcp):
-					if yPerSentenceWpm[i][k][j] == 0:
-						countEnoughData += 1
-				if countEnoughData <= 0.3*amountPtcp: # threshold = 0.3
-					yWpm[i].append(np.mean(yPerSentenceWpm[i][k]))
-					sdTotErrRate[i].append(yWpm[-1]*(np.mean(yPerSentenceTotErrRate)))
+					if yPerSentenceWpm[i][k][j] != 0:
+						bufferWpm.append(yPerSentenceWpm[i][k][j])
+						bufferErrRate.append(yPerSentenceTotErrRate[i][k][j])
+				if len(bufferWpm) <= amountPtcp: # threshold = 0.3
+					yWpm[i][j] = np.mean(bufferWpm)
+					sdTotErrRate[i][j] = np.mean(bufferErrRate)
 				else:
-					yWpm[i].append(0)
-					sdTotErrRate[i].append(0)
-			plt.errorbar([q for q in range(15)], yWpm[i], sdTotErrRate[i], color=color[i])
-
+					yWpm[i][j] = 0
+					sdTotErrRate[i][j] = 0
+			plt.errorbar([q for q in range(4,19)], yWpm[i], sdTotErrRate[i], color=color[i],label=labelKeybd[i])
+	ax.legend(loc='upper center')
 	ax.set(title='Participant '+contrPtcp.value+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
-	plt.ylim(0, 22)
+	plt.ylim(0, 18)
 	fig.savefig('plotLearningCurve_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotAttention(): 
@@ -171,7 +170,9 @@ if __name__=="__main__":
 	sentences=[]
 	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(6))
 	plotXPosition = [1,2,3]
-	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free']
+	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',
+				'Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',
+				'Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',]
 	color = ['gray', '#01ac66','green',
 			'gray', '#01ac66','green',
 			'gray', '#01ac66','green']
