@@ -1,4 +1,0 @@
-transcription heads-up:
-dwell-free: transcribe from #1 letter (include enabling keybd)
-
-transcribe the same video 2-3 times, compare results

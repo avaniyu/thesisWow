@@ -1,7 +1,8 @@
 #typing/keybd usage (attention distribution, shape-writing, word prediction)
 #performance (speed, accuracy, learning)
 ===================================================================
-transcribe keybd_A,C again, as the jupyter notebook input
+transcribe keybd_C again, as the jupyter notebook input
+when data process logs, later filter the sentence with wpm=0
 =============================================================
 learning curve - all participant; belt plots
 attention distribution
