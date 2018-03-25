@@ -119,7 +119,6 @@ def plotAccuracy():
 	plt.xticks(plotXPosition, labelKeybd)
 	fig.savefig('plotAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
-
 def plotSpeedNAccuracy():
 	fig, ax = plt.subplots()
 	ax.set(title='Participant '+contrPtcp.value+' typing speed with accuracy', ylabel='Entry Speed (wpm)')
@@ -130,7 +129,9 @@ def plotSpeedNAccuracy():
 			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
 			sdTotErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
 	for i in range(amountKeyboard):
-		plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),color=color[i],elinewidth=20,capsize=1)
+		eb = plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),
+						fmt='o',color=color[i],elinewidth=1,capsize=3)
+		eb[-1][0].set_linestyle('--')
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
 	plt.xticks(plotXPosition, labelKeybd)
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
