@@ -1,6 +1,6 @@
-#typing/keybd usage (attention distribution, shape-writing, word prediction)
-#performance (speed, accuracy, learning)
-===================================================================
+nbviewer
+speed, accuracy --> dropdown menu --> adjWpm, corErrRate...
+speed vs. accuracy plot
 transcribe keybd_C again, as the jupyter notebook input
 when data process logs, later filter the sentence with wpm=0
 =============================================================

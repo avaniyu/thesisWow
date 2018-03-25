@@ -133,7 +133,7 @@ def plotSpeedNAccuracy():
 						fmt='o',color=color[i],elinewidth=1,capsize=3)
 		eb[-1][0].set_linestyle('--')
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
-	plt.xticks(plotXPosition, labelKeybd)
+	plt.xticks(plotXPosition, axisKeybd)
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
@@ -142,7 +142,10 @@ def plotLearningCurve():
 		for index in range(len(perPtcpWpm)):
 			if len(perPtcpWpm[index]):
 				sdError = [a*b for a,b in zip(perPtcpWpm[index], perPtcpTotErrRate[index])]
-				plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,color=color[index],elinewidth=20,capsize=1,label=labelKeybd[index])
+				print(index)
+				eb = plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,
+					fmt='.-',color=color[index],elinewidth=1,capsize=3,label=labelKeybd[index])
+				eb[-1][0].set_linestyle('--')
 	else:
 		yPerSentenceWpm, yPerSentenceTotErrRate = ([[([0]*15) for i in range(amountPtcp)] for j in range(amountKeyboard)] for k in range(2))
 		tmpPerSentenceNo = [j for j in range(4,19)]
@@ -165,11 +168,16 @@ def plotLearningCurve():
 				else:
 					yWpm[i][j] = 0
 					sdTotErrRate[i][j] = 0
-			plt.errorbar([q for q in range(4,19)], yWpm[i], sdTotErrRate[i], color=color[i],label=labelKeybd[i])
+			eb = plt.errorbar([q for q in range(4,19)], yWpm[i], sdTotErrRate[i],
+							fmt='.-',color=color[i],elinewidth=1,capsize=3,label=labelKeybd[i])
+			eb[-1][0].set_linestyle('--')
 	ax.legend(loc='upper center')
 	ax.set(title='Participant '+contrPtcp.value+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
-	plt.ylim(0, 18)
+	plt.ylim(0, 26)
 	fig.savefig('plotLearningCurve_'+contrPtcp.value+'.png', bbox_inches='tight')
+
+def plotSpeedVsAccuracy():
+	pass	
 
 def plotAttention(): 
 	pass
@@ -180,12 +188,9 @@ if __name__=="__main__":
 	sentences=[]
 	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(6))
 	plotXPosition = [1,2,3]
-	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',
-				'Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',
-				'Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',]
-	color = ['gray', '#01ac66','green',
-			'gray', '#01ac66','green',
-			'gray', '#01ac66','green'] 
+	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free'] * 6
+	axisKeybd = ['Win10\nEye Control', 'Tobii\nWin Control', 'Tobii\nDwell-free'] * 6
+	color = ['gray', '#01ac66','green'] * 6 
 
 	filenames = ['1_kbB_logs', '2_kbA_logs', '2_kbB_logs', 
 				'3_kbA_logs', '3_kbB_logs', 
@@ -196,7 +201,7 @@ if __name__=="__main__":
 		readSentences(item, sentences)
 
 	contrMetric = widgets.ToggleButtons(
-		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Attention Distribution'],
+		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'Attention Distribution'],
 		description='Metric: ',
 		value='Learning Curve',
 		disabled=False
