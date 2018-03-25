@@ -1,10 +1,3 @@
-# MVP:
-# 3 keyboards, 
-# ui control: 
-# speed (wpm, adjWpm)and/or accuracy (totErrRate);
-# FOA distribution ratio
-# plot: sentenceNo, SD
-
 %matplotlib notebook	
 import csv
 from __future__ import print_function
@@ -177,7 +170,11 @@ if __name__=="__main__":
 			'gray', '#01ac66','green',
 			'gray', '#01ac66','green']
 
-	filenames = ['1_kbB_logs', '2_kbB_logs','2_kbA_logs_manual', '2_kbC_logs_manual', '3_kbB_logs']
+	filenames = ['1_kbB_logs', '2_kbA_logs', '2_kbB_logs', 
+				'3_kbA_logs', '3_kbB_logs', 
+				'4_kbA_logs', '4_kbB_logs', 
+				'5_kbA_logs', '5_kbB_logs', 
+				'6_kbA_logs', '6_kbB_logs']
 	for item in filenames:
 		readSentences(item, sentences)
 
