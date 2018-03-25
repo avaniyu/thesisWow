@@ -42,6 +42,10 @@ def clearCache():
 	clear_output(wait=True)
 	display(contrMetric, widgets.HBox([contrPtcp]))
 	# clear data storage
+	dataStorage = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo]
+	for item in dataStorage:
+		for index in range(amountPtcp*amountKeyboard):
+			del item[index][:]
 
 def onChange_metric(b):
 	if b['type']=='change' and b['name']=='value':
@@ -69,7 +73,6 @@ def plotsHub():
 				perPtcpUncErrRate[index].append(item.uncErrRate)
 				perPtcpCorErrRate[index].append(item.corErrRate)
 				perPtcpSentenceNo[index].append(item.sentenceNo)
-
 	filter()
 	if 'Speed' == contrMetric.value:
 		plotSpeed()
@@ -95,14 +98,27 @@ def plotSpeed():
 		for subIndex in range(len(perPtcpWpm[index])):
 			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
 	for i in range(amountKeyboard):
-		plt.boxplot(yWpm[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+		plt.boxplot(yWpm[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
+					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
 	plt.xticks(plotXPosition, labelKeybd)
 	fig.savefig('plotSpeed_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotAccuracy():
-	# after checking with keybd A, C, then copy speed code here
-	pass
+	fig, ax = plt.subplots()
+	ax.set(title='Participant '+contrPtcp.value+' typing accuracy', ylabel='Error Rate')
+	plt.ylim(-0.1,1.1)
+	yErrRate = [[] for i in range(amountKeyboard)]
+	for index in range(len(perPtcpWpm)):
+		for subIndex in range(len(perPtcpTotErrRate[index])):
+			yErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
+	for i in range(amountKeyboard):
+		plt.boxplot(yErrRate[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
+					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
+	plt.xticks(plotXPosition, labelKeybd)
+	fig.savefig('plotAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
+
 
 def plotSpeedNAccuracy():
 	fig, ax = plt.subplots()
@@ -168,7 +184,7 @@ if __name__=="__main__":
 				'Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free',]
 	color = ['gray', '#01ac66','green',
 			'gray', '#01ac66','green',
-			'gray', '#01ac66','green']
+			'gray', '#01ac66','green'] 
 
 	filenames = ['1_kbB_logs', '2_kbA_logs', '2_kbB_logs', 
 				'3_kbA_logs', '3_kbB_logs', 
@@ -187,7 +203,7 @@ if __name__=="__main__":
 	contrPtcp = widgets.Select(
 		options=['All', '#1', '#2', '#3', '#4', '#5', '#6'],
 		description='Participant: ',
-		value='#1',
+		value='All',
 		disabled=False
 		)
 	display(contrMetric, widgets.HBox([contrPtcp]))
