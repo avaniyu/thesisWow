@@ -36,7 +36,6 @@ def readSentences(argFilename, argSentences):
 				sentences[-1].uncErrRate = float(row[9])
 				sentences[-1].corErrRate = float(row[10])				
 				sentences[-1].keyboard = ord(argFilename[4])-65
-		# print(len(sentences))
 
 def clearCache():
 	clear_output(wait=True)
@@ -82,7 +81,7 @@ def plotsHub():
 		plotSpeedNAccuracy()
 	elif 'Learning' in contrMetric.value:
 		plotLearningCurve()
-	elif 'Speed vs. Accuracy' == contrMetric.value:
+	elif 'Speed Vs. Accuracy' == contrMetric.value:
 		plotSpeedVsAccuracy()	
 
 def filter():
@@ -91,7 +90,7 @@ def filter():
 
 def plotSpeed():
 	fig, ax = plt.subplots()
-	ax.set(title='Participant '+contrPtcp.value+' typing speed', ylabel='Entry Speed (wpm)')
+	ax.set(title=contrPtcp.value+' participant(s)'+' typing speed', ylabel='Entry Speed (wpm)')
 	plt.ylim(-1,50)
 	yWpm = [[] for i in range(amountKeyboard)]
 	for index in range(len(perPtcpWpm)):
@@ -101,12 +100,12 @@ def plotSpeed():
 		plt.boxplot(yWpm[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
 					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
-	plt.xticks(plotXPosition, labelKeybd)
+	plt.xticks(plotXPosition, axisKeybd)
 	fig.savefig('plotSpeed_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotAccuracy():
 	fig, ax = plt.subplots()
-	ax.set(title='Participant '+contrPtcp.value+' typing accuracy', ylabel='Error Rate')
+	ax.set(title=contrPtcp.value+' participant(s)'+' typing accuracy', ylabel='Error Rate')
 	plt.ylim(-0.1,1.1)
 	yErrRate = [[] for i in range(amountKeyboard)]
 	for index in range(len(perPtcpWpm)):
@@ -116,12 +115,12 @@ def plotAccuracy():
 		plt.boxplot(yErrRate[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
 					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
-	plt.xticks(plotXPosition, labelKeybd)
+	plt.xticks(plotXPosition, axisKeybd)
 	fig.savefig('plotAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotSpeedNAccuracy():
 	fig, ax = plt.subplots()
-	ax.set(title='Participant '+contrPtcp.value+' typing speed with accuracy', ylabel='Entry Speed (wpm)')
+	ax.set(title=contrPtcp.value+' participant(s)'+' typing speed with accuracy', ylabel='Entry Speed (wpm)')
 	plt.ylim(-1,20)
 	yWpm, sdTotErrRate = ([[] for i in range(amountKeyboard)] for j in range(2))
 	for index in range(len(perPtcpWpm)):
@@ -172,12 +171,26 @@ def plotLearningCurve():
 							fmt='.-',color=color[i],elinewidth=1,capsize=3,label=labelKeybd[i])
 			eb[-1][0].set_linestyle('--')
 	ax.legend(loc='upper center')
-	ax.set(title='Participant '+contrPtcp.value+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
+	ax.set(title=contrPtcp.value+' participant(s)'+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
 	plt.ylim(0, 26)
 	fig.savefig('plotLearningCurve_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotSpeedVsAccuracy():
-	pass	
+	xSpeed, yErrRate = ([[], [], []] for i in range(2))
+	for index in range(len(perPtcpWpm)):
+		if len(perPtcpWpm[index]):
+			for indexSub in range(len(perPtcpWpm[index])):
+				xSpeed[index%amountKeyboard].append(perPtcpWpm[index][indexSub])
+				yErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][indexSub])
+	fig, ax = plt.subplots()
+	for i in range(amountKeyboard):
+		plt.scatter(xSpeed[i], yErrRate[i], color=color[i], label=labelKeybd[i], alpha=0.5)
+	ax.legend(loc='upper center')
+	ax.set_xscale('log', basex=2)
+	ax.set(title=contrPtcp.value+' participant(s)'+' speed vs. accuracy', xlabel='Speed (wpm)', ylabel='Total Error Rate')
+	plt.ylim(-0.05, 1.05)
+	plt.xlim(0,40)
+	fig.savefig('plotSpeedVsAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotAttention(): 
 	pass
@@ -190,13 +203,14 @@ if __name__=="__main__":
 	plotXPosition = [1,2,3]
 	labelKeybd = ['Win10 Eye Control', 'Tobii Win Control', 'Tobii Dwell-free'] * 6
 	axisKeybd = ['Win10\nEye Control', 'Tobii\nWin Control', 'Tobii\nDwell-free'] * 6
-	color = ['gray', '#01ac66','green'] * 6 
+	color = ['gray', '#01ac66','#DD7E50'] * 6 
 
-	filenames = ['1_kbB_logs', '2_kbA_logs', '2_kbB_logs', 
-				'3_kbA_logs', '3_kbB_logs', 
-				'4_kbA_logs', '4_kbB_logs', 
-				'5_kbA_logs', '5_kbB_logs', 
-				'6_kbA_logs', '6_kbB_logs']
+	filenames = ['1_kbB_logs', 
+				'2_kbA_logs', '2_kbB_logs', '2_kbC_logs_manual',
+				'3_kbA_logs', '3_kbB_logs', '3_kbC_logs_manual',
+				'4_kbA_logs', '4_kbB_logs', '4_kbC_logs_manual',
+				'5_kbA_logs', '5_kbB_logs', '5_kbC_logs_manual',
+				'6_kbA_logs', '6_kbB_logs', '6_kbC_logs_manual']
 	for item in filenames:
 		readSentences(item, sentences)
 
