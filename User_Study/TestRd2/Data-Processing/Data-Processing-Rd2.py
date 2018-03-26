@@ -39,12 +39,16 @@ def readSentences(argFilename, argSentences):
 
 def clearCache():
 	clear_output(wait=True)
-	display(contrMetric, widgets.HBox([contrPtcp]))
+	display(widgets.HBox([contrSpeed,contrErrRate]), contrMetric, widgets.HBox([contrPtcp]))
 	# clear data storage
 	dataStorage = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo]
 	for item in dataStorage:
 		for index in range(amountPtcp*amountKeyboard):
 			del item[index][:]
+
+def onChange_speedOrAccuracy(change):
+	if change['type']=='change' and change['name']=='value':
+		plotsHub()
 
 def onChange_metric(b):
 	if b['type']=='change' and b['name']=='value':
@@ -93,9 +97,13 @@ def plotSpeed():
 	ax.set(title=contrPtcp.value+' participant(s)'+' typing speed', ylabel='Entry Speed (wpm)')
 	plt.ylim(-1,50)
 	yWpm = [[] for i in range(amountKeyboard)]
-	for index in range(len(perPtcpWpm)):
-		for subIndex in range(len(perPtcpWpm[index])):
-			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
+	if contrSpeed.value == 'Wpm':
+		plotPerPtcpWpm = perPtcpWpm
+	elif contrSpeed.value == 'Adjusted-Wpm':
+		plotPerPtcpWpm = perPtcpAdjWpm
+	for index in range(len(plotPerPtcpWpm)):
+		for subIndex in range(len(plotPerPtcpWpm[index])):
+			yWpm[index%amountKeyboard].append(plotPerPtcpWpm[index][subIndex])
 	for i in range(amountKeyboard):
 		plt.boxplot(yWpm[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
 					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
@@ -108,9 +116,15 @@ def plotAccuracy():
 	ax.set(title=contrPtcp.value+' participant(s)'+' typing accuracy', ylabel='Error Rate')
 	plt.ylim(-0.1,1.1)
 	yErrRate = [[] for i in range(amountKeyboard)]
-	for index in range(len(perPtcpWpm)):
-		for subIndex in range(len(perPtcpTotErrRate[index])):
-			yErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
+	if contrErrRate.value == 'Total-Error-Rate':
+		plotPerPtcpErrRate = perPtcpTotErrRate
+	elif contrErrRate.value == 'Uncorrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpUncErrRate
+	elif contrErrRate.value == 'Corrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpCorErrRate
+	for index in range(len(plotPerPtcpErrRate)):
+		for subIndex in range(len(plotPerPtcpErrRate[index])):
+			yErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][subIndex])
 	for i in range(amountKeyboard):
 		plt.boxplot(yErrRate[i], positions=[plotXPosition[i]], showfliers=True, patch_artist=True, 
 					boxprops=dict(facecolor=color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
@@ -121,38 +135,64 @@ def plotAccuracy():
 def plotSpeedNAccuracy():
 	fig, ax = plt.subplots()
 	ax.set(title=contrPtcp.value+' participant(s)'+' typing speed with accuracy', ylabel='Entry Speed (wpm)')
-	plt.ylim(-1,20)
+	plt.ylim(0,20)
 	yWpm, sdTotErrRate = ([[] for i in range(amountKeyboard)] for j in range(2))
-	for index in range(len(perPtcpWpm)):
-		for subIndex in range(len(perPtcpWpm[index])):
-			yWpm[index%amountKeyboard].append(perPtcpWpm[index][subIndex])
-			sdTotErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][subIndex])
+	if contrSpeed.value == 'Wpm':
+		plotPerPtcpWpm = perPtcpWpm
+	elif contrSpeed.value == 'Adjusted-Wpm':
+		plotPerPtcpWpm = perPtcpAdjWpm
+	if contrErrRate.value == 'Total-Error-Rate':
+		plotPerPtcpErrRate = perPtcpTotErrRate
+	elif contrErrRate.value == 'Uncorrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpUncErrRate
+	elif contrErrRate.value == 'Corrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpCorErrRate
+	for index in range(len(plotPerPtcpWpm)):
+		for subIndex in range(len(plotPerPtcpWpm[index])):
+			yWpm[index%amountKeyboard].append(plotPerPtcpWpm[index][subIndex])
+			sdTotErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][subIndex])
 	for i in range(amountKeyboard):
-		eb = plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),
-						fmt='o',color=color[i],elinewidth=1,capsize=3)
+		plt.bar(i+1,np.mean(yWpm[i]),0.5,color=color[i],label=labelKeybd[i],alpha=0.6)		
+	for i in range(amountKeyboard):
+		if i == 0:
+			eb = plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),
+						color='gray',elinewidth=1,capsize=3,label='Associated standard deviation')
+		else:
+			eb = plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),
+						color='gray',elinewidth=1,capsize=3)
 		eb[-1][0].set_linestyle('--')
 	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
 	plt.xticks(plotXPosition, axisKeybd)
+	ax.legend(loc='upper center')	
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
 	fig, ax = plt.subplots()
+	if contrSpeed.value == 'Wpm':
+		plotPerPtcpWpm = perPtcpWpm
+	elif contrSpeed.value == 'Adjusted-Wpm':
+		plotPerPtcpWpm = perPtcpAdjWpm
+	if contrErrRate.value == 'Total-Error-Rate':
+		plotPerPtcpErrRate = perPtcpTotErrRate
+	elif contrErrRate.value == 'Uncorrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpUncErrRate
+	elif contrErrRate.value == 'Corrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpCorErrRate
 	if contrPtcp.value != 'All':
-		for index in range(len(perPtcpWpm)):
-			if len(perPtcpWpm[index]):
-				sdError = [a*b for a,b in zip(perPtcpWpm[index], perPtcpTotErrRate[index])]
-				print(index)
-				eb = plt.errorbar(perPtcpSentenceNo[index],perPtcpWpm[index],sdError,
-					fmt='.-',color=color[index],elinewidth=1,capsize=3,label=labelKeybd[index])
+		for index in range(len(plotPerPtcpWpm)):
+			if len(plotPerPtcpWpm[index]):
+				sdError = [a*b for a,b in zip(plotPerPtcpWpm[index], plotPerPtcpErrRate[index])]
+				eb = plt.errorbar(perPtcpSentenceNo[index],plotPerPtcpWpm[index],sdError,
+					fmt='.-',color=color[index],elinewidth=6,capsize=3,label=labelKeybd[index],alpha=0.5)
 				eb[-1][0].set_linestyle('--')
 	else:
 		yPerSentenceWpm, yPerSentenceTotErrRate = ([[([0]*15) for i in range(amountPtcp)] for j in range(amountKeyboard)] for k in range(2))
 		tmpPerSentenceNo = [j for j in range(4,19)]
-		for index in range(len(perPtcpWpm)):
-			for indexSub in range(len(perPtcpWpm[index])):
+		for index in range(len(plotPerPtcpWpm)):
+			for indexSub in range(len(plotPerPtcpWpm[index])):
 				i = tmpPerSentenceNo.index(perPtcpSentenceNo[index][indexSub])
-				yPerSentenceWpm[index%amountKeyboard][index//amountKeyboard][i] = perPtcpWpm[index][indexSub]
-				yPerSentenceTotErrRate[index%amountKeyboard][index//amountKeyboard][i] = perPtcpTotErrRate[index][indexSub]
+				yPerSentenceWpm[index%amountKeyboard][index//amountKeyboard][i] = plotPerPtcpWpm[index][indexSub]
+				yPerSentenceTotErrRate[index%amountKeyboard][index//amountKeyboard][i] = plotPerPtcpErrRate[index][indexSub]
 		yWpm, sdTotErrRate = ([([0]*15)for p in range(amountKeyboard)] for q in range(2))
 		for i in range(amountKeyboard):
 			for j in range(15):
@@ -168,7 +208,7 @@ def plotLearningCurve():
 					yWpm[i][j] = 0
 					sdTotErrRate[i][j] = 0
 			eb = plt.errorbar([q for q in range(4,19)], yWpm[i], sdTotErrRate[i],
-							fmt='.-',color=color[i],elinewidth=1,capsize=3,label=labelKeybd[i])
+							fmt='.-',color=color[i],elinewidth=6,capsize=3,label=labelKeybd[i],alpha=0.5)
 			eb[-1][0].set_linestyle('--')
 	ax.legend(loc='upper center')
 	ax.set(title=contrPtcp.value+' participant(s)'+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
@@ -177,11 +217,21 @@ def plotLearningCurve():
 
 def plotSpeedVsAccuracy():
 	xSpeed, yErrRate = ([[], [], []] for i in range(2))
-	for index in range(len(perPtcpWpm)):
-		if len(perPtcpWpm[index]):
-			for indexSub in range(len(perPtcpWpm[index])):
-				xSpeed[index%amountKeyboard].append(perPtcpWpm[index][indexSub])
-				yErrRate[index%amountKeyboard].append(perPtcpTotErrRate[index][indexSub])
+	if contrSpeed.value == 'Wpm':
+		plotPerPtcpWpm = perPtcpWpm
+	elif contrSpeed.value == 'Adjusted-Wpm':
+		plotPerPtcpWpm = perPtcpAdjWpm
+	if contrErrRate.value == 'Total-Error-Rate':
+		plotPerPtcpErrRate = perPtcpTotErrRate
+	elif contrErrRate.value == 'Uncorrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpUncErrRate
+	elif contrErrRate.value == 'Corrected-Error-Rate':
+		plotPerPtcpErrRate = perPtcpCorErrRate
+	for index in range(len(plotPerPtcpWpm)):
+		if len(plotPerPtcpWpm[index]):
+			for indexSub in range(len(plotPerPtcpWpm[index])):
+				xSpeed[index%amountKeyboard].append(plotPerPtcpWpm[index][indexSub])
+				yErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][indexSub])
 	fig, ax = plt.subplots()
 	for i in range(amountKeyboard):
 		plt.scatter(xSpeed[i], yErrRate[i], color=color[i], label=labelKeybd[i], alpha=0.5)
@@ -214,6 +264,18 @@ if __name__=="__main__":
 	for item in filenames:
 		readSentences(item, sentences)
 
+	contrSpeed = widgets.RadioButtons(
+		options=['Wpm', 'Adjusted-Wpm'],
+		description='Speed: ',
+		value='Wpm',
+		disabled=False
+		)
+	contrErrRate = widgets.RadioButtons(
+		options=['Total-Error-Rate', 'Uncorrected-Error-Rate', 'Corrected-Error-Rate'],
+		description='Accuracy: ',
+		value='Total-Error-Rate',
+		disabled=False
+		)
 	contrMetric = widgets.ToggleButtons(
 		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'Attention Distribution'],
 		description='Metric: ',
@@ -226,6 +288,8 @@ if __name__=="__main__":
 		value='All',
 		disabled=False
 		)
-	display(contrMetric, widgets.HBox([contrPtcp]))
+	display(widgets.HBox([contrSpeed,contrErrRate]), contrMetric, widgets.HBox([contrPtcp]))
 	contrMetric.observe(onChange_metric)
 	contrPtcp.observe(onChange_ptcp)
+	contrSpeed.observe(onChange_speedOrAccuracy)
+	contrErrRate.observe(onChange_speedOrAccuracy)

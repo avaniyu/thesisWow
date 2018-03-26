@@ -1,10 +1,7 @@
-speed, accuracy --> dropdown menu --> adjWpm, corErrRate...
-speed vs. accuracy plot
 ·ÖÎöÊý¾Ý
 transcribe keybd_C again, as the jupyter notebook input
 when data process logs, later filter the sentence with wpm=0
 =============================================================
-learning curve - all participant; belt plots
 attention distribution
 word predictor, puncutations, ... x3
 ================================================================
