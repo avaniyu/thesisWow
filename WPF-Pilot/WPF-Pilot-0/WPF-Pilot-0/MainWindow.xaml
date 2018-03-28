@@ -1,0 +1,83 @@
+﻿<Window x:Class="WPF_Pilot_0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Pilot_0"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        WindowStyle="None">
+    <Grid>
+        <Grid.Resources>
+            <XmlDataProvider x:Key="LetterKeysDataSource" XPath="LetterKeys">
+                <x:XData>
+                    <LetterKeys xmlns="">
+                        <LetterKey Letter="Q"/>
+                        <LetterKey Letter="W"/>
+                        <LetterKey Letter="E"/>
+                        <LetterKey Letter="R"/>
+                        <LetterKey Letter="T"/>
+                        <LetterKey Letter="Y"/>
+                    </LetterKeys>
+                </x:XData>
+            </XmlDataProvider>
+            <DataTemplate x:Key="LetterKeysDataTemplate">
+                <Button Content="{Binding XPath=@Letter}"/>
+            </DataTemplate>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="TextDisplay" Grid.Row="0" FontSize="30" Margin="10 10 10 10" Text=""/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="WordPredictor1" Grid.Column="0" Style="{StaticResource BtnLetter}">Yo</Button>
+            <Button Name="WordPredictor2" Grid.Column="1" Style="{StaticResource BtnLetter}">Yo people</Button>
+            <Button Name="WordPredictor3" Grid.Column="2" Style="{StaticResource BtnLetter}">Yellow</Button>
+            <Button Name="WordPredictor4" Grid.Column="3" Style="{StaticResource BtnLetter}">Young</Button>
+            <Button Name="WordPredictor5" Grid.Column="4" Style="{StaticResource BtnLetter}">Youth</Button>
+            <Button Name="WordPredictor6" Grid.Column="5" Style="{StaticResource BtnLetter}">Your</Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="ltQ" Grid.Column="1" Style="{StaticResource BtnLetter}" Content="{Binding Source={StaticResource LetterKeysDataSource}, XPath=LetterKey}"></Button>
+            <Button Name="ltW" Grid.Column="2" Style="{StaticResource BtnLetter}">W</Button>
+            <Button Name="ltE" Grid.Column="3" Style="{StaticResource BtnLetter}">E</Button>
+            <Button Name="ltR" Grid.Column="4" Style="{StaticResource BtnLetter}">R</Button>
+            <Button Name="ltT" Grid.Column="5" Style="{StaticResource BtnLetter}">T</Button>
+            <Button Name="ltY" Grid.Column="6" Style="{StaticResource BtnLetter}">Y</Button>
+            <Button Name="ltU" Grid.Column="7" Style="{StaticResource BtnLetter}">U</Button>
+            <Button Name="ltI" Grid.Column="8" Style="{StaticResource BtnLetter}">I</Button>
+            <Button Name="ltO" Grid.Column="9" Style="{StaticResource BtnLetter}">O</Button>
+            <Button Name="ltP" Grid.Column="10" Style="{StaticResource BtnLetter}">P</Button>
+            <Button Name="deleteLetter" Grid.Column="11" Style="{StaticResource BtnLetter}">Del</Button>
+        </Grid>
+    </Grid>
+</Window>
