@@ -95,7 +95,7 @@ def filter():
 def plotSpeed():
 	fig, ax = plt.subplots()
 	ax.set(title=contrPtcp.value+' participant(s)'+' typing speed', ylabel='Entry Speed (wpm)')
-	plt.ylim(-1,50)
+	plt.ylim(-1,25)
 	yWpm = [[] for i in range(amountKeyboard)]
 	if contrSpeed.value == 'Wpm':
 		plotPerPtcpWpm = perPtcpWpm
@@ -239,7 +239,7 @@ def plotSpeedVsAccuracy():
 	ax.set_xscale('log', basex=2)
 	ax.set(title=contrPtcp.value+' participant(s)'+' speed vs. accuracy', xlabel='Speed (wpm)', ylabel='Total Error Rate')
 	plt.ylim(-0.05, 1.05)
-	plt.xlim(0,40)
+	plt.xlim(0.2,40)
 	fig.savefig('plotSpeedVsAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotAttention(): 
@@ -256,11 +256,11 @@ if __name__=="__main__":
 	color = ['gray', '#01ac66','#DD7E50'] * 6 
 
 	filenames = ['1_kbB_logs', 
-				'2_kbA_logs', '2_kbB_logs', '2_kbC_logs_manual',
-				'3_kbA_logs', '3_kbB_logs', '3_kbC_logs_manual',
-				'4_kbA_logs', '4_kbB_logs', '4_kbC_logs_manual',
-				'5_kbA_logs', '5_kbB_logs', '5_kbC_logs_manual',
-				'6_kbA_logs', '6_kbB_logs', '6_kbC_logs_manual']
+				'2_kbA_logs', '2_kbB_logs', '2_kbC_logs',
+				'3_kbA_logs', '3_kbB_logs', '3_kbC_logs',
+				'4_kbA_logs', '4_kbB_logs', '4_kbC_logs',
+				'5_kbA_logs', '5_kbB_logs', '5_kbC_logs',
+				'6_kbA_logs', '6_kbB_logs', '6_kbC_logs']
 	for item in filenames:
 		readSentences(item, sentences)
 
