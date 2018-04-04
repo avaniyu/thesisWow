@@ -1,9 +1,0 @@
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Tobii.EyeX.Client.dll
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Interaction_Streams_103.exe.config
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Interaction_Streams_103.exe
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Interaction_Streams_103.pdb
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Tobii.Interaction.Model.dll
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\bin\Debug\Tobii.Interaction.Net.dll
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\obj\Debug\Interaction_Streams_103.csprojResolveAssemblyReference.cache
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\obj\Debug\Interaction_Streams_103.exe
-C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\samples\Streams\Interaction_Streams_103\obj\Debug\Interaction_Streams_103.pdb
