@@ -1,2 +1,5 @@
 typi <#1 predictor> --> typing
-tex <#2 predictor> --> text
+<word predictor> --> text
+usi <#1 predicto> --> using
+your --> your
+gaze --> gaze
