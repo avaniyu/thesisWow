@@ -6,9 +6,27 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="84*" />
+            <RowDefinition Height="84*" />
             <RowDefinition Height="349*" />
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Text, ElementName=onScreenKeyboard}" Name="textBox1" />
-        <TermControls:OnScreenKeyboard x:Name="onScreenKeyboard" Command="{Binding ButtonClickCommand,ElementName=m}" Grid.Row="1" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Text, ElementName=onScreenKeyboard}" Name="textBox1" Margin="30,0,30,0" Grid.Row="1"/>
+            <Button Name="btnDel" Grid.Column="1" Content="Delete"/>
+        </Grid>
+        <TermControls:OnScreenKeyboard x:Name="onScreenKeyboard" Command="{Binding ButtonClickCommand,ElementName=m}" Grid.Row="2" />
     </Grid>
 </Window>
