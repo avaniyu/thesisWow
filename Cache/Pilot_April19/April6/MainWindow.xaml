@@ -1,0 +1,63 @@
+﻿<Window x:Class="April6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:Tobii.Interaction.Wpf;assembly=Tobii.Interaction.Net"
+        xmlns:local="clr-namespace:April6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen"
+        >
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RectangleWithGazeAwareAnimation" TargetType="Rectangle">
+                <Setter Property="Fill" Value="LightSkyBlue"/>
+                <Setter Property="Margin" Value="40, 50"/>
+                <Setter Property="wpf:Behaviors.IsActivatable" Value="True"></Setter>
+                <Setter Property="wpf:Behaviors.IsTentativeFocusEnabled" Value="True"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="wpf:Behaviors.HasTentativeActivationFocus" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                    From="LightSkyBlue" To="DeepSkyBlue" Duration="0:0:.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                    From="DeepSkyBlue" To="LightSkyBlue" Duration="0:0:.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    
+    <UniformGrid Rows="2" Columns="3">
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Rectangle Style="{StaticResource RectangleWithGazeAwareAnimation}" Grid.Row="0" Grid.Column="0" 
+                       wpf:Behaviors.IsActivatable="True"
+                       wpf:Behaviors.IsTentativeFocusEnabled="True"
+                       wpf:Behaviors.Activated="Key_A_Click"/>
+            <TextBlock Text="A" Grid.Row="0" Grid.Column="0"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Rectangle Style="{StaticResource RectangleWithGazeAwareAnimation}" Grid.Row="0" Grid.Column="1"/>
+            <TextBlock Text="B" Grid.Row="0" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Rectangle Style="{StaticResource RectangleWithGazeAwareAnimation}" Grid.Row="0" Grid.Column="2"/>
+            <TextBlock Text="C" Grid.Row="0" Grid.Column="2"/>
+        </Grid>
+        <TextBox Name="typingResults" Text="Typing results here" Grid.Row="1" Grid.Column="0"/>
+
+    </UniformGrid>
+
+</Window>
