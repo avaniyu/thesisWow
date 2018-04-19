@@ -12,12 +12,14 @@ namespace OnScreenKeyboard
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         public ICommand ButtonClickCommand
         {
             get { return new DelegateCommand(ButtonClick); }
         }
+
 
         private void ButtonClick(object param)
         {

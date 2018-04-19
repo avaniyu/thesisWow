@@ -1,31 +1,31 @@
 ﻿<UserControl x:Class="TermControls.OnScreenKeyboard"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OnScreenKeyboard.TermControls"
-        mc:Ignorable="d"
-        xmlns:local="clr-namespace:TermControls"
-        xmlns:viewmodal="clr-namespace:TermControls,ViewModels"
-        xmlns:helpers="clr-namespace:TermControls.Helpers"
-        xmlns:keyImageProperty="clr-namespace:TermControls.KeyImageProperty"
-        x:Name="usercontrol">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:TermControls"
+             xmlns:viewmodel="clr-namespace:TermControls.ViewModels"
+             xmlns:helpers="clr-namespace:TermControls.Helpers"
+             xmlns:keyImageProperty="clr-namespace:TermControls.KeyImageProperty"
+             x:Name="usercontrol" >
     <Grid Name="MainGrid" helpers:GridAutoLayout.NumberOfRows="5">
         <Grid.DataContext>
-            <viewmodal:KeyboardViewModel />
+            <viewmodel:KeyboardViewModel />
         </Grid.DataContext>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="770" />
-                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="770*" />
+                <ColumnDefinition Width="160*" />
             </Grid.ColumnDefinitions>
             <ItemsControl ItemsSource="{Binding Model.ButtonsRaw1}" x:Name="ListView1" ItemTemplate="{DynamicResource ResourceKey=itemContDataTemplate}" ItemContainerStyle="{DynamicResource ResourceKey=itemContStyle}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <Grid helpers:GridAutoLayout.NumberOfColumns="{Binding Model.ButtonRaw1.count}" />
+                        <Grid helpers:GridAutoLayout.NumberOfColumns="{Binding Model.ButtonsRaw1.Count}" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <Button keyImageProperty:KeyPressed.Image="{DynamicResource ResourceKey=gdelete}" keyImageProperty:keyNotPressed.Image="{DynamicResource ResourceKey=delete}" Template="{DynamicResource ResourceKey=KeyboardButton}" Name="btnDel" Grid.Column="1" Command="{Binding DataContext.DeleteCommand,ElementName=MainGrid}" />
+            </ItemsControl>
+            <Button keyImageProperty:KeyPressed.Image="{DynamicResource ResourceKey=gdelete}" keyImageProperty:KeyNotPressed.Image="{DynamicResource ResourceKey=delete}" Template="{DynamicResource ResourceKey=KeyboardButton}" Name="btnDel" Grid.Column="1" Command="{Binding DataContext.DeleteCommand,ElementName=MainGrid}" />
         </Grid>
 
         <Grid Margin="30,0,0,0" Grid.Row="1">
@@ -125,8 +125,7 @@
 
     <UserControl.Resources>
         <Style TargetType="local:OnScreenKeyboard">
-            <Setter Property="Text" Value="{Binding Path=DataContext.Model.Text, Mode=TwoWay, ElementName=MainGrid}" />
+            <Setter Property="Text" Value="{Binding Path=DataContext.Model.Text, Mode=TwoWay,ElementName=MainGrid}"/>
         </Style>
     </UserControl.Resources>
-        
 </UserControl>

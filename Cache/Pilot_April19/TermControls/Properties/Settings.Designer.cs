@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace April6.Properties
+namespace TermControls.Properties
 {
 
 

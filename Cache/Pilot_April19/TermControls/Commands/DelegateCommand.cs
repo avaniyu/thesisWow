@@ -4,57 +4,63 @@
     using System.Windows.Input;
 
     /// <summary>
-    /// the Delegate command
+    /// The delegate command.
     /// </summary>
     public class DelegateCommand : ICommand
     {
         /// <summary>
-        /// the action.
+        /// The action.
         /// </summary>
-        /// 
         private readonly Action<object> action;
 
         /// <summary>
-        /// initialize a new instance of the <see cref="DelegateCommand"/> class
+        /// Initializes a new instance of the <see cref="DelegateCommand"/> class.
         /// </summary>
         /// <param name="action">
-        /// the action
+        /// The action.
         /// </param>
-        /// 
         public DelegateCommand(Action<object> action)
         {
             this.action = action;
         }
 
-        ///<summary>
-        ///the can execute changed
-        ///</summary>
-        ///
+        /// <summary>
+        /// The can execute changed.
+        /// </summary>
         public event EventHandler CanExecuteChanged
         {
             add
             {
-
             }
+
             remove
             {
-
             }
         }
 
-        ///<summary>
-        ///the can execute.
-        ///</summary>
-        ///<param name="parameter">
-        ///the parameter.
-        ///</param>
-        ///<returns>
-        ///The <see cref="bool"/> 
-        ///</returns>
+        /// <summary>
+        /// The execute.
+        /// </summary>
+        /// <param name="parameter">
+        /// The parameter.
+        /// </param>
+        public void Execute(object parameter)
+        {
+            this.action(parameter);
+        }
+
+        /// <summary>
+        /// The can execute.
+        /// </summary>
+        /// <param name="parameter">
+        /// The parameter.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool CanExecute(object parameter)
         {
             return true;
         }
-
     }
 }
