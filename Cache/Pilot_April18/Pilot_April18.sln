@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnScreenKeyboard", "OnScreenKeyboard\OnScreenKeyboard.csproj", "{7E55C072-CE20-4D0B-9579-5C4FF6BAB28B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermControls", "TermControls\TermControls.csproj", "{1DE08D68-A9FC-4F43-B54C-131510C3D2DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E55C072-CE20-4D0B-9579-5C4FF6BAB28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E55C072-CE20-4D0B-9579-5C4FF6BAB28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E55C072-CE20-4D0B-9579-5C4FF6BAB28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E55C072-CE20-4D0B-9579-5C4FF6BAB28B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE08D68-A9FC-4F43-B54C-131510C3D2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE08D68-A9FC-4F43-B54C-131510C3D2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE08D68-A9FC-4F43-B54C-131510C3D2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE08D68-A9FC-4F43-B54C-131510C3D2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3AEF30C-1271-4E9A-8A15-FFB004926057}
+	EndGlobalSection
+EndGlobal
