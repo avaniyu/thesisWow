@@ -1,0 +1,4 @@
+polish UI a little bit
+eye tracking api: gaze click key
+write my own wpf
+shape-writing understanding & pseudocode
