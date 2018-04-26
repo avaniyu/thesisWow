@@ -74,7 +74,7 @@
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\WordPredictionModel.cs" />
     <Compile Include="ViewModels\DeleteViewModel.cs" />
-    <Compile Include="ViewModels\KeyboardViewModel.cs" />
+    <Compile Include="ViewModels\KeyboardKeysViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\WordPredictionViewModel.cs" />
     <Compile Include="Views\Delete.xaml.cs">
@@ -86,9 +86,6 @@
     <Compile Include="Models\ButtonModel.cs" />
     <Compile Include="Models\KeyboardLanguage.cs" />
     <Compile Include="Models\KeyboardModel.cs" />
-    <Compile Include="Views\OnScreenKeyboard.xaml.cs">
-      <DependentUpon>OnScreenKeyboard.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,10 +122,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\KeyboardKeys.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\OnScreenKeyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

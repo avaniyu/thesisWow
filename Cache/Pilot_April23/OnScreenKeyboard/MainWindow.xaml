@@ -42,10 +42,10 @@
             </Grid.RowDefinitions>
 
             <termControl:Delete />
+            <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Margin="30,30,30,30">
+                <TextBlock Text="{Binding StrTest}" Grid.Row="1"/>
+            </Border>
             <termControl:KeyboardKeys Grid.Row="2"/>
-            
-            <!--<ItemsControl ItemsSource="{Binding Model.DeleteKeys}"/>
-            <ItemsControl Grid.Row="2" ItemsSource="{Binding Model.KeyboardKeys}"/>-->
 
         </Grid>
         

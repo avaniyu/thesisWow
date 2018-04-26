@@ -22,7 +22,9 @@
             }
         }
 
-        private MainWindowModel MainWindowModel;
+        public string StrTest => "A string for the test (typing results placeholder).";
+
+        public MainWindowModel MainWindowModel { get; set; }
 
         public KeyboardKeysViewModel KeyboardKeysViewModel { get; set; }
         public DeleteViewModel DeleteViewModel { get; set; }

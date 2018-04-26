@@ -15,6 +15,8 @@
             this.KeyboardKeysModel.CreateButtons();
         }
 
+        public string StrTest => "A string for the test";
+
         //public MainWindowViewModel KeyboardKeysModel { get; set; }
 
         //public ICommand ChangeLangCommand

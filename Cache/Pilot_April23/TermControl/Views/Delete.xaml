@@ -12,9 +12,10 @@
     <!--xmlns:keyImageProperty="clr-namespace:TermControl.KeyImageProperty"-->
 
     <Grid Name="MainGrid">
-        <Grid.DataContext>
+        <!--<Grid.DataContext>
             <viewModel:DeleteViewModel/>
-        </Grid.DataContext>
+        </Grid.DataContext>-->
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
