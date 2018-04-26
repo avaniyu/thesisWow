@@ -10,13 +10,7 @@
 
     public class DeleteModel : INotifyPropertyChanged
     {
-        public DeleteModel()
-        {
-
-        }
-
         private string typingResults;
-
         public string TypingResults
         {
             get { return (string)this.typingResults; }
@@ -25,6 +19,11 @@
                 this.typingResults = value;
                 this.OnPropertyChanged("TypingResults");
             }
+        }
+
+        public DeleteModel(string _typingResults)
+        {
+            this.typingResults = _typingResults;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

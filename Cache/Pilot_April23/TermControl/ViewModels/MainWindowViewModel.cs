@@ -7,23 +7,38 @@
     using System.Threading.Tasks;
     using TermControl.Models;
     using TermControl.Commands;
+    using System.ComponentModel;
 
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
-        //public MainWindowViewModel()
-        //{
-        //    this.Model = new KeyboardLanguage();
-        //    this.Model.CreateButtons();
-        //}
+        private string typingResults;
+        public string TypingResults
+        {
+            get { return (string)this.typingResults; }
+            set
+            {
+                this.typingResults = value;
+                this.OnPropertyChanged("TypingResults");
+            }
+        }
 
-        //public KeyboardModel Model { get; set; }
+        private MainWindowModel MainWindowModel;
 
-        public MainWindowModel Model { get; set; }
+        public KeyboardKeysViewModel KeyboardKeysViewModel { get; set; }
+        public DeleteViewModel DeleteViewModel { get; set; }
 
         public MainWindowViewModel()
         {
-            this.Model = new MainWindowModel();
-            this.Model.CreateUserControls();
+            MainWindowModel MainWindowModel = new MainWindowModel();
+            this.typingResults = MainWindowModel.TypingResults;
+            this.KeyboardKeysViewModel = new KeyboardKeysViewModel(this.typingResults);
+            this.DeleteViewModel = new DeleteViewModel(this.typingResults);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

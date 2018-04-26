@@ -46,16 +46,15 @@
         //    }
         //}
 
-        private string typingResults;
-        public string TypingResults
-        {
-            get { return (string)this.typingResults; }
-            set
-            {
-                this.typingResults = value;
-                this.onPropertyChanged("TypingResults");
-            }
-        }
+        //public string TypingResults
+        //{
+        //    get { return (string)this.typingResults; }
+        //    set
+        //    {
+        //        this.typingResults = value;
+        //        this.onPropertyChanged("TypingResults");
+        //    }
+        //}
 
         #region methods
         public string GetButtonContent(string btnName)
@@ -83,11 +82,23 @@
 
         public virtual void InitContent() { }
 
-        public KeyboardModel()
+        private string typingResults;
+        public string TypingResults
+        {
+            get { return (string)this.typingResults; }
+            set
+            {
+                this.typingResults = value;
+                this.onPropertyChanged("TypingResults");
+            }
+        }
+
+        public KeyboardModel(string _typingResults)
         {
             this.IsShift = false;
             this.IsEngOther = false;
             this.InitContent();
+            this.typingResults = _typingResults;
         }
 
         private void ChangeButtonsContent(ObservableCollection<ButtonModel> buttons, int _row)

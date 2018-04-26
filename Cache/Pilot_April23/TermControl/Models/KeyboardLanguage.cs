@@ -9,8 +9,8 @@
 
     public class KeyboardLanguage : KeyboardModel
     {
-        public KeyboardLanguage()
-            :base()
+        public KeyboardLanguage(string _typingResults)
+            :base(_typingResults)
         { }
 
         public override void InitContent()

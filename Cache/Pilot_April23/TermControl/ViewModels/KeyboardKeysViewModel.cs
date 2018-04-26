@@ -5,17 +5,15 @@
     using TermControl.ViewModels;
     using System.Windows.Input;
 
-    public class KeyboardViewModel
+    public class KeyboardKeysViewModel
     {
         public KeyboardLanguage KeyboardKeysModel { get; set; }
 
-        public KeyboardViewModel()
+        public KeyboardKeysViewModel(string _typingResults)
         {
-            this.KeyboardKeysModel = new KeyboardLanguage();
+            this.KeyboardKeysModel = new KeyboardLanguage(_typingResults);
             this.KeyboardKeysModel.CreateButtons();
         }
-
-
 
         //public MainWindowViewModel KeyboardKeysModel { get; set; }
 

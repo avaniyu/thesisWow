@@ -16,50 +16,41 @@
 
         }
 
-        private string text;
-        public string Text
+        private string typingResults;
+        public string TypingResults
         {
-            get { return (string)this.text; }
+            get { return (string)this.typingResults; }
             set
             {
-                this.text = value;
-                this.onPropertyChanged("Text");
+                this.typingResults = value;
+                this.onPropertyChanged("TypingResults");
             }
         }
 
-        //how to bind this.text and .TypingResults from the following ObservableCollection<>?
 
-        public ObservableCollection<KeyboardModel> KeyboardKeys { get; private set; }
-        public ObservableCollection<DeleteModel> DeleteKeys { get; private set; }
-        public ObservableCollection<WordPredictionModel> WordPredictors { get; private set; }
+        //public ObservableCollection<KeyboardModel> KeyboardKeys { get; private set; }
+        //public ObservableCollection<DeleteModel> DeleteKeys { get; private set; }
 
-        public void CreateUserControls()
-        {
-            this.KeyboardKeys = this.CreateKeyboardKeys();
-            this.DeleteKeys = this.CreateDeleteKeys();
-            this.WordPredictors = this.CreateWordPredictors();
-        }
+        //public void CreateUserControls()
+        //{
+        //    this.KeyboardKeys = this.CreateKeyboardKeys();
+        //    this.DeleteKeys = this.CreateDeleteKeys();
+        //}
 
-        private ObservableCollection<KeyboardModel> CreateKeyboardKeys()
-        {
-            var keyboardKeys = new ObservableCollection<KeyboardModel>();
-            keyboardKeys.Add(new KeyboardLanguage { });
-            return keyboardKeys;
-        }
+        //private ObservableCollection<KeyboardModel> CreateKeyboardKeys()
+        //{
+        //    var keyboardKeys = new ObservableCollection<KeyboardModel>();
+        //    keyboardKeys.Add(new KeyboardLanguage { });
+        //    return keyboardKeys;
+        //}
 
-        private ObservableCollection<DeleteModel> CreateDeleteKeys()
-        {
-            var deleteKeys = new ObservableCollection<DeleteModel>();
-            deleteKeys.Add(new DeleteModel { });
-            return deleteKeys;
-        }
+        //private ObservableCollection<DeleteModel> CreateDeleteKeys()
+        //{
+        //    var deleteKeys = new ObservableCollection<DeleteModel>();
+        //    deleteKeys.Add(new DeleteModel { });
+        //    return deleteKeys;
+        //}
 
-        private ObservableCollection<WordPredictionModel> CreateWordPredictors()
-        {
-            var wordPredictors = new ObservableCollection<WordPredictionModel>();
-            wordPredictors.Add(new WordPredictionModel { });
-            return wordPredictors;
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void onPropertyChanged(string propertyName)

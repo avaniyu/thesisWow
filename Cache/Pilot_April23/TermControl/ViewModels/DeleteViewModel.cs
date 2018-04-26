@@ -11,19 +11,18 @@
 
     public class DeleteViewModel
     {
-        public DeleteViewModel()
-        {
-            this.deleteModel = new MainWindowViewModel();
-            //this.deleteModel.Model.Text = " ";
-        }
+        public DeleteModel DeleteModel { get; set; }
 
-        public MainWindowViewModel deleteModel { get; set; }
+        public DeleteViewModel(string _typingResults)
+        {
+            this.DeleteModel = new DeleteModel(_typingResults);
+        }
 
         public ICommand DeleteCommand => new DelegateCommands(this.DeleteClick);
 
         public void DeleteClick(object param)
         {
-            if (!string.IsNullOrEmpty(this.deleteModel.Model.Text)) this.deleteModel.Model.Text = this.deleteModel.Model.Text.Remove(this.deleteModel.Model.Text.Length - 1);
+            if (!string.IsNullOrEmpty(this.DeleteModel.TypingResults)) this.DeleteModel.TypingResults = this.DeleteModel.TypingResults.Remove(this.DeleteModel.TypingResults.Length - 1);
         }
 
 
