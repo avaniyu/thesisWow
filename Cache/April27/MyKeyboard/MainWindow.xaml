@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding TypingResults}" FontSize="20"/>
-            <views:View_Key_Delete Grid.Column="1" Command="{Binding DeleteCommand}"/>
+            <views:View_Key_Delete Grid.Column="1" CommandDelete="{Binding DeleteCommand}" CommandDeleteMode="{Binding DeleteModeCommand}"/>
         </Grid>
         <views:View_Keys Grid.Row="2" x:Name="myKeyboard" Command="{Binding KeyClickCommand, ElementName=myKeyboard}"/>
 

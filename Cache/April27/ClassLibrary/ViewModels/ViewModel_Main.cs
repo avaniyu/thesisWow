@@ -24,6 +24,8 @@
             }
         }
 
+        public bool DeleteMode { get; set; }
+
         public Model_Keys_Localization Model { get; set; }
 
         #region for Deletion
@@ -31,10 +33,23 @@
         public ICommand DeleteCommand => new DelegateCommands(this.DeleteClick);
         public void DeleteClick(object param)
         {
-            if (!string.IsNullOrEmpty(this.TypingResults))
+            if (this.DeleteMode == true)
             {
-                this.TypingResults = this.TypingResults.Remove(this.TypingResults.Length - 1);
+                if (!string.IsNullOrEmpty(this.TypingResults))
+                {
+                    this.TypingResults = this.TypingResults.Remove(this.TypingResults.Length - 1);
+                }
             }
+            else
+            {
+                this.TypingResults += "<Delete Mode 2>";
+            }
+        }
+
+        public ICommand DeleteModeCommand => new DelegateCommands(this.DeleteModeClick);
+        public void DeleteModeClick(object param)
+        {
+            this.DeleteMode = !this.DeleteMode;
         }
 
         #endregion
@@ -78,6 +93,7 @@
             this.Model = new Model_Keys_Localization();
             this.Model.CreateKeys();
             this.TypingResults = "This is a test!";
+            this.DeleteMode = true;
         }
     }
 }

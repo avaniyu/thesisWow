@@ -20,15 +20,26 @@
     /// </summary>
     public partial class View_Key_Delete : UserControl
     {
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
-            "Command",
+        public static readonly DependencyProperty CommandDeleteModeProperty = DependencyProperty.Register(
+            "CommandDeleteMode",
             typeof(ICommand),
             typeof(View_Key_Delete));
 
-        public ICommand Command
+        public ICommand CommandDeleteMode
         {
-            get { return (ICommand)this.GetValue(CommandProperty); }
-            set { this.SetValue(CommandProperty, value); }
+            get { return (ICommand)this.GetValue(CommandDeleteModeProperty); }
+            set { this.SetValue(CommandDeleteModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandDeleteProperty = DependencyProperty.Register(
+            "CommandDelete",
+            typeof(ICommand),
+            typeof(View_Key_Delete));
+
+        public ICommand CommandDelete
+        {
+            get { return (ICommand)this.GetValue(CommandDeleteProperty); }
+            set { this.SetValue(CommandDeleteProperty, value); }
         }
 
         public View_Key_Delete()

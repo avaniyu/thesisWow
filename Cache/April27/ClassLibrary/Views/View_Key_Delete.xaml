@@ -10,11 +10,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Name="MainGrid">
-        <!--<Grid.DataContext>
-            <viewModel:ViewModel_Main/>
-        </Grid.DataContext>-->
-
-        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=Command}" Content="Delete" FontSize="27"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CheckBox Name="checkBoxDeleteMode" Command="{Binding ElementName=Control, Path=CommandDeleteMode}" IsChecked="True">
+            <TextBlock Text="Delete Mode"/>
+        </CheckBox>
+        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=CommandDelete}" Content="Delete" FontSize="27" Grid.Row="1"/>
     </Grid>
 </UserControl>
