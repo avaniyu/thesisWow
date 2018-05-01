@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using ClassLibrary.Helpers;
 
-    public class Model_Keys : Base_Binding
+    public class Model_Keys
     {
         protected string[] Content1 { get; set; }
         protected string[] Content1Shift { get; set; }
@@ -31,16 +31,16 @@
         public ObservableCollection<Model_Key> KeysRow2 { get; private set; }
         public ObservableCollection<Model_Key> KeysRow3 { get; private set; }
 
-        private string typingResults;
-        public string TypingResults
-        {
-            get { return this.typingResults; }
-            set
-            {
-                this.typingResults = value;
-                this.OnPropertyChanged(nameof(TypingResults));
-            }
-        }
+        //private string typingResults;
+        //public string TypingResults
+        //{
+        //    get { return this.typingResults; }
+        //    set
+        //    {
+        //        this.typingResults = value;
+        //        this.OnPropertyChanged(nameof(TypingResults));
+        //    }
+        //}
 
         #region Methods
         public string GetKeyContent(string btnName)
