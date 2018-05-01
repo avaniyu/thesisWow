@@ -17,6 +17,6 @@
         <CheckBox Name="checkBoxDeleteMode" Command="{Binding ElementName=Control, Path=CommandDeleteMode}" IsChecked="True">
             <TextBlock Text="Delete Mode"/>
         </CheckBox>
-        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=CommandDelete}" Content="Delete" FontSize="27" Grid.Row="1"/>
+        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=CommandDelete}" Content="Delete" FontSize="20" Grid.Row="1"/>
     </Grid>
 </UserControl>

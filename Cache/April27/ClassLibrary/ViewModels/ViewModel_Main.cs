@@ -24,16 +24,62 @@
             }
         }
 
-        public bool DeleteMode { get; set; }
+        private string typingBuffer;
+        public bool isWordDeletion { get; set; }
 
         public Model_Keys_Localization Model { get; set; }
+
+        #region for keyboard keys
+
+        //public ICommand ChangeLangCommand => new DelegateCommands(this.ChangeLangClick);
+
+        //public void ChangeLangClick(object param)
+        //{
+        //    this.Model.IsEngOther = !this.Model.IsEngOther;
+        //    this.Model.ChangeKeysContent();
+        //}
+
+        //public ICommand ShiftCommand => new DelegateCommands(this.ShiftClick);
+
+        //public void ShiftClick(object param)
+        //{
+        //    this.Model.IsShift = !this.Model.IsShift;
+        //    this.Model.ChangeKeysContent();
+        //}
+
+        public ICommand KeyClickCommand => new DelegateCommands(this.KeyClick);
+
+        public void KeyClick(object param)
+        {
+            this.typingBuffer += param.ToString();
+        }
+
+        //public ICommand SpaceCommand => new DelegateCommands(this.SpaceClick);
+
+        //public void SpaceClick(object param)
+        //{
+        //    this.TypingResults += " ";
+        //}
+
+        #endregion
+
+        #region for typing results display
+        public ICommand ConfirmCommand => new DelegateCommands(this.ConfirmClick);
+        
+        public void ConfirmClick(object param)
+        {
+            this.TypingResults += this.typingBuffer;
+            this.typingBuffer = "";
+        }
+
+        #endregion
 
         #region for Deletion
 
         public ICommand DeleteCommand => new DelegateCommands(this.DeleteClick);
         public void DeleteClick(object param)
         {
-            if (this.DeleteMode == true)
+            if (this.isWordDeletion == true)
             {
                 if (!string.IsNullOrEmpty(this.TypingResults))
                 {
@@ -49,51 +95,19 @@
         public ICommand DeleteModeCommand => new DelegateCommands(this.DeleteModeClick);
         public void DeleteModeClick(object param)
         {
-            this.DeleteMode = !this.DeleteMode;
+            this.isWordDeletion = !this.isWordDeletion;
         }
 
         #endregion
 
-        #region for keyboard keys
-
-        public ICommand ChangeLangCommand => new DelegateCommands(this.ChangeLangClick);
-
-        public void ChangeLangClick(object param)
-        {
-            this.Model.IsEngOther = !this.Model.IsEngOther;
-            this.Model.ChangeKeysContent();
-        }
-
-        public ICommand ShiftCommand => new DelegateCommands(this.ShiftClick);
-
-        public void ShiftClick(object param)
-        {
-            this.Model.IsShift = !this.Model.IsShift;
-            this.Model.ChangeKeysContent();
-        }
-
-        public ICommand KeyClickCommand => new DelegateCommands(this.KeyClick);
-
-        public void KeyClick(object param)
-        {
-            this.TypingResults += param.ToString();
-        }
-
-        public ICommand SpaceCommand => new DelegateCommands(this.SpaceClick);
-
-        public void SpaceClick(object param)
-        {
-            this.TypingResults += " ";
-        }
-
-        #endregion
 
         public ViewModel_Main()
         {
             this.Model = new Model_Keys_Localization();
             this.Model.CreateKeys();
-            this.TypingResults = "This is a test!";
-            this.DeleteMode = true;
+            this.TypingResults = "";
+            this.typingBuffer = "";
+            this.isWordDeletion = true;
         }
     }
 }

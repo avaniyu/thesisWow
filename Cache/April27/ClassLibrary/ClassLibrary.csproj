@@ -83,6 +83,9 @@
     <Compile Include="Views\View_Key_Delete.xaml.cs">
       <DependentUpon>View_Key_Delete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\View_TypingResults.xaml.cs">
+      <DependentUpon>View_TypingResults.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\View_Key_Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\View_TypingResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

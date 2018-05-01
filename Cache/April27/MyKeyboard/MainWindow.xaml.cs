@@ -24,18 +24,6 @@ namespace MyKeyboard
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly DependencyProperty TypingResultsProperty = DependencyProperty.Register(
-            "TypingResults",
-            typeof(string),
-            typeof(MainWindow),
-            new UIPropertyMetadata(null));
-
-        public string TypingResults
-        {
-            get { return (string)this.GetValue(TypingResultsProperty); }
-            set { this.SetValue(TypingResultsProperty, value); }
-        }
-
         public MainWindow()
         {
             InitializeComponent();
