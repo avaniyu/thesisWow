@@ -9,7 +9,7 @@
              xmlns:helpers="clr-namespace:ClassLibrary.Helpers"
              xmlns:keyImageProperty="clr-namespace:ClassLibrary.KeyImageProperty"
              x:Name="usercontrol" >
-    
+
     <Grid Name="MainGrid" helpers:GridAutoLayout.NumberOfRows="3">
         <!--<Grid.DataContext>
             <viewmodel:ViewModel_Main />
@@ -43,7 +43,7 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </Grid>
-        
+
         <Grid.Resources>
             <ResourceDictionary>
                 <!--Img sources-->
@@ -83,10 +83,4 @@
             </ResourceDictionary>
         </Grid.Resources>
     </Grid>
-
-    <!--<UserControl.Resources>
-        <Style TargetType="local:View_Keys">
-            <Setter Property="TypingResults" Value="{Binding Path=DataContext.Model.TypingResults, Mode=TwoWay,ElementName=MainGrid}"/>
-        </Style>
-    </UserControl.Resources>-->
 </UserControl>

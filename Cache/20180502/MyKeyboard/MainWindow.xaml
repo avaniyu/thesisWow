@@ -10,18 +10,6 @@
         mc:Ignorable="d"
         x:Name="mainWindow"
         Title="MainWindow" Height="400" Width="600">
-    
-    <!--<Grid x:Name="MainGrid" eyeTracking:Behaviors.IsGazeAware="True">
-        <Grid.Style>
-            <Style TargetType="Grid">
-                <Setter Property="Background" Value="White"/>
-                <Style.Triggers>
-                    <Trigger Property="eyeTracking:Behaviors.HasGaze" Value="True">
-                        <Setter Property="Background" Value="Green"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Style>-->
 
     <Grid x:Name="MainGrid">
 
@@ -35,8 +23,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <!--<TextBlock Text="Word Predictors placeholder."/>-->
-        <Button x:Name="btnEyeTrackingTest" Margin="10 0 10 0" Style="{DynamicResource ResourceKey=btnDeleteTestStyle}"/>
+        <Button x:Name="btnEyeTrackingTest" Margin="10 0 10 0" Command="{Binding TestCommand}"/>
         <!--<views:View_WordPrediction x:Name="myPredictors" CommandTest="{Binding TestCommand}" Margin="30 10 30 10"/>-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -52,31 +39,17 @@
 
     <Window.Resources>
         <ResourceDictionary>
-            <Style x:Key="activatableStyle" TargetType="FrameworkElement">
+            <Style x:Key="activatableStyle">
                 <Setter Property="eyeTracking:Behaviors.IsActivatable" Value="True"/>
-                <!--<Setter Property="eyeTracking:Behaviors.ActivatedCommand" Value="target_command"/>-->
+                <!--<Setter Property="eyeTracking:Behaviors.GazeAwareMode" Value="Delayed"/>
+                <Setter Property="eyeTracking:Behaviors.GazeAwareDelayTime" Value="1000"/>-->
+                
+                <!--if enable the line below, would double the command-->
+                <!--<Setter Property="eyeTracking:Behaviors.ActivatedCommand" Value="{Binding Command, RelativeSource={RelativeSource Self}}"/>-->
             </Style>
 
-            <Style x:Key="btnDeleteTestStyle" TargetType="Button">
-                <Setter Property="eyeTracking:Behaviors.IsGazeAware" Value="True"/>
-                <Style.Triggers>
-                    <Trigger Property="eyeTracking:Behaviors.HasGaze" Value="True">
-                        <Setter Property="Background" Value="Green"/>
-                    </Trigger>
-                </Style.Triggers>
+            <Style TargetType="Button" BasedOn="{StaticResource activatableStyle}">
             </Style>
-            
-            <!--<Style x:Key="viewDeleteTestStyle" TargetType="views:View_Key_Delete">
-                --><!--<Style.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=btnDeleteTestStyle}"/>
-                </Style.Resources>--><!--
-                <Setter Property="eyeTracking:Behaviors.IsGazeAware" Value="True"/>
-                <Style.Triggers>
-                    <Trigger Property="eyeTracking:Behaviors.HasGaze" Value="True">
-                        <Setter Property="Background" Value="Green"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>-->
         </ResourceDictionary>
     </Window.Resources>
     

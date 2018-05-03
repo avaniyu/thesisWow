@@ -6,10 +6,12 @@
              xmlns:local="clr-namespace:ClassLibrary.Views"
              xmlns:viewModel="clr-namespace:ClassLibrary.ViewModels"
              xmlns:keyImageProperty="clr-namespace:ClassLibrary.KeyImageProperty"
-             xmlns:eyeTracking="clr-namespace:Tobii.Interaction.Wpf;assembly=Tobii.Interaction.Net"
              x:Name="Control"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <!--xmlns:eyeTracking="clr-namespace:Tobii.Interaction.Wpf;assembly=Tobii.Interaction.Net"-->
+    
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,18 +20,6 @@
         <CheckBox Name="checkBoxDeleteMode" Command="{Binding ElementName=Control, Path=CommandDeleteMode}" IsChecked="True">
             <TextBlock Text="Delete Mode"/>
         </CheckBox>
-        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=CommandDelete}" Content="Delete" FontSize="20" Grid.Row="1" Style="{DynamicResource btnDeleteStyle}"/>
+        <Button Name="btnDelete" Command="{Binding ElementName=Control, Path=CommandDelete}" Content="Delete" FontSize="20" Grid.Row="1" />
     </Grid>
-
-    <UserControl.Resources>
-        <Style x:Key="checkBoxDeleteModeStyle" TargetType="CheckBox">
-            <Setter Property="eyeTracking:Behaviors.IsActivatable" Value="True"/>
-            <Setter Property="eyeTracking:Behaviors.ActivatedCommand" Value="{Binding ElementName=Control, Path=CommandDeleteMode}"/>
-        </Style>
-        
-        <Style x:Key="btnDeleteStyle" TargetType="Button">
-            <Setter Property="eyeTracking:Behaviors.IsActivatable" Value="True"/>
-            <Setter Property="eyeTracking:Behaviors.ActivatedCommand" Value="{Binding ElementName=Control, Path=CommandDelete}"/>
-        </Style>
-    </UserControl.Resources>
 </UserControl>

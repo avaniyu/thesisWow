@@ -139,7 +139,7 @@
         {
             this.Model = new Model_Keys_Localization();
             this.Model.CreateKeys();
-            this.TypingResults = "";
+            this.TypingResults = "this is a test";
             this.typingBuffer = "";
             this.isWordDeletion = true;
         }
