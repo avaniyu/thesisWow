@@ -1,1 +1,2 @@
 C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\bin\Debug\TextTest.exe.config
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\TestRd2\TextTest\obj\Debug\TextTest.exe

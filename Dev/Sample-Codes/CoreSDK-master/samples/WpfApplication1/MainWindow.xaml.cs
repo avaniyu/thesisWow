@@ -13,9 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-
-namespace MyKeyboard
+namespace WpfApplication1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -10,6 +10,8 @@
     using System.ComponentModel;
     using System.Windows.Input;
     using ClassLibrary.Helpers;
+    using Tobii.Interaction;
+    using Tobii.Interaction.Wpf;
 
     public class ViewModel_Main : Base_Binding
     {
