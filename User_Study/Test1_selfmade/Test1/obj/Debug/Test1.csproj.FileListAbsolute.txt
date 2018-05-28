@@ -27,3 +27,4 @@ C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\Test1\Test1\obj\Debug\Skyp
 C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\Test1\Test1\obj\Debug\SkypeFeedback.baml
 C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\Test1\Test1\obj\Debug\SubjectiveRating.g.cs
 C:\Users\jiyu\Jiayao\GitRepo\Gaze_Keyboard\User_Study\Test1\Test1\obj\Debug\SubjectiveRating.baml
+C:\Users\jiyu\Jiayao\GitRepo\thesisWow\User_Study\Test1_selfmade\Test1\bin\Debug\Test1.exe.config
