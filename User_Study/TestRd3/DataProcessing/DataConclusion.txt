@@ -1,0 +1,43 @@
+summed-up data visualization google slides
+https://goo.gl/q94WDA
+======================================================================================================
+speed and accuracy/error rate
+--------------------------------
+overall participants' typing speed and error rate is better (higher, lower respectively) than Rd.2
+dwellFree keyboard has a bit better typing speed and error rate than winControl keybd both in Rd.2, Rd.3
+(?) eyeControl keybd typing speed and error rate are worse than Rd.2
+(?) winControl keybd typing speed is bad for participant 4,5 in Rd.3
+(?) my proto typing speed and error rate are bad for participant 3,4
+my proto has the worst typing speed and error rate
+keyboards are hard to type for participant 3,4
+========================================================================================================
+accuracy/error rate
+--------------------------------
+(?) winControl keybd for participant 5 has some cases when error rate == 1
+========================================================================================================
+learning curve
+--------------------------------
+winControl keyboard for participant 1 in rd.3, increased typing speed from ~no.10 sentence transcription (because start using word prediction)
+=================================================================
+speed vs. accuracy/error rate
+--------------------
+my proto hard to afford error-free typing
+relativcly dwellFree afford error-free typing
+typing data coarse trend is accurate, has bias in finer level tho
+
+=================================================================
+Overall data impression
+--------------------
+dwellFree is good in terms of typing performance
+winControl and dwellFree has better typing performance in Rd.3 than Rd.2, probably due to partipants use experience
+lack of eyeControl typing data
+myProto is the worst in terms of typing performance (especially bad in error rate)
+
+
+
+TODO
+------
+find participant 5 eyeControl typing record (otherwise eyeControl data is inaccurate)
+final figure on typing speed & error rate comparison between my keybd and othe keybds
+exclude typing speed == 0 data points for participant 3,5 in my data analysis (seen by individual learning curve)
+
