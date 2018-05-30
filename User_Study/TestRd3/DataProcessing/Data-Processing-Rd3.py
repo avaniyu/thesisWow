@@ -81,7 +81,7 @@ class UserControl:
 				if sentence.testing == 1:
 					if self.contrPtcp.value != 'All':
 						index = (int(self.contrPtcp.value[1])-1)*amountKeyboard + sentence.keyboard
-						selectedPtcp = [int(self.contrPtcp.value[1])-1]
+						selectedPtcp = [int(self.contrPtcp.value[1])]
 					else:
 						index = sentence.participant*amountKeyboard + sentence.keyboard
 						selectedPtcp = [i for i in range(amountPtcp)]
@@ -91,7 +91,7 @@ class UserControl:
 						perPtcpTotErrRate[index].append(sentence.totErrRate)
 						perPtcpUncErrRate[index].append(sentence.uncErrRate)
 						perPtcpCorErrRate[index].append(sentence.corErrRate)
-						perPtcpSentenceNo[index].append(sentence.sentenceNo)
+						perPtcpSentenceNo[index].append(sentence.sentenceNo)						
 			self.filter()
 			if 'Speed' == self.contrMetric.value:
 				plot.plotSpeed()
@@ -106,7 +106,7 @@ class UserControl:
 
 	def filter(self):
 		# TODO: remove outliers that out of 90%
-		print("filter")
+		pass
 
 	def clearCache(self):
 		clear_output(wait=True)
@@ -122,7 +122,7 @@ class Plot:
 	plotXPosition = [1,2,3,4]
 	labelKeybd = ['Tobii Win Control', 'Tobii My Proto', 'Win10 Eye Control', 'Tobii Dwell-free'] * 6
 	axisKeybd = ['Tobii\nWin Control', 'Tobii\nMy Proto', 'Win10\nEye Control', 'Tobii\nDwell-free'] * 6
-	color = ['gray', '#01ac66', '#DD7E50', '#DD7E50'] * 6 
+	color = ['gray', '#3E5902', '#F2811D', '#732002'] * 6 
 
 	def plotSpeed(cls):
 		fig, ax = plt.subplots()
@@ -138,7 +138,7 @@ class Plot:
 				yWpm[index%amountKeyboard].append(plotPerPtcpWpm[index][subIndex])
 		for i in range(amountKeyboard):
 			plt.boxplot(yWpm[i], positions=[cls.plotXPosition[i]], showfliers=True, patch_artist=True, 
-						boxprops=dict(facecolor=cls.color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+						boxprops=dict(facecolor=cls.color[i]), medianprops=dict(linewidth=1, linestyle=None, color='white'))
 		plt.xlim(min(cls.plotXPosition)-1, max(cls.plotXPosition)+1)	
 		plt.xticks(cls.plotXPosition, cls.axisKeybd)
 		fig.savefig('plotSpeed_' + ui.contrPtcp.value+'.png', bbox_inches='tight')
@@ -159,7 +159,7 @@ class Plot:
 				yErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][subIndex])
 		for i in range(amountKeyboard):
 			plt.boxplot(yErrRate[i], positions=[cls.plotXPosition[i]], showfliers=True, patch_artist=True, 
-						boxprops=dict(facecolor=cls.color[i]), medianprops=dict(linewidth=1, linestyle=None, color='yellow'))
+						boxprops=dict(facecolor=cls.color[i]), medianprops=dict(linewidth=1, linestyle=None, color='white'))
 		plt.xlim(min(cls.plotXPosition)-1, max(cls.plotXPosition)+1)	
 		plt.xticks(cls.plotXPosition, cls.axisKeybd)
 		fig.savefig('plotErrorRate_'+ui.contrPtcp.value+'.png', bbox_inches='tight')
@@ -184,7 +184,7 @@ class Plot:
 				yWpm[index%amountKeyboard].append(plotPerPtcpWpm[index][subIndex])
 				sdTotErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][subIndex])
 		for i in range(amountKeyboard):
-			plt.bar(i+1,np.mean(yWpm[i]),0.5,color=cls.color[i],label=cls.labelKeybd[i],alpha=0.6)		
+			plt.bar(i+1,np.mean(yWpm[i]),0.5,color=cls.color[i],label=cls.labelKeybd[i],alpha=0.7)		
 		for i in range(amountKeyboard):
 			if i == 0:
 				eb = plt.errorbar(i+1,np.mean(yWpm[i]),np.mean(sdTotErrRate[i])*np.mean(yWpm[i]),
@@ -210,13 +210,14 @@ class Plot:
 			plotPerPtcpErrRate = perPtcpUncErrRate
 		elif ui.contrErrRate.value == 'Corrected-Error-Rate':
 			plotPerPtcpErrRate = perPtcpCorErrRate
+			
 		if ui.contrPtcp.value != 'All':
 			for index in range(len(plotPerPtcpWpm)):
 				if len(plotPerPtcpWpm[index]):
 					sdError = [a*b for a,b in zip(plotPerPtcpWpm[index], plotPerPtcpErrRate[index])]
 					eb = plt.errorbar(perPtcpSentenceNo[index],plotPerPtcpWpm[index],sdError,
-						fmt='.-',color=cls.color[index],elinewidth=6,capsize=3,label=cls.labelKeybd[index],alpha=0.5)
-					eb[-1][0].set_linestyle('--')
+						fmt='.-',color=cls.color[index],elinewidth=6,capsize=3,label=cls.labelKeybd[index],alpha=0.7)
+					# eb[-1][0].set_linestyle('--')
 		else:
 			yPerSentenceWpm, yPerSentenceTotErrRate = ([[([0]*15) for i in range(amountPtcp)] for j in range(amountKeyboard)] for k in range(2))
 			tmpPerSentenceNo = [j for j in range(4,19)]
@@ -241,7 +242,7 @@ class Plot:
 						sdTotErrRate[i][j] = 0
 				eb = plt.errorbar([q for q in range(4,19)], yWpm[i], sdTotErrRate[i],
 								fmt='.-',color=cls.color[i],elinewidth=6,capsize=3,label=cls.labelKeybd[i],alpha=0.5)
-				eb[-1][0].set_linestyle('--')
+				# eb[-1][0].set_linestyle('--')
 		ax.legend(loc='upper center')
 		ax.set(title=ui.contrPtcp.value+' participant(s)'+' learning curve', xlabel='Sentence no.', ylabel='Entry speed (wpm)')
 		plt.ylim(0, 26)
@@ -266,7 +267,7 @@ class Plot:
 					yErrRate[index%amountKeyboard].append(plotPerPtcpErrRate[index][indexSub])
 		fig, ax = plt.subplots()
 		for i in range(amountKeyboard):
-			plt.scatter(xSpeed[i], yErrRate[i], color=cls.color[i], label=cls.labelKeybd[i], alpha=0.5)
+			plt.scatter(xSpeed[i], yErrRate[i], color=cls.color[i], label=cls.labelKeybd[i], alpha=0.7)
 		ax.legend(loc='upper center')
 		ax.set_xscale('log', basex=2)
 		ax.set(title=ui.contrPtcp.value+' participant(s)'+' speed vs. accuracy', xlabel='Speed (wpm)', ylabel='Total Error Rate')
@@ -279,13 +280,17 @@ if __name__ == "__main__":
 	amountKeyboard = 4
 	Sentences = []
 	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(6))
-	filenames = ['Participant1_Keybd0', 'Participant1_Keybd1', 'Participant1_Keybd3',
-				'Participant2_Keybd0', 'Participant2_Keybd1', 'Participant2_Keybd3_Redo',
-				'Participant3_Keybd1',
+	filenames = ['Participant1_Keybd0', 'Participant1_Keybd1', 						'Participant1_Keybd3',
+				'Participant2_Keybd0', 'Participant2_Keybd1', 						'Participant2_Keybd3',
+										'Participant3_Keybd1',
 				'Participant4_Keybd0', 'Participant4_Keybd1', 'Participant4_Keybd2',
-				'Participant5_Keybd0', 'Participant5_Keybd1_1', 'Participant5_Keybd1_2', 'Participant5_Keybd2']
+				'Participant5_Keybd0', 'Participant5_Keybd1', 'Participant5_Keybd2']
+
 	for filename in filenames:
 		IO.ReadSentences(filename)
 
 	ui = UserControl()
 	plot = Plot()
+
+	# TODO: compute ANOVA
+
