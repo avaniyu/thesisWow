@@ -1,8 +1,8 @@
 # Keyboard ordering:
-# winControl	0
-# myProto		1
-# eyeControl	2
-# dwellFree		3
+# eyeControl 0
+# winControl 1
+# dwellFree 2
+# myProto 3
 
 %matplotlib notebook	
 import csv
@@ -120,9 +120,9 @@ class UserControl:
 
 class Plot:
 	plotXPosition = [1,2,3,4]
-	labelKeybd = ['Tobii Win Control', 'Tobii My Proto', 'Win10 Eye Control', 'Tobii Dwell-free'] * 6
-	axisKeybd = ['Tobii\nWin Control', 'Tobii\nMy Proto', 'Win10\nEye Control', 'Tobii\nDwell-free'] * 6
-	color = ['gray', '#3E5902', '#F2811D', '#732002'] * 6 
+	labelKeybd = ['MS Eye Control', 'Tobii Win Control', 'Tobii Dwell Free', 'Thesis Proto'] * 6
+	axisKeybd = ['MS\nEye Control', 'Tobii\nWin Control', 'Tobii\nDwell Free', 'Thesis\nProto'] * 6
+	color = ['#939493', '#01ac66', '#DD7E50', '#393D46'] * 6 
 
 	def plotSpeed(cls):
 		fig, ax = plt.subplots()
@@ -280,11 +280,11 @@ if __name__ == "__main__":
 	amountKeyboard = 4
 	Sentences = []
 	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(6))
-	filenames = ['Participant1_Keybd0', 'Participant1_Keybd1', 						'Participant1_Keybd3',
-				'Participant2_Keybd0', 'Participant2_Keybd1', 						'Participant2_Keybd3',
-										'Participant3_Keybd1',
-				'Participant4_Keybd0', 'Participant4_Keybd1', 'Participant4_Keybd2',
-				'Participant5_Keybd0', 'Participant5_Keybd1', 'Participant5_Keybd2']
+	filenames = [					 'Participant1_Keybd1', 'Participant1_Keybd2', 'Participant1_Keybd3',
+									 'Participant2_Keybd1', 'Participant2_Keybd2', 'Participant2_Keybd3',
+										'Participant3_Keybd3',
+				'Participant4_Keybd0', 'Participant4_Keybd1', 						'Participant4_Keybd3',
+				'Participant5_Keybd0', 'Participant5_Keybd1', 						'Participant5_Keybd3']
 
 	for filename in filenames:
 		IO.ReadSentences(filename)

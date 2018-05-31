@@ -1,316 +1,196 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<TextTest version="2.8.4" trials="15" ticks="636628587454501079" seconds="63662858745.45" date="Friday, May 25, 2018 3:25:45 PM">
-  <Trial number="1" testing="false" entries="8">
-    <Presented>my watch fell in the water</Presented>
-    <Entry char="m" value="109" ticks="636628587615371127" seconds="63662858761.54" />
-    <Entry char="y" value="121" ticks="636628587628043245" seconds="63662858762.8" />
-    <Entry char=" " value="32" ticks="636628587671180081" seconds="63662858767.12" />
-    <Entry char="w" value="119" ticks="636628587695837652" seconds="63662858769.58" />
-    <Entry char="a" value="97" ticks="636628587706234016" seconds="63662858770.62" />
-    <Entry char="t" value="116" ticks="636628587719638481" seconds="63662858771.96" />
-    <Entry char="c" value="99" ticks="636628587759749328" seconds="63662858775.97" />
-    <Entry char="h" value="104" ticks="636628587769939006" seconds="63662858776.99" />
-    <Transcribed>my watch</Transcribed>
+<TextTest version="2.8.4" trials="3" ticks="636631249621000171" seconds="63663124962.1" date="den 28 maj 2018 17:22:42">
+  <Trial number="1" testing="false" entries="55">
+    <Presented>a yard is almost as long as a meter</Presented>
+    <Entry char="a" value="97" ticks="636631254213280465" seconds="63663125421.33" />
+    <Entry char=" " value="32" ticks="636631254213300601" seconds="63663125421.33" />
+    <Entry char="y" value="121" ticks="636631254222903571" seconds="63663125422.29" />
+    <Entry char="a" value="97" ticks="636631254224110683" seconds="63663125422.41" />
+    <Entry char="r" value="114" ticks="636631254225601944" seconds="63663125422.56" />
+    <Entry char="d" value="100" ticks="636631254227504093" seconds="63663125422.75" />
+    <Entry char=" " value="32" ticks="636631254228154351" seconds="63663125422.82" />
+    <Entry char="i" value="105" ticks="636631254723118303" seconds="63663125472.31" />
+    <Entry char="t" value="116" ticks="636631254723775296" seconds="63663125472.38" />
+    <Entry char="'" value="39" ticks="636631254725120672" seconds="63663125472.51" />
+    <Entry char="s" value="115" ticks="636631254726474060" seconds="63663125472.65" />
+    <Entry char=" " value="32" ticks="636631254727654681" seconds="63663125472.77" />
+    <Entry char="&#x8;" value="8" ticks="636631254753316057" seconds="63663125475.33" />
+    <Entry char="&#x8;" value="8" ticks="636631254753326032" seconds="63663125475.33" />
+    <Entry char="&#x8;" value="8" ticks="636631254754920005" seconds="63663125475.49" />
+    <Entry char="&#x8;" value="8" ticks="636631254756072678" seconds="63663125475.61" />
+    <Entry char="s" value="115" ticks="636631254758275995" seconds="63663125475.83" />
+    <Entry char=" " value="32" ticks="636631254760034578" seconds="63663125476" />
+    <Entry char="a" value="97" ticks="636631254825546455" seconds="63663125482.55" />
+    <Entry char="l" value="108" ticks="636631254825935145" seconds="63663125482.59" />
+    <Entry char="m" value="109" ticks="636631254827567736" seconds="63663125482.76" />
+    <Entry char="o" value="111" ticks="636631254828848765" seconds="63663125482.88" />
+    <Entry char="s" value="115" ticks="636631254829372985" seconds="63663125482.94" />
+    <Entry char="t" value="116" ticks="636631254831161793" seconds="63663125483.12" />
+    <Entry char=" " value="32" ticks="636631254832216364" seconds="63663125483.22" />
+    <Entry char="a" value="97" ticks="636631254905215090" seconds="63663125490.52" />
+    <Entry char="s" value="115" ticks="636631254905225099" seconds="63663125490.52" />
+    <Entry char=" " value="32" ticks="636631254906182309" seconds="63663125490.62" />
+    <Entry char="l" value="108" ticks="636631254985772013" seconds="63663125498.58" />
+    <Entry char="o" value="111" ticks="636631254987378728" seconds="63663125498.74" />
+    <Entry char="n" value="110" ticks="636631254988513071" seconds="63663125498.85" />
+    <Entry char="g" value="103" ticks="636631254988827398" seconds="63663125498.88" />
+    <Entry char=" " value="32" ticks="636631254991967675" seconds="63663125499.2" />
+    <Entry char="a" value="97" ticks="636631255055514018" seconds="63663125505.55" />
+    <Entry char="s" value="115" ticks="636631255056328727" seconds="63663125505.63" />
+    <Entry char=" " value="32" ticks="636631255085422451" seconds="63663125508.54" />
+    <Entry char="s" value="115" ticks="636631255265818686" seconds="63663125526.58" />
+    <Entry char="l" value="108" ticks="636631255267672304" seconds="63663125526.77" />
+    <Entry char="a" value="97" ticks="636631255268718877" seconds="63663125526.87" />
+    <Entry char="v" value="118" ticks="636631255270828148" seconds="63663125527.08" />
+    <Entry char="e" value="101" ticks="636631255271432010" seconds="63663125527.14" />
+    <Entry char="s" value="115" ticks="636631255273632894" seconds="63663125527.36" />
+    <Entry char="&#x8;" value="8" ticks="636631255682235094" seconds="63663125568.22" />
+    <Entry char="&#x8;" value="8" ticks="636631255682739702" seconds="63663125568.27" />
+    <Entry char="&#x8;" value="8" ticks="636631255684106597" seconds="63663125568.41" />
+    <Entry char="&#x8;" value="8" ticks="636631255685595683" seconds="63663125568.56" />
+    <Entry char="&#x8;" value="8" ticks="636631255687081032" seconds="63663125568.71" />
+    <Entry char="&#x8;" value="8" ticks="636631255688280009" seconds="63663125568.83" />
+    <Entry char="a" value="97" ticks="636631255739240432" seconds="63663125573.92" />
+    <Entry char=" " value="32" ticks="636631255750993336" seconds="63663125575.1" />
+    <Entry char="m" value="109" ticks="636631255910396476" seconds="63663125591.04" />
+    <Entry char="e" value="101" ticks="636631255910456610" seconds="63663125591.05" />
+    <Entry char="t" value="116" ticks="636631255911778546" seconds="63663125591.18" />
+    <Entry char="e" value="101" ticks="636631255913662822" seconds="63663125591.37" />
+    <Entry char="r" value="114" ticks="636631255914337575" seconds="63663125591.43" />
+    <Transcribed>a yard is almost as long as a meter</Transcribed>
   </Trial>
-  <Trial number="2" testing="false" entries="0">
-    <Presented>prevailing wind from the east</Presented>
-    <Transcribed />
+  <Trial number="2" testing="false" entries="23">
+    <Presented>we missed your birthday</Presented>
+    <Entry char="w" value="119" ticks="636631256329641635" seconds="63663125632.96" />
+    <Entry char="e" value="101" ticks="636631256353223753" seconds="63663125635.32" />
+    <Entry char=" " value="32" ticks="636631256355497634" seconds="63663125635.55" />
+    <Entry char="m" value="109" ticks="636631256532006681" seconds="63663125653.2" />
+    <Entry char="i" value="105" ticks="636631256532076284" seconds="63663125653.21" />
+    <Entry char="s" value="115" ticks="636631256532565451" seconds="63663125653.26" />
+    <Entry char="s" value="115" ticks="636631256534441566" seconds="63663125653.44" />
+    <Entry char="e" value="101" ticks="636631256536406518" seconds="63663125653.64" />
+    <Entry char="d" value="100" ticks="636631256538061643" seconds="63663125653.81" />
+    <Entry char=" " value="32" ticks="636631256539695341" seconds="63663125653.97" />
+    <Entry char="y" value="121" ticks="636631256876554539" seconds="63663125687.66" />
+    <Entry char="o" value="111" ticks="636631256876996364" seconds="63663125687.7" />
+    <Entry char="u" value="117" ticks="636631256877513369" seconds="63663125687.75" />
+    <Entry char="r" value="114" ticks="636631256878113521" seconds="63663125687.81" />
+    <Entry char=" " value="32" ticks="636631256879304621" seconds="63663125687.93" />
+    <Entry char="b" value="98" ticks="636631257020780505" seconds="63663125702.08" />
+    <Entry char="i" value="105" ticks="636631257020840422" seconds="63663125702.08" />
+    <Entry char="r" value="114" ticks="636631257023689941" seconds="63663125702.37" />
+    <Entry char="t" value="116" ticks="636631257025793745" seconds="63663125702.58" />
+    <Entry char="h" value="104" ticks="636631257027049214" seconds="63663125702.7" />
+    <Entry char="d" value="100" ticks="636631257029000337" seconds="63663125702.9" />
+    <Entry char="a" value="97" ticks="636631257029682245" seconds="63663125702.97" />
+    <Entry char="y" value="121" ticks="636631257030749847" seconds="63663125703.07" />
+    <Transcribed>we missed your birthday</Transcribed>
   </Trial>
-  <Trial number="3" testing="false" entries="17">
-    <Presented>never too rich and never too thin</Presented>
-    <Entry char="n" value="110" ticks="636628587915400051" seconds="63662858791.54" />
-    <Entry char="e" value="101" ticks="636628587940559269" seconds="63662858794.06" />
-    <Entry char="r" value="114" ticks="636628587951337876" seconds="63662858795.13" />
-    <Entry char="&#x8;" value="8" ticks="636628587971206524" seconds="63662858797.12" />
-    <Entry char="v" value="118" ticks="636628587992270212" seconds="63662858799.23" />
-    <Entry char="e" value="101" ticks="636628588002750681" seconds="63662858800.28" />
-    <Entry char="r" value="114" ticks="636628588013526588" seconds="63662858801.35" />
-    <Entry char="t" value="116" ticks="636628588035545440" seconds="63662858803.55" />
-    <Entry char="t" value="116" ticks="636628588043185105" seconds="63662858804.32" />
-    <Entry char=" " value="32" ticks="636628588057256347" seconds="63662858805.73" />
-    <Entry char="&#x8;" value="8" ticks="636628588117525627" seconds="63662858811.75" />
-    <Entry char="&#x8;" value="8" ticks="636628588125231819" seconds="63662858812.52" />
-    <Entry char="&#x8;" value="8" ticks="636628588146397795" seconds="63662858814.64" />
-    <Entry char=" " value="32" ticks="636628588169466202" seconds="63662858816.95" />
-    <Entry char="t" value="116" ticks="636628588192282617" seconds="63662858819.23" />
-    <Entry char="o" value="111" ticks="636628588207178298" seconds="63662858820.72" />
-    <Entry char="o" value="111" ticks="636628588214923388" seconds="63662858821.49" />
-    <Transcribed>never too</Transcribed>
-  </Trial>
-  <Trial number="4" testing="true" entries="0">
-    <Presented>breathing is difficult</Presented>
-    <Transcribed />
-  </Trial>
-  <Trial number="5" testing="true" entries="0">
-    <Presented>I can see the rings on Saturn</Presented>
-    <Transcribed />
-  </Trial>
-  <Trial number="6" testing="true" entries="0">
-    <Presented>physics and chemistry are hard</Presented>
-    <Transcribed />
-  </Trial>
-  <Trial number="7" testing="true" entries="0">
-    <Presented>my bank account is overdrawn</Presented>
-    <Transcribed />
-  </Trial>
-  <Trial number="8" testing="true" entries="37">
-    <Presented>elections bring out the best</Presented>
-    <Entry char="&#x8;" value="8" ticks="636628588689315864" seconds="63662858868.93" />
-    <Entry char="&#x8;" value="8" ticks="636628588712062177" seconds="63662858871.21" />
-    <Entry char="&#x8;" value="8" ticks="636628588722356048" seconds="63662858872.24" />
-    <Entry char="e" value="101" ticks="636628588797906695" seconds="63662858879.79" />
-    <Entry char="l" value="108" ticks="636628588822126424" seconds="63662858882.21" />
-    <Entry char="e" value="101" ticks="636628588841508271" seconds="63662858884.15" />
-    <Entry char="c" value="99" ticks="636628588853084499" seconds="63662858885.31" />
-    <Entry char="t" value="116" ticks="636628588863051674" seconds="63662858886.31" />
-    <Entry char="i" value="105" ticks="636628588882649682" seconds="63662858888.26" />
-    <Entry char="o" value="111" ticks="636628588901024214" seconds="63662858890.1" />
-    <Entry char="y" value="121" ticks="636628588952888311" seconds="63662858895.29" />
-    <Entry char="s" value="115" ticks="636628588998742120" seconds="63662858899.87" />
-    <Entry char="&#x8;" value="8" ticks="636628589036352695" seconds="63662858903.64" />
-    <Entry char=" " value="32" ticks="636628589040447779" seconds="63662858904.04" />
-    <Entry char="&#x8;" value="8" ticks="636628589044040311" seconds="63662858904.4" />
-    <Entry char="&#x8;" value="8" ticks="636628589066394395" seconds="63662858906.64" />
-    <Entry char="n" value="110" ticks="636628589090623579" seconds="63662858909.06" />
-    <Entry char="s" value="115" ticks="636628589112442660" seconds="63662858911.24" />
-    <Entry char=" " value="32" ticks="636628589147016777" seconds="63662858914.7" />
-    <Entry char="b" value="98" ticks="636628589191537352" seconds="63662858919.15" />
-    <Entry char="r" value="114" ticks="636628589206186261" seconds="63662858920.62" />
-    <Entry char="i" value="105" ticks="636628589216883646" seconds="63662858921.69" />
-    <Entry char="n" value="110" ticks="636628589234619057" seconds="63662858923.46" />
-    <Entry char="g" value="103" ticks="636628589264447920" seconds="63662858926.44" />
-    <Entry char=" " value="32" ticks="636628589290913550" seconds="63662858929.09" />
-    <Entry char="o" value="111" ticks="636628589310249432" seconds="63662858931.02" />
-    <Entry char="u" value="117" ticks="636628589324974878" seconds="63662858932.5" />
-    <Entry char="t" value="116" ticks="636628589334820220" seconds="63662858933.48" />
-    <Entry char=" " value="32" ticks="636628589354801385" seconds="63662858935.48" />
-    <Entry char="t" value="116" ticks="636628589370442951" seconds="63662858937.04" />
-    <Entry char="h" value="104" ticks="636628589381503836" seconds="63662858938.15" />
-    <Entry char="e" value="101" ticks="636628589401666521" seconds="63662858940.17" />
-    <Entry char=" " value="32" ticks="636628589421025834" seconds="63662858942.1" />
-    <Entry char="b" value="98" ticks="636628589431826248" seconds="63662858943.18" />
-    <Entry char="e" value="101" ticks="636628589444762853" seconds="63662858944.48" />
-    <Entry char="s" value="115" ticks="636628589460847843" seconds="63662858946.08" />
-    <Entry char="t" value="116" ticks="636628589472189480" seconds="63662858947.22" />
-    <Transcribed>elections bring out the best</Transcribed>
-  </Trial>
-  <Trial number="9" testing="true" entries="0">
-    <Presented>we are having spaghetti</Presented>
-    <Transcribed />
-  </Trial>
-  <Trial number="10" testing="true" entries="27">
-    <Presented>time to go shopping</Presented>
-    <Entry char="t" value="116" ticks="636628589597794724" seconds="63662858959.78" />
-    <Entry char="i" value="105" ticks="636628589637325566" seconds="63662858963.73" />
-    <Entry char="j" value="106" ticks="636628589649660333" seconds="63662858964.97" />
-    <Entry char="&#x8;" value="8" ticks="636628589668597851" seconds="63662858966.86" />
-    <Entry char="j" value="106" ticks="636628589703406509" seconds="63662858970.34" />
-    <Entry char="&#x8;" value="8" ticks="636628589717001793" seconds="63662858971.7" />
-    <Entry char="n" value="110" ticks="636628589717061748" seconds="63662858971.71" />
-    <Entry char=" " value="32" ticks="636628589717091752" seconds="63662858971.71" />
-    <Entry char="&#x8;" value="8" ticks="636628589735250891" seconds="63662858973.53" />
-    <Entry char="&#x8;" value="8" ticks="636628589755706158" seconds="63662858975.57" />
-    <Entry char="m" value="109" ticks="636628589884456925" seconds="63662858988.45" />
-    <Entry char="e" value="101" ticks="636628589897632123" seconds="63662858989.76" />
-    <Entry char=" " value="32" ticks="636628589924505051" seconds="63662858992.45" />
-    <Entry char="t" value="116" ticks="636628589940086251" seconds="63662858994.01" />
-    <Entry char="o" value="111" ticks="636628589955904474" seconds="63662858995.59" />
-    <Entry char=" " value="32" ticks="636628589971987474" seconds="63662858997.2" />
-    <Entry char="g" value="103" ticks="636628589995228205" seconds="63662858999.52" />
-    <Entry char="o" value="111" ticks="636628590009946413" seconds="63662859000.99" />
-    <Entry char=" " value="32" ticks="636628590025769183" seconds="63662859002.58" />
-    <Entry char="s" value="115" ticks="636628590056178265" seconds="63662859005.62" />
-    <Entry char="h" value="104" ticks="636628590074001542" seconds="63662859007.4" />
-    <Entry char="o" value="111" ticks="636628590088439659" seconds="63662859008.84" />
-    <Entry char="p" value="112" ticks="636628590099140274" seconds="63662859009.91" />
-    <Entry char="p" value="112" ticks="636628590115602232" seconds="63662859011.56" />
-    <Entry char="i" value="105" ticks="636628590130278633" seconds="63662859013.03" />
-    <Entry char="n" value="110" ticks="636628590149801331" seconds="63662859014.98" />
-    <Entry char="g" value="103" ticks="636628590164966640" seconds="63662859016.5" />
-    <Transcribed>time to go shopping</Transcribed>
-  </Trial>
-  <Trial number="11" testing="true" entries="35">
-    <Presented>a problem with the engine</Presented>
-    <Entry char="a" value="97" ticks="636628590208199241" seconds="63662859020.82" />
-    <Entry char=" " value="32" ticks="636628590221814579" seconds="63662859022.18" />
-    <Entry char="l" value="108" ticks="636628590241704549" seconds="63662859024.17" />
-    <Entry char="l" value="108" ticks="636628590241764499" seconds="63662859024.18" />
-    <Entry char=" " value="32" ticks="636628590241834472" seconds="63662859024.18" />
-    <Entry char="&#x8;" value="8" ticks="636628590264799841" seconds="63662859026.48" />
-    <Entry char="&#x8;" value="8" ticks="636628590272476323" seconds="63662859027.25" />
-    <Entry char="&#x8;" value="8" ticks="636628590301335145" seconds="63662859030.13" />
-    <Entry char="&#x8;" value="8" ticks="636628590315604936" seconds="63662859031.56" />
-    <Entry char=" " value="32" ticks="636628590374409563" seconds="63662859037.44" />
-    <Entry char="p" value="112" ticks="636628590391511681" seconds="63662859039.15" />
-    <Entry char="r" value="114" ticks="636628590406164338" seconds="63662859040.62" />
-    <Entry char="o" value="111" ticks="636628590416342150" seconds="63662859041.63" />
-    <Entry char="b" value="98" ticks="636628590445903251" seconds="63662859044.59" />
-    <Entry char="l" value="108" ticks="636628590445943224" seconds="63662859044.59" />
-    <Entry char="e" value="101" ticks="636628590445973211" seconds="63662859044.6" />
-    <Entry char="m" value="109" ticks="636628590446013246" seconds="63662859044.6" />
-    <Entry char=" " value="32" ticks="636628590446043170" seconds="63662859044.6" />
-    <Entry char="w" value="119" ticks="636628590480246991" seconds="63662859048.02" />
-    <Entry char="i" value="105" ticks="636628590480276959" seconds="63662859048.03" />
-    <Entry char="t" value="116" ticks="636628590480306950" seconds="63662859048.03" />
-    <Entry char="h" value="104" ticks="636628590480336919" seconds="63662859048.03" />
-    <Entry char=" " value="32" ticks="636628590480386901" seconds="63662859048.04" />
-    <Entry char="t" value="116" ticks="636628590504303776" seconds="63662859050.43" />
-    <Entry char="h" value="104" ticks="636628590504333771" seconds="63662859050.43" />
-    <Entry char="e" value="101" ticks="636628590504373744" seconds="63662859050.44" />
-    <Entry char=" " value="32" ticks="636628590504403722" seconds="63662859050.44" />
-    <Entry char="e" value="101" ticks="636628590529241019" seconds="63662859052.92" />
-    <Entry char="h" value="104" ticks="636628590539497808" seconds="63662859053.95" />
-    <Entry char="&#x8;" value="8" ticks="636628590569523355" seconds="63662859056.95" />
-    <Entry char="n" value="110" ticks="636628590584926600" seconds="63662859058.49" />
-    <Entry char="g" value="103" ticks="636628590594827784" seconds="63662859059.48" />
-    <Entry char="i" value="105" ticks="636628590607446574" seconds="63662859060.74" />
-    <Entry char="n" value="110" ticks="636628590617910020" seconds="63662859061.79" />
-    <Entry char="e" value="101" ticks="636628590628379780" seconds="63662859062.84" />
-    <Transcribed>a problem with the engine</Transcribed>
-  </Trial>
-  <Trial number="12" testing="true" entries="28">
-    <Presented>elephants are afraid of mice</Presented>
-    <Entry char="e" value="101" ticks="636628590711054058" seconds="63662859071.11" />
-    <Entry char="l" value="108" ticks="636628590725666568" seconds="63662859072.57" />
-    <Entry char="e" value="101" ticks="636628590753534879" seconds="63662859075.35" />
-    <Entry char="p" value="112" ticks="636628590777482437" seconds="63662859077.75" />
-    <Entry char="h" value="104" ticks="636628590807574306" seconds="63662859080.76" />
-    <Entry char="a" value="97" ticks="636628590807594301" seconds="63662859080.76" />
-    <Entry char="n" value="110" ticks="636628590807614292" seconds="63662859080.76" />
-    <Entry char="t" value="116" ticks="636628590807634279" seconds="63662859080.76" />
-    <Entry char="s" value="115" ticks="636628590807654265" seconds="63662859080.77" />
-    <Entry char=" " value="32" ticks="636628590807674269" seconds="63662859080.77" />
-    <Entry char="a" value="97" ticks="636628590845906116" seconds="63662859084.59" />
-    <Entry char="r" value="114" ticks="636628590858981364" seconds="63662859085.9" />
-    <Entry char="e" value="101" ticks="636628590871203794" seconds="63662859087.12" />
-    <Entry char=" " value="32" ticks="636628590871233771" seconds="63662859087.12" />
-    <Entry char="a" value="97" ticks="636628590897275348" seconds="63662859089.73" />
-    <Entry char="f" value="102" ticks="636628590907267824" seconds="63662859090.73" />
-    <Entry char="r" value="114" ticks="636628590919728896" seconds="63662859091.97" />
-    <Entry char="a" value="97" ticks="636628590949143438" seconds="63662859094.91" />
-    <Entry char="i" value="105" ticks="636628590949173415" seconds="63662859094.92" />
-    <Entry char="d" value="100" ticks="636628590949203393" seconds="63662859094.92" />
-    <Entry char=" " value="32" ticks="636628590949243375" seconds="63662859094.92" />
-    <Entry char="o" value="111" ticks="636628590968260887" seconds="63662859096.83" />
-    <Entry char="f" value="102" ticks="636628590968300874" seconds="63662859096.83" />
-    <Entry char=" " value="32" ticks="636628590968340842" seconds="63662859096.83" />
-    <Entry char="m" value="109" ticks="636628590988337098" seconds="63662859098.83" />
-    <Entry char="i" value="105" ticks="636628590997888360" seconds="63662859099.79" />
-    <Entry char="c" value="99" ticks="636628591009328930" seconds="63662859100.93" />
-    <Entry char="e" value="101" ticks="636628591043523848" seconds="63662859104.35" />
-    <Transcribed>elephants are afraid of mice</Transcribed>
-  </Trial>
-  <Trial number="13" testing="true" entries="34">
-    <Presented>my favorite place to visit</Presented>
-    <Entry char="m" value="109" ticks="636628591103085092" seconds="63662859110.31" />
-    <Entry char="y" value="121" ticks="636628591114763759" seconds="63662859111.48" />
-    <Entry char=" " value="32" ticks="636628591135781735" seconds="63662859113.58" />
-    <Entry char="f" value="102" ticks="636628591163888317" seconds="63662859116.39" />
-    <Entry char="a" value="97" ticks="636628591174665955" seconds="63662859117.47" />
-    <Entry char="v" value="118" ticks="636628591199776901" seconds="63662859119.98" />
-    <Entry char="&#x8;" value="8" ticks="636628591213707680" seconds="63662859121.37" />
-    <Entry char="&#x8;" value="8" ticks="636628591213727684" seconds="63662859121.37" />
-    <Entry char="&#x8;" value="8" ticks="636628591213747671" seconds="63662859121.37" />
-    <Entry char=" " value="32" ticks="636628591213767648" seconds="63662859121.38" />
-    <Entry char="f" value="102" ticks="636628591213797648" seconds="63662859121.38" />
-    <Entry char="a" value="97" ticks="636628591213827621" seconds="63662859121.38" />
-    <Entry char="v" value="118" ticks="636628591213847594" seconds="63662859121.38" />
-    <Entry char="o" value="111" ticks="636628591213867599" seconds="63662859121.39" />
-    <Entry char="r" value="114" ticks="636628591213887576" seconds="63662859121.39" />
-    <Entry char="i" value="105" ticks="636628591213917563" seconds="63662859121.39" />
-    <Entry char="t" value="116" ticks="636628591213937545" seconds="63662859121.39" />
-    <Entry char="e" value="101" ticks="636628591213957531" seconds="63662859121.4" />
-    <Entry char=" " value="32" ticks="636628591213977518" seconds="63662859121.4" />
-    <Entry char="p" value="112" ticks="636628591253043303" seconds="63662859125.3" />
-    <Entry char="l" value="108" ticks="636628591263727167" seconds="63662859126.37" />
-    <Entry char="a" value="97" ticks="636628591293502090" seconds="63662859129.35" />
-    <Entry char="c" value="99" ticks="636628591293522095" seconds="63662859129.35" />
-    <Entry char="e" value="101" ticks="636628591293542072" seconds="63662859129.35" />
-    <Entry char=" " value="32" ticks="636628591293572050" seconds="63662859129.36" />
-    <Entry char="t" value="116" ticks="636628591308431636" seconds="63662859130.84" />
-    <Entry char="o" value="111" ticks="636628591308461618" seconds="63662859130.85" />
-    <Entry char=" " value="32" ticks="636628591308501604" seconds="63662859130.85" />
-    <Entry char="v" value="118" ticks="636628591341173910" seconds="63662859134.12" />
-    <Entry char="i" value="105" ticks="636628591353078992" seconds="63662859135.31" />
-    <Entry char="s" value="115" ticks="636628591364056736" seconds="63662859136.41" />
-    <Entry char="i" value="105" ticks="636628591377941465" seconds="63662859137.79" />
-    <Entry char="t" value="116" ticks="636628591377971452" seconds="63662859137.8" />
-    <Entry char=" " value="32" ticks="636628591378001442" seconds="63662859137.8" />
-    <Transcribed>my  favorite place to visit </Transcribed>
-  </Trial>
-  <Trial number="14" testing="true" entries="32">
-    <Presented>three two one zero blast off</Presented>
-    <Entry char="t" value="116" ticks="636628591454788908" seconds="63662859145.48" />
-    <Entry char="h" value="104" ticks="636628591465076849" seconds="63662859146.51" />
-    <Entry char="r" value="114" ticks="636628591486052268" seconds="63662859148.61" />
-    <Entry char="e" value="101" ticks="636628591499490026" seconds="63662859149.95" />
-    <Entry char="e" value="101" ticks="636628591511530873" seconds="63662859151.15" />
-    <Entry char=" " value="32" ticks="636628591511580850" seconds="63662859151.16" />
-    <Entry char="t" value="116" ticks="636628591549031533" seconds="63662859154.9" />
-    <Entry char="w" value="119" ticks="636628591559454132" seconds="63662859155.95" />
-    <Entry char="o" value="111" ticks="636628591580561299" seconds="63662859158.06" />
-    <Entry char=" " value="32" ticks="636628591580591281" seconds="63662859158.06" />
-    <Entry char="o" value="111" ticks="636628591603983582" seconds="63662859160.4" />
-    <Entry char="n" value="110" ticks="636628591614356953" seconds="63662859161.44" />
-    <Entry char="e" value="101" ticks="636628591638850896" seconds="63662859163.89" />
-    <Entry char=" " value="32" ticks="636628591638900860" seconds="63662859163.89" />
-    <Entry char="z" value="122" ticks="636628591657640860" seconds="63662859165.76" />
-    <Entry char="e" value="101" ticks="636628591667370675" seconds="63662859166.74" />
-    <Entry char="r" value="114" ticks="636628591677631249" seconds="63662859167.76" />
-    <Entry char="o" value="111" ticks="636628591688828826" seconds="63662859168.88" />
-    <Entry char=" " value="32" ticks="636628591688858826" seconds="63662859168.89" />
-    <Entry char="b" value="98" ticks="636628591709791024" seconds="63662859170.98" />
-    <Entry char="l" value="108" ticks="636628591721009694" seconds="63662859172.1" />
-    <Entry char="s" value="115" ticks="636628591731034946" seconds="63662859173.1" />
-    <Entry char="&#x8;" value="8" ticks="636628591752899279" seconds="63662859175.29" />
-    <Entry char="a" value="97" ticks="636628591763682982" seconds="63662859176.37" />
-    <Entry char="s" value="115" ticks="636628591774211800" seconds="63662859177.42" />
-    <Entry char="t" value="116" ticks="636628591800160129" seconds="63662859180.02" />
-    <Entry char=" " value="32" ticks="636628591837295794" seconds="63662859183.73" />
-    <Entry char="o" value="111" ticks="636628591849480874" seconds="63662859184.95" />
-    <Entry char="f" value="102" ticks="636628591862402107" seconds="63662859186.24" />
-    <Entry char="f" value="102" ticks="636628591870134363" seconds="63662859187.01" />
-    <Entry char="&#x8;" value="8" ticks="636628591893237344" seconds="63662859189.32" />
-    <Entry char="f" value="102" ticks="636628591932190551" seconds="63662859193.22" />
-    <Transcribed>three two one zero blast off</Transcribed>
-  </Trial>
-  <Trial number="15" testing="true" entries="35">
-    <Presented>my favorite subject is psychology</Presented>
-    <Entry char="m" value="109" ticks="636628591994865686" seconds="63662859199.49" />
-    <Entry char="y" value="121" ticks="636628592005374366" seconds="63662859200.54" />
-    <Entry char=" " value="32" ticks="636628592018070251" seconds="63662859201.81" />
-    <Entry char="f" value="102" ticks="636628592046348723" seconds="63662859204.63" />
-    <Entry char="a" value="97" ticks="636628592046368710" seconds="63662859204.64" />
-    <Entry char="v" value="118" ticks="636628592046388710" seconds="63662859204.64" />
-    <Entry char="o" value="111" ticks="636628592046408692" seconds="63662859204.64" />
-    <Entry char="r" value="114" ticks="636628592046428678" seconds="63662859204.64" />
-    <Entry char="i" value="105" ticks="636628592046448669" seconds="63662859204.64" />
-    <Entry char="t" value="116" ticks="636628592046468664" seconds="63662859204.65" />
-    <Entry char="e" value="101" ticks="636628592046498637" seconds="63662859204.65" />
-    <Entry char=" " value="32" ticks="636628592046518615" seconds="63662859204.65" />
-    <Entry char="s" value="115" ticks="636628592071548891" seconds="63662859207.15" />
-    <Entry char="u" value="117" ticks="636628592114472699" seconds="63662859211.45" />
-    <Entry char="b" value="98" ticks="636628592139814004" seconds="63662859213.98" />
-    <Entry char="j" value="106" ticks="636628592152134947" seconds="63662859215.21" />
-    <Entry char="e" value="101" ticks="636628592173998379" seconds="63662859217.4" />
-    <Entry char="c" value="99" ticks="636628592174028361" seconds="63662859217.4" />
-    <Entry char="t" value="116" ticks="636628592174058338" seconds="63662859217.41" />
-    <Entry char=" " value="32" ticks="636628592174088316" seconds="63662859217.41" />
-    <Entry char="i" value="105" ticks="636628592191630671" seconds="63662859219.16" />
-    <Entry char="s" value="115" ticks="636628592191660667" seconds="63662859219.17" />
-    <Entry char=" " value="32" ticks="636628592191690653" seconds="63662859219.17" />
-    <Entry char="p" value="112" ticks="636628592212432611" seconds="63662859221.24" />
-    <Entry char="s" value="115" ticks="636628592233843253" seconds="63662859223.38" />
-    <Entry char="y" value="121" ticks="636628592265414812" seconds="63662859226.54" />
-    <Entry char="c" value="99" ticks="636628592265444794" seconds="63662859226.54" />
-    <Entry char="h" value="104" ticks="636628592265484776" seconds="63662859226.55" />
-    <Entry char="o" value="111" ticks="636628592265524735" seconds="63662859226.55" />
-    <Entry char="l" value="108" ticks="636628592265554717" seconds="63662859226.56" />
-    <Entry char="o" value="111" ticks="636628592265574704" seconds="63662859226.56" />
-    <Entry char="g" value="103" ticks="636628592265614677" seconds="63662859226.56" />
-    <Entry char="y" value="121" ticks="636628592265654654" seconds="63662859226.57" />
-    <Entry char=" " value="32" ticks="636628592265694623" seconds="63662859226.57" />
-    <Entry char="&#x8;" value="8" ticks="636628592283138929" seconds="63662859228.31" />
-    <Transcribed>my favorite subject is psychology</Transcribed>
+  <Trial number="3" testing="false" entries="103">
+    <Presented>coalition governments never work</Presented>
+    <Entry char="c" value="99" ticks="636631257275718585" seconds="63663125727.57" />
+    <Entry char="o" value="111" ticks="636631257338524992" seconds="63663125733.85" />
+    <Entry char="t" value="116" ticks="636631257339522253" seconds="63663125733.95" />
+    <Entry char="t" value="116" ticks="636631257341369268" seconds="63663125734.14" />
+    <Entry char="o" value="111" ticks="636631257342498095" seconds="63663125734.25" />
+    <Entry char="n" value="110" ticks="636631257344129584" seconds="63663125734.41" />
+    <Entry char="&#x8;" value="8" ticks="636631257745653916" seconds="63663125774.57" />
+    <Entry char="&#x8;" value="8" ticks="636631257746469134" seconds="63663125774.65" />
+    <Entry char="&#x8;" value="8" ticks="636631257748406180" seconds="63663125774.84" />
+    <Entry char="&#x8;" value="8" ticks="636631257749764655" seconds="63663125774.98" />
+    <Entry char="&#x8;" value="8" ticks="636631257751436647" seconds="63663125775.14" />
+    <Entry char="&#x8;" value="8" ticks="636631257759215346" seconds="63663125775.92" />
+    <Entry char="&#x8;" value="8" ticks="636631257760854601" seconds="63663125776.09" />
+    <Entry char="d" value="100" ticks="636631257895150938" seconds="63663125789.52" />
+    <Entry char="u" value="117" ticks="636631257897687152" seconds="63663125789.77" />
+    <Entry char="b" value="98" ticks="636631257899045931" seconds="63663125789.9" />
+    <Entry char="r" value="114" ticks="636631257907414229" seconds="63663125790.74" />
+    <Entry char="o" value="111" ticks="636631257909536710" seconds="63663125790.95" />
+    <Entry char="v" value="118" ticks="636631257916564149" seconds="63663125791.66" />
+    <Entry char="n" value="110" ticks="636631257918988648" seconds="63663125791.9" />
+    <Entry char="i" value="105" ticks="636631257919723817" seconds="63663125791.97" />
+    <Entry char="k" value="107" ticks="636631257921668360" seconds="63663125792.17" />
+    <Entry char="&#x8;" value="8" ticks="636631257925723580" seconds="63663125792.57" />
+    <Entry char="&#x8;" value="8" ticks="636631257930728529" seconds="63663125793.07" />
+    <Entry char="&#x8;" value="8" ticks="636631257931061498" seconds="63663125793.11" />
+    <Entry char="&#x8;" value="8" ticks="636631257931386215" seconds="63663125793.14" />
+    <Entry char="&#x8;" value="8" ticks="636631257931716097" seconds="63663125793.17" />
+    <Entry char="&#x8;" value="8" ticks="636631257932061466" seconds="63663125793.21" />
+    <Entry char="&#x8;" value="8" ticks="636631257932379325" seconds="63663125793.24" />
+    <Entry char="&#x8;" value="8" ticks="636631257932703665" seconds="63663125793.27" />
+    <Entry char="&#x8;" value="8" ticks="636631257933037106" seconds="63663125793.3" />
+    <Entry char="&#x8;" value="8" ticks="636631257933361385" seconds="63663125793.34" />
+    <Entry char="&#x8;" value="8" ticks="636631257933686858" seconds="63663125793.37" />
+    <Entry char="&#x8;" value="8" ticks="636631257934018808" seconds="63663125793.4" />
+    <Entry char="&#x8;" value="8" ticks="636631257934348767" seconds="63663125793.43" />
+    <Entry char="&#x8;" value="8" ticks="636631257934681515" seconds="63663125793.47" />
+    <Entry char="&#x8;" value="8" ticks="636631257935017731" seconds="63663125793.5" />
+    <Entry char="&#x8;" value="8" ticks="636631257935341276" seconds="63663125793.53" />
+    <Entry char="&#x8;" value="8" ticks="636631257935678191" seconds="63663125793.57" />
+    <Entry char="&#x8;" value="8" ticks="636631257935999890" seconds="63663125793.6" />
+    <Entry char="&#x8;" value="8" ticks="636631257936326119" seconds="63663125793.63" />
+    <Entry char="&#x8;" value="8" ticks="636631257936683470" seconds="63663125793.67" />
+    <Entry char="&#x8;" value="8" ticks="636631257937004453" seconds="63663125793.7" />
+    <Entry char="&#x8;" value="8" ticks="636631257937358615" seconds="63663125793.74" />
+    <Entry char="&#x8;" value="8" ticks="636631257937648842" seconds="63663125793.76" />
+    <Entry char="&#x8;" value="8" ticks="636631257937981393" seconds="63663125793.8" />
+    <Entry char="&#x8;" value="8" ticks="636631257938327499" seconds="63663125793.83" />
+    <Entry char="&#x8;" value="8" ticks="636631257938635266" seconds="63663125793.86" />
+    <Entry char="&#x8;" value="8" ticks="636631257938967547" seconds="63663125793.9" />
+    <Entry char="&#x8;" value="8" ticks="636631257939318702" seconds="63663125793.93" />
+    <Entry char="&#x8;" value="8" ticks="636631257939624928" seconds="63663125793.96" />
+    <Entry char="&#x8;" value="8" ticks="636631257939959771" seconds="63663125794" />
+    <Entry char="&#x8;" value="8" ticks="636631257940313785" seconds="63663125794.03" />
+    <Entry char="g" value="103" ticks="636631258237984955" seconds="63663125823.8" />
+    <Entry char="o" value="111" ticks="636631258238364795" seconds="63663125823.84" />
+    <Entry char="o" value="111" ticks="636631258239744876" seconds="63663125823.97" />
+    <Entry char="d" value="100" ticks="636631258241169385" seconds="63663125824.12" />
+    <Entry char=" " value="32" ticks="636631258242980921" seconds="63663125824.3" />
+    <Entry char="&#x8;" value="8" ticks="636631258247194860" seconds="63663125824.72" />
+    <Entry char="n" value="110" ticks="636631258250878177" seconds="63663125825.09" />
+    <Entry char="i" value="105" ticks="636631258251997505" seconds="63663125825.2" />
+    <Entry char="g" value="103" ticks="636631258252987684" seconds="63663125825.3" />
+    <Entry char="h" value="104" ticks="636631258254532076" seconds="63663125825.45" />
+    <Entry char="t" value="116" ticks="636631258255271578" seconds="63663125825.53" />
+    <Entry char=" " value="32" ticks="636631258256854547" seconds="63663125825.69" />
+    <Entry char="&#x8;" value="8" ticks="636631258442127165" seconds="63663125844.21" />
+    <Entry char="&#x8;" value="8" ticks="636631258447140922" seconds="63663125844.71" />
+    <Entry char="&#x8;" value="8" ticks="636631258447472835" seconds="63663125844.75" />
+    <Entry char="&#x8;" value="8" ticks="636631258447812624" seconds="63663125844.78" />
+    <Entry char="&#x8;" value="8" ticks="636631258448124381" seconds="63663125844.81" />
+    <Entry char="&#x8;" value="8" ticks="636631258448445144" seconds="63663125844.84" />
+    <Entry char="&#x8;" value="8" ticks="636631258448792669" seconds="63663125844.88" />
+    <Entry char="&#x8;" value="8" ticks="636631258449116849" seconds="63663125844.91" />
+    <Entry char="&#x8;" value="8" ticks="636631258449441547" seconds="63663125844.94" />
+    <Entry char="&#x8;" value="8" ticks="636631258449793758" seconds="63663125844.98" />
+    <Entry char="&#x8;" value="8" ticks="636631258450095780" seconds="63663125845.01" />
+    <Entry char="&#x8;" value="8" ticks="636631258450429191" seconds="63663125845.04" />
+    <Entry char="&#x8;" value="8" ticks="636631258450772070" seconds="63663125845.08" />
+    <Entry char="&#x8;" value="8" ticks="636631258451087621" seconds="63663125845.11" />
+    <Entry char="&#x8;" value="8" ticks="636631258451421662" seconds="63663125845.14" />
+    <Entry char="&#x8;" value="8" ticks="636631258451751541" seconds="63663125845.18" />
+    <Entry char="g" value="103" ticks="636631258455976656" seconds="63663125845.6" />
+    <Entry char="o" value="111" ticks="636631258456424692" seconds="63663125845.64" />
+    <Entry char="v" value="118" ticks="636631258457796730" seconds="63663125845.78" />
+    <Entry char="e" value="101" ticks="636631258459578890" seconds="63663125845.96" />
+    <Entry char="r" value="114" ticks="636631258460048697" seconds="63663125846" />
+    <Entry char="n" value="110" ticks="636631258461383497" seconds="63663125846.14" />
+    <Entry char="m" value="109" ticks="636631258463477547" seconds="63663125846.35" />
+    <Entry char="e" value="101" ticks="636631258465732338" seconds="63663125846.57" />
+    <Entry char="n" value="110" ticks="636631258465881082" seconds="63663125846.59" />
+    <Entry char="t" value="116" ticks="636631258469067002" seconds="63663125846.91" />
+    <Entry char="s" value="115" ticks="636631258471881582" seconds="63663125847.19" />
+    <Entry char=" " value="32" ticks="636631258477394416" seconds="63663125847.74" />
+    <Entry char="n" value="110" ticks="636631258518378035" seconds="63663125851.84" />
+    <Entry char="e" value="101" ticks="636631258518600783" seconds="63663125851.86" />
+    <Entry char="v" value="118" ticks="636631258520214178" seconds="63663125852.02" />
+    <Entry char="e" value="101" ticks="636631258521839554" seconds="63663125852.18" />
+    <Entry char="r" value="114" ticks="636631258522288039" seconds="63663125852.23" />
+    <Entry char=" " value="32" ticks="636631258523348012" seconds="63663125852.33" />
+    <Entry char="w" value="119" ticks="636631258749376288" seconds="63663125874.94" />
+    <Entry char="o" value="111" ticks="636631258749573268" seconds="63663125874.96" />
+    <Entry char="r" value="114" ticks="636631258750223198" seconds="63663125875.02" />
+    <Entry char="k" value="107" ticks="636631258751627704" seconds="63663125875.16" />
+    <Transcribed>governments never work</Transcribed>
   </Trial>
 </TextTest>

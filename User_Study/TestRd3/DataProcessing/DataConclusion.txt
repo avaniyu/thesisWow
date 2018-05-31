@@ -37,6 +37,7 @@ myProto is the worst in terms of typing performance (especially bad in error rat
 
 TODO
 ------
+wpm --> adjWpm
 find participant 5 eyeControl typing record (otherwise eyeControl data is inaccurate)
 final figure on typing speed & error rate comparison between my keybd and othe keybds
 exclude typing speed == 0 data points for participant 3,5 in my data analysis (seen by individual learning curve)
