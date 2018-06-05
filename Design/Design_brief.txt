@@ -1,0 +1,22 @@
+Gaze-typing on-screen keyboard
+
+target users: people with motor disabilities
+
+scenario: 1) conversation, 2) write articles
+
+requirement: simple (low-cognitive load), fast-typing, error tolerant
+
+=====================================================================
+Design A: QWERTY + Shape Writing
+---------------------------------
+Shape writing self-implementation (Ê×Î²letter dwell selection)
+Gaze-locus optimization (colorful, taggolable)
+
+=====================================================================
+Design B: QWERTY + Group Keys
+--------------------------------
+How to group keys:
+evaluation function: tap easeness, final key amount...
+factors taken into account: letter frequency, gaze click difficultiness
+
+proper interaction design
