@@ -38,7 +38,7 @@ def readSentences(argFilename, argSentences):
 				sentences[-1].uncErrRate = float(row[9])
 				sentences[-1].corErrRate = float(row[10])				
 				sentences[-1].keyboard = ord(argFilename[4])-65
-				sentences[-1].ksps = float(row[6])
+				sentences[-1].ksps = float(row[8])
 				sentences[-1].utilBand = float(row[14])
 
 def clearCache():
@@ -97,7 +97,7 @@ def plotsHub():
 		plotKspsVsAccuracy()
 	elif 'Utilized Bandwidth' == contrMetric.value:
 		plotUtilizedBandwidth()	
-	elif 'AdjWPM vs. KSPS' == contrMetric.value:
+	elif 'AdjWPM vs. KSPC' == contrMetric.value:
 		plotSpeedVsSpeed()
 
 def filter():
@@ -330,22 +330,22 @@ def plotUtilizedBandwidth():
 def plotSpeedVsSpeed():
 	plotAdjWPM = perPtcpAdjWpm
 	plotKSPS = perPtcpKsps
-	xKSPS, yAdjWPM = ([[], [], []] for i in range(2))
+	yKSPC, xAdjWPM = ([[], [], []] for i in range(2))
 	for index in range(len(plotAdjWPM)):
 		if len(plotAdjWPM[index]):
 			for indexSub in range(len(plotAdjWPM[index])):
-				xKSPS[index%amountKeyboard].append(plotKSPS[index][indexSub])
-				yAdjWPM[index%amountKeyboard].append(plotAdjWPM[index][indexSub])
+				yKSPC[index%amountKeyboard].append(plotKSPS[index][indexSub])
+				xAdjWPM[index%amountKeyboard].append(plotAdjWPM[index][indexSub])
 	fig, ax = plt.subplots()
 	# for i in range(amountKeyboard):
 	# 	plt.scatter(xKSPS[i], yAdjWPM[i], color=color[i], label=labelKeybd[i], alpha=0.5)
 	i=2
-	plt.scatter(xKSPS[i], yAdjWPM[i], color=color[i], label=labelKeybd[i], alpha=0.5)
-
+	plt.scatter(xAdjWPM[i], yKSPC[i], color=color[i], label=labelKeybd[i], alpha=0.5)
+	print("lala")
 	ax.legend(loc='upper left')
-	ax.set(title=contrPtcp.value+' participant(s)'+' speed distribution', xlabel='KSPS', ylabel='AdjWPM')
-	plt.ylim(-0.5, 25)
-	plt.xlim(-0.1,2.5)
+	ax.set(title=contrPtcp.value+' participant(s)'+' speed distribution', xlabel='AdjWPM', ylabel='KSPC')
+	plt.ylim(-0.1, 8)
+	plt.xlim(-0.1,20.1)
 	fig.savefig('plotAdjWPMvsKSPS'+contrPtcp.value+'.png', bbox_inches='tight')
 
 
@@ -390,7 +390,7 @@ if __name__=="__main__":
 		disabled=False
 		)
 	contrMetric = widgets.ToggleButtons(
-		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'KSPS Vs. Accuracy', 'Utilized Bandwidth', 'AdjWPM vs. KSPS'],
+		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'KSPS Vs. Accuracy', 'Utilized Bandwidth', 'AdjWPM vs. KSPC'],
 		description='Metric: ',
 		value='Utilized Bandwidth',
 		disabled=False
