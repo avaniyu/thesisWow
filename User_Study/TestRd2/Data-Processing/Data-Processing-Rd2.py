@@ -22,7 +22,7 @@ class Sentence:
 		self.corErrRate = 0.0
 		self.ksps = 0.0
 		self.f = 0.0
-		self.consc = 0.0
+		self.inputStream = 0.0
 
 def readSentences(argFilename, argSentences):
 	with open('Raw-Data/Logs/'+argFilename+'.csv') as csvDataFile:
@@ -39,15 +39,15 @@ def readSentences(argFilename, argSentences):
 				sentences[-1].uncErrRate = float(row[9])
 				sentences[-1].corErrRate = float(row[10])				
 				sentences[-1].keyboard = ord(argFilename[4])-65
-				sentences[-1].ksps = float(row[8])
-				sentences[-1].f = float(row[19])	
-				sentences[-1].consc = float(row[13])	
+				sentences[-1].ksps = float(row[6])
+				sentences[-1].f = float(row[19])	# fixed keystrokes
+				sentences[-1].inputStream = float(row[22])	# input stream
 
 def clearCache():
 	clear_output(wait=True)
 	display(widgets.HBox([contrSpeed,contrErrRate]), contrMetric, widgets.HBox([contrPtcp]))
 	# clear data storage
-	dataStorage = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpConsc]
+	dataStorage = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpInputStream]
 	for item in dataStorage:
 		for index in range(amountPtcp*amountKeyboard):
 			del item[index][:]
@@ -85,7 +85,7 @@ def plotsHub():
 				perPtcpSentenceNo[index].append(item.sentenceNo)
 				perPtcpKsps[index].append(item.ksps)
 				perPtcpF[index].append(item.f)
-				perPtcpConsc[index].append(item.consc)
+				perPtcpInputStream[index].append(item.inputStream)
 	filter()
 
 	if 'Speed' == contrMetric.value:
@@ -98,13 +98,11 @@ def plotsHub():
 		plotLearningCurve()
 	elif 'Speed Vs. Accuracy' == contrMetric.value:
 		plotSpeedVsAccuracy()
-	elif 'Conscientiousness' == contrMetric.value:
-		plotConscientiousness()
-	elif 'AdjWPM vs. F' == contrMetric.value:
-		plotSpeedVsF()
+	elif 'Proof error-correction' == contrMetric.value:
+		plotProof()
 
 def filter():
-	dataStorages = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpConsc]
+	dataStorages = [perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpInputStream]
 	for i in range(len(perPtcpAdjWpm)):
 		if len(perPtcpAdjWpm[i]):
 			mean = np.nanmean(perPtcpAdjWpm[i])
@@ -159,7 +157,7 @@ def plotAccuracy():
 		ax.grid(color='gray', alpha=0.3, axis='y')
 		ax.tick_params(axis='both', direction='in', top=True, right=True)
 	ax.set(ylabel='Total error rate')
-	plt.ylim(-0.01,1)
+	plt.ylim(0,1)
 	yErrRate = [[] for i in range(amountKeyboard)]
 	if contrErrRate.value == 'Total-Error-Rate':
 		plotPerPtcpErrRate = perPtcpTotErrRate
@@ -224,8 +222,8 @@ def plotSpeedNAccuracy():
 	fig.savefig('plotSpeedNAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotLearningCurve():
-	# labelLearningCurve = ['EyeControl\nCorr.:0.14', 'WinControl\nCorr.:0.40', 'Dwell-free\nCorr.0.06']
-	labelLearningCurve = ['EyeControl', 'WinControl', 'Dwell-free']
+	labelLearningCurve = ['EyeControl\nCorr.:0.85', 'WinControl\nCorr.:0.61', 'Dwell-free\nCorr.0.65']
+	# labelLearningCurve = ['EyeControl', 'WinControl', 'Dwell-free']
 	with plt.rc_context({'axes.edgecolor':'black', 'axes.facecolor':'white'}):
 		fig, ax = plt.subplots(figsize=(6,3.5), dpi=300)
 	if contrSpeed.value == 'Wpm':
@@ -271,26 +269,29 @@ def plotLearningCurve():
 				else:
 					yWpm[i][j] = 0
 					sdTotErrRate[i][j] = 0
-			# logarithmic data fitting
+			# data fitting
 			x = range(4, 19)
-			coefficients = np.polyfit(np.log(x), yWpm[i], 1)
+			coefficients = np.polyfit(sdTotErrRate[i], yWpm[i], 1)
 			coefficientsKeybds.append(coefficients)
-			# plt.scatter([q for q in range(4,19)], yWpm[i], color=color[i], s=20, label=labelLearningCurve[i])
-			plt.scatter(yWpm[i], color=color[i], s=15, label=labelLearningCurve[i])
-		xForPlots = range(4,19)
+			# plt.plot([q for q in range(4,19)], sdTotErrRate[i], color=color[i], linewidth=0.5, alpha=0.3)
+		plt.scatter(sdTotErrRate[0], yWpm[0], color=color[0], s=20, label=labelLearningCurve[0])
+		plt.scatter(sdTotErrRate[1], yWpm[1], color=color[1], s=20, label=labelLearningCurve[1])
+		plt.scatter(sdTotErrRate[2], yWpm[2], color=color[2], s=20, label=labelLearningCurve[2], marker='D')
+
 		for i in range(amountKeyboard):
+			xForPlots = sdTotErrRate[i]
 			yForPlots = []
 			for eachXForPlots in xForPlots:
-				yForPlots.append(coefficientsKeybds[i][0]*np.log(eachXForPlots) + coefficientsKeybds[i][1])
-			plt.plot(xForPlots, yForPlots, color=color[i], linewidth=0.5)
+				yForPlots.append(coefficientsKeybds[i][0]*eachXForPlots + coefficientsKeybds[i][1])
+			plt.plot(xForPlots, yForPlots, color=color[i], linewidth=1)
 			# corrcoef = np.corrcoef(yWpm[i], yForPlots)[1,0]
 			# print(corrcoef)
-	ax.set(ylabel='Total error rate', xlabel='Adjusted words per minute')
+	ax.set(xlabel='Total error rate', ylabel='Adjusted words per minute')
 	ax.tick_params(axis='both', direction='in', top=True, right=True)
-	ax.legend(loc='lower center', facecolor='white', edgecolor='black', ncol=3)
-	ax.grid(color='gray', alpha=0.3, axis='both')
-	plt.xlim(0,15)
-	plt.ylim(0, 1)
+	ax.legend(loc='upper center', facecolor='white', edgecolor='black', ncol=3)
+	# ax.grid(color='gray', alpha=0.3, axis='both')
+	plt.ylim(0,15)
+	plt.xlim(0, 1)
 	fig.savefig('plotLearningCurve_'+contrPtcp.value+'.png', bbox_inches='tight')
 
 def plotSpeedVsAccuracy():
@@ -325,67 +326,69 @@ def plotSpeedVsAccuracy():
 	plt.xlim(-0.05,25)
 	fig.savefig('plotWpmVsAccuracy_'+contrPtcp.value+'.png', bbox_inches='tight')
 
-def plotConscientiousness():
+def plotProof():
 	with plt.rc_context({'axes.edgecolor':'black', 'axes.facecolor':'white'}):
-		fig, ax = plt.subplots(figsize=(5,3), dpi=300)
-		ax.grid(color='gray', alpha=0.3, axis='y')
-		ax.tick_params(axis='both', direction='in', top=True, right=True)		
-	ax.set(ylabel='Conscientiousness')
-	# plt.ylim(0,25)
-	yWpm = [[] for i in range(amountKeyboard)]
-	yWpm = perPtcpAdjWpm
-	plotPerPtcpWpm = perPtcpConsc
-	for index in range(len(plotPerPtcpWpm)):
-		for subIndex in range(len(plotPerPtcpWpm[index])):
-			yWpm[index%amountKeyboard].append(plotPerPtcpWpm[index][subIndex])
-	# handle missing data due to data preprocessing
-	for j in range(amountKeyboard):	
-		nanIndex = []
-		for i in range(len(yWpm[j])):
-			if (np.isnan(yWpm[j][i])) or (yWpm[j][i] == 0):
-				nanIndex.append(i)
-		for i in range(len(nanIndex)):
-			yWpm[j].pop(nanIndex[i]-i)
-	# adjust keyboard order as WinControl, EyeControl, and Dwell-free
-	plt.boxplot(yWpm[0], positions=[plotXPosition[1]], showfliers=True, patch_artist=True, 
-					boxprops=dict(facecolor=color[0]), medianprops=dict(linewidth=1, linestyle=None, color='white'),widths=0.3)
-	plt.boxplot(yWpm[1], positions=[plotXPosition[0]], showfliers=True, patch_artist=True, 
-					boxprops=dict(facecolor=color[1]), medianprops=dict(linewidth=1, linestyle=None, color='white'),widths=0.3)
-	plt.boxplot(yWpm[2], positions=[plotXPosition[2]], showfliers=True, patch_artist=True, 
-					boxprops=dict(facecolor=color[2]), medianprops=dict(linewidth=1, linestyle=None, color='white'),widths=0.3)
-	plt.xlim(min(plotXPosition)-1, max(plotXPosition)+1)	
-	plt.xticks(plotXPosition, axisKeybd)
-	fig.savefig('plotConsc_'+contrPtcp.value+'.png', bbox_inches='tight')
-
-def plotSpeedVsF():
-	with plt.rc_context({'axes.edgecolor':'black', 'axes.facecolor':'white'}):
-		fig, ax = plt.subplots(figsize=(6,3), dpi=300)
-		ax.tick_params(axis='both', direction='in', top=True, right=True)		
-	plotAdjWPM = perPtcpAdjWpm
-	plotF = perPtcpF
-	xF, yAdjWPM = ([[], [], []] for i in range(2))
-	for index in range(len(plotAdjWPM)):
-		if len(plotAdjWPM[index]):
-			for indexSub in range(len(plotAdjWPM[index])):
-				if (plotAdjWPM[index][indexSub] != 0) and (np.isnan(plotAdjWPM[index][indexSub]) == False):
-					xF[index%amountKeyboard].append(plotF[index][indexSub])
-					yAdjWPM[index%amountKeyboard].append(plotAdjWPM[index][indexSub])
+		fig, ax = plt.subplots(figsize=(6,3.5), dpi=100)
+		ax.tick_params(axis='both', direction='in', top=True, right=True)
+	totErrorRate, sentenceNo, ksps, f, inputStream = ([[], [], []] for i in range(5))
+	for index in range(len(perPtcpAdjWpm)):
+		if len(perPtcpAdjWpm[index]):
+			for indexSub in range(len(perPtcpAdjWpm[index])):
+				if (perPtcpAdjWpm[index][indexSub] != 0) and (np.isnan(perPtcpAdjWpm[index][indexSub]) == False):
+					f[index%amountKeyboard].append(perPtcpF[index][indexSub])
+					inputStream[index%amountKeyboard].append(perPtcpInputStream[index][indexSub])
+					ksps[index%amountKeyboard].append(perPtcpKsps[index][indexSub])
+					sentenceNo[index%amountKeyboard].append(perPtcpSentenceNo[index][indexSub])
+					totErrorRate[index%amountKeyboard].append(perPtcpTotErrRate[index][indexSub])	
+	# compute max KSPS
+	plotY = getMaxKSPS(ksps, sentenceNo, totErrorRate)
+	plotX = [[], [], []]
 	for i in range(amountKeyboard):
-		plt.scatter(xF[i], yAdjWPM[i], color=color[i], label=labelKeybd[i], s=10)
+		for j in range(len(f[i])):
+			plotX[i].append(f[i][j] / inputStream[i][j])
+		# plt.scatter(plotX[i], plotY[i], color=color[i], label=labelKeybd[i], s=10)
 	ax.legend(loc='upper right', facecolor='white', edgecolor='black')
-	ax.set(xlabel='|F| (keystroke)', ylabel='Adjusted words per minute')
-	plt.xlim(-1,101)
-	fig.savefig('plotAdjWPMvsF'+contrPtcp.value+'.png', bbox_inches='tight')
+	ax.set(xlabel='|F| / |IS| (%)', ylabel='KSPS / max KSPS (%)')
+	plt.xlim(0, 0.6)
+	fig.savefig('plotProof'+contrPtcp.value+'.png', bbox_inches='tight')
+
+# get max KSPS for each participant per keyboard
+def getMaxKSPS(paramKSPS, paramSentenceNo, paramTotErrorRate):
+	amountParticipants = 5
+	maxKspss = [[] for i in range(amountKeyboard)]
+	maxKspsCandidates, kspsPerPtcpPerKeybd, totErrorRatePerPtcpPerKeybd = ([[[] for i in range(amountParticipants)] for j in range(amountKeyboard)] for k in range(3))
+	for i in range(amountKeyboard):
+		counterParticipant = 0
+		tmp = paramSentenceNo[i][0]
+		for j in range(len(paramSentenceNo[i])):
+			if paramSentenceNo[i][j] < tmp:
+				counterParticipant += 1
+			kspsPerPtcpPerKeybd[i][counterParticipant].append(paramKSPS[i][j])
+			if paramTotErrorRate[i][j] <= 0.05:
+				maxKspsCandidates[i][counterParticipant].append(paramKSPS[i][j])
+			tmp = paramSentenceNo[i][j]
+
+	plotY = [[], [], []]
+	for i in range(amountKeyboard):
+		for j in range(amountParticipants):
+			if len(maxKspsCandidates[i][j]):
+				maxKspss[i].append(np.mean(maxKspsCandidates[i][j]))
+			else:
+				maxKspss[i].append(max(kspsPerPtcpPerKeybd[i][j]))
+			for k in range(len(kspsPerPtcpPerKeybd[i][j])):
+				plotY[i].append(kspsPerPtcpPerKeybd[i][j][k] / maxKspss[i][j])
+	print(plotY)
+	return plotY
 
 if __name__=="__main__":
 	amountPtcp=6
 	amountKeyboard=3
 	sentences=[]
-	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpConsc = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(9))
+	perPtcpWpm, perPtcpAdjWpm, perPtcpTotErrRate, perPtcpUncErrRate, perPtcpCorErrRate, perPtcpSentenceNo, perPtcpKsps, perPtcpF, perPtcpInputStream = ([[] for j in range(amountPtcp*amountKeyboard)] for i in range(9))
 	plotXPosition = [1,2,3]
 	labelKeybd = ['EyeControl', 'WinControl', 'Dwell-free'] * 6
 	axisKeybd = ['WinControl', 'EyeControl', 'Dwell-free'] * 6
-	color = ['gray', '#271291','#DD7E50'] * 6 
+	color = ['#9400FF', '#14CC61','#FFAA19'] * 6 
 
 	filenames = ['2_kbA_logs', '2_kbB_logs', '2_kbC_logs',
 				'3_kbA_logs', '3_kbB_logs', '3_kbC_logs',
@@ -409,7 +412,7 @@ if __name__=="__main__":
 		disabled=False
 		)
 	contrMetric = widgets.ToggleButtons(
-		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'Conscientiousness', 'AdjWPM vs. F'],
+		options=['Speed', 'Accuracy', 'Speed & Accuracy', 'Learning Curve', 'Speed Vs. Accuracy', 'Proof error-correction'],
 		description='Metric: ',
 		value='Accuracy',
 		disabled=False
