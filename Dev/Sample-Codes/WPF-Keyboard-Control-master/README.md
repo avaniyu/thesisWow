@@ -1,3 +1,7 @@
+Original [source](https://github.com/snmslavk/WPF-Keyboard-Control ) of this repo from @[snmslavk](https://github.com/snmslavk)
+
+----
+
 [![Build status](https://ci.appveyor.com/api/projects/status/py2u4lm82ud0m91q?svg=true)](https://ci.appveyor.com/project/snmslavk/wpf-on-screen-keyboard)
 [![NuGet version](https://badge.fury.io/nu/WPFTouchKeyboard.svg)](https://badge.fury.io/nu/WPFTouchKeyboard)
 
