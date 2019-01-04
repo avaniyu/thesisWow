@@ -1,3 +1,7 @@
+[Original source](https://github.com/Tobii/CoreSDK) of this repo by [Tobii](https://github.com/Tobii)
+
+----
+
 # Welcome to Tobii Core SDK samples for .NET!
 
   This repository contains samples and [documentation](https://tobii.github.io/CoreSDK/articles/intro.html) to show developers how to use our API to build interactive _eye tracking_ enabled games and applications on the Microsoft .NET Framework.
