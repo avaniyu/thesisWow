@@ -1,3 +1,7 @@
+[Original source](https://github.com/Tobii/interaction-samples) of this repo from [Tobii](https://github.com/Tobii)
+
+-----
+
 Tobii Eye Tracking samples for .NET
 ============================================
 
